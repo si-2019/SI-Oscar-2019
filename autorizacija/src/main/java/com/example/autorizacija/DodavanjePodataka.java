@@ -25,7 +25,7 @@ public class DodavanjePodataka {
     @EventListener
     public void dodaj (ApplicationReadyEvent event){
         dodajUloge();
-        //dodajPrivilegije();
+        dodajPrivilegije();
     }
 
     private boolean ulogaPostoji (List<Uloga> sveUloge, Uloga uloga){
@@ -96,6 +96,49 @@ public class DodavanjePodataka {
         }
 
     }
+
+    private boolean privilegijaPostoji (List<Privilegija> svePrivilegije, Privilegija privilegija){
+        boolean postoji = false;
+        for(Privilegija p: svePrivilegije){
+            if(p.getNazivPrivilegije().equals(privilegija.getNazivPrivilegije())){
+                postoji = true;
+                break;
+            }
+        }
+        return  postoji;
+    }
+
+    private void dodajPrivilegije() {
+
+        boolean nemaPrivilegija = false;
+        List<Privilegija> svePrivilegije = new ArrayList<>();
+
+        try{
+            svePrivilegije = privilegijaRepozitorij.findAll();
+        }
+        catch (Exception e){
+            nemaPrivilegija = true;
+        }
+
+
+
+        List<Uloga> uloga = new ArrayList<>();
+        Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        uloga.add(uloga1);
+
+        Privilegija privilegija1 = new Privilegija();
+        privilegija1.setNazivPrivilegije("editovanje-kreirane-zadace");
+        privilegija1.setUloge(uloga);
+        if(nemaPrivilegija){
+            privilegijaRepozitorij.save(privilegija1);
+        }
+        else if(!privilegijaPostoji(svePrivilegije, privilegija1)){
+            privilegijaRepozitorij.save(privilegija1);
+        }
+        
+
+    }
+
 
 
 }

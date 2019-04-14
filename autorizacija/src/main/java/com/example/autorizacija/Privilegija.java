@@ -15,7 +15,7 @@ public class Privilegija {
 
     @Column (name = "privilegija", length = 100)
     @NotNull
-    private String nazivPermisije;
+    private String nazivPrivilegije;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -28,7 +28,7 @@ public class Privilegija {
 
     public Privilegija (Long id, String naziv_permisije){
         this.id = id;
-        this.nazivPermisije = naziv_permisije;
+        this.nazivPrivilegije = naziv_permisije;
     }
 
     public Long getId() {
@@ -39,20 +39,19 @@ public class Privilegija {
         this.id = id;
     }
 
-    public String getNaziv_permisije() {
-        return nazivPermisije;
+    public String getNazivPrivilegije() {
+        return nazivPrivilegije;
     }
 
-    public void setNaziv_permisije(String naziv_permisije) {
-        this.nazivPermisije = naziv_permisije;
+    public void setNazivPrivilegije(String nazivPrivilegije) {
+        this.nazivPrivilegije = nazivPrivilegije;
     }
 
-    public List<Uloga> getRoles() {
+    public List<Uloga> getUloge() {
         return uloge;
     }
 
-    public void setRoles(List<Uloga> uloge) {
+    public void setUloge(List<Uloga> uloge) {
         this.uloge = uloge;
     }
-
 }

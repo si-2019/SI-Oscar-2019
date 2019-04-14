@@ -4,12 +4,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Blob;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "korisnik")
 public class Korisnik {
 
-    @javax.persistence.Id
+    @Id
     @Column(name = "idKorisnik")
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
@@ -93,9 +94,33 @@ public class Korisnik {
 
 
     public Korisnik() {}
-    public Korisnik(String ime, String prezime) {
-        this.Ime = ime;
-        this.Prezime = prezime;
+
+    public Korisnik(Long id, Odsjek odsjek_id, Uloga uloga_id, @NotNull String ime, @NotNull String prezime, Date datumRodjenja, String jmbg, String email, String mjestoRodjenja, String kanton, String drzavljanstvo, String telefon, boolean spol, String imePrezimeMajke, String imePrezimeOca, String adresa, String username, String password, String linkedin, String website, Blob fotografija, String indeks, String ciklus, String semestar, String titula) {
+        Id = id;
+        this.odsjek_id = odsjek_id;
+        this.uloga_id = uloga_id;
+        Ime = ime;
+        Prezime = prezime;
+        DatumRodjenja = datumRodjenja;
+        Jmbg = jmbg;
+        Email = email;
+        MjestoRodjenja = mjestoRodjenja;
+        Kanton = kanton;
+        Drzavljanstvo = drzavljanstvo;
+        Telefon = telefon;
+        Spol = spol;
+        ImePrezimeMajke = imePrezimeMajke;
+        ImePrezimeOca = imePrezimeOca;
+        Adresa = adresa;
+        Username = username;
+        Password = password;
+        Linkedin = linkedin;
+        Website = website;
+        Fotografija = fotografija;
+        Indeks = indeks;
+        Ciklus = ciklus;
+        Semestar = semestar;
+        Titula = titula;
     }
 
     public String getIme() {
@@ -122,13 +147,7 @@ public class Korisnik {
         this.Id = id;
     }
 
-    public Uloga getRole_id() {
-        return uloga_id;
-    }
 
-    public void setRole_id(Uloga role_id) {
-        this.uloga_id = role_id;
-    }
 
     public Date getDatumRodjenja() {
         return DatumRodjenja;
@@ -296,5 +315,25 @@ public class Korisnik {
 
     public void setOdsjek_id(Odsjek odsjek_id) {
         this.odsjek_id = odsjek_id;
+    }
+
+    public Uloga getUloga_id() {
+        return uloga_id;
+    }
+
+    public void setUloga_id(Uloga uloga_id) {
+        this.uloga_id = uloga_id;
+    }
+
+    public boolean imaPrivilegiju (String privilegija){
+        boolean ima = false;
+        List<Privilegija> privilegije = this.getUloga_id().getPrivilegije();
+        for (Privilegija p: privilegije) {
+            if (p.getNazivPrivilegije().equals(privilegija)) {
+                ima = true;
+                break;
+            }
+        }
+        return ima;
     }
 }

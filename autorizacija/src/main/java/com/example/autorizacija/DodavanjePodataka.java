@@ -135,7 +135,7 @@ public class DodavanjePodataka {
         else if(!privilegijaPostoji(svePrivilegije, privilegija1)){
             privilegijaRepozitorij.save(privilegija1);
         }
-        
+
 
     }
 

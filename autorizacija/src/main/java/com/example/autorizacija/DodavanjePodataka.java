@@ -133,5 +133,19 @@ public class DodavanjePodataka {
         else if(!privilegijaPostoji(svePrivilegije, privilegija1)){
             privilegijaRepozitorij.save(privilegija1);
         }
+
+        uloga = new ArrayList<>();
+        uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        uloga.add(uloga1);
+
+        privilegija1 = new Privilegija();
+        privilegija1.setNazivPrivilegije("editovanje-kreirane-zadace");
+        privilegija1.setUloge(uloga);
+        if(nemaPrivilegija) {
+            privilegijaRepozitorij.save(privilegija1);
+        }
+        else if(!privilegijaPostoji(svePrivilegije, privilegija1)) {
+            privilegijaRepozitorij.save(privilegija1);
+        }
     }
 }

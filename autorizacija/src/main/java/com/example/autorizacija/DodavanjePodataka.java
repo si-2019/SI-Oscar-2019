@@ -10,12 +10,6 @@ import java.util.List;
 
 @Component
 public class DodavanjePodataka {
-	
-	
-	
-	
-	private static final String PRIV = "postavljanje-obavještenja";
-
 
     private KorisnikRepozitorij korisnikRepozitorij;
     private UlogaRepozitorij ulogaRepozitorij;
@@ -126,7 +120,7 @@ public class DodavanjePodataka {
             nemaPrivilegija = true;
         }
 
-
+		final String PRIV = "postavljanje-obavještenja";
         List<Uloga> uloga = new ArrayList<>();
         Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
         uloga.add(uloga1);

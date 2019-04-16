@@ -12,7 +12,7 @@ import java.util.List;
 public class DodavanjePodataka {
 	
 	
-	
+
 
     private KorisnikRepozitorij korisnikRepozitorij;
     private UlogaRepozitorij ulogaRepozitorij;
@@ -122,12 +122,10 @@ public class DodavanjePodataka {
         catch (Exception e){
             nemaPrivilegija = true;
         }
-		
-		final String PRIV = "kreiranje-novih-privilegija";
 
-
+		final String PRIV = "registrovanje-nove-zadace";
         List<Uloga> uloga = new ArrayList<>();
-        Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+        Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         uloga.add(uloga1);
 
         Privilegija privilegija1 = new Privilegija();
@@ -139,7 +137,7 @@ public class DodavanjePodataka {
         else if(!privilegijaPostoji(svePrivilegije, privilegija1)){
             privilegijaRepozitorij.save(privilegija1);
         }
-		
+
     }
 
 

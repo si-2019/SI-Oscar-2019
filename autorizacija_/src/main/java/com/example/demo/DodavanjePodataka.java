@@ -137,13 +137,13 @@ public class DodavanjePodataka {
             privilegijaRepozitorij.save(privilegija2);
         }
 
-	Privilegija privilegija2 = new Privilegija();
-        privilegija2.setNazivPrivilegije("editovanje_termina_ispita");
-        privilegija2.setUloge(uloga);
+	Privilegija privilegija3 = new Privilegija();
+        privilegija3.setNazivPrivilegije("editovanje_termina_ispita");
+        privilegija3.setUloge(uloga);
         if (nemaPrivilegija) {
-            privilegijaRepozitorij.save(privilegija2);
-        } else if (!privilegijaPostoji(svePrivilegije, privilegija2)) {
-            privilegijaRepozitorij.save(privilegija2);
+            privilegijaRepozitorij.save(privilegija3);
+        } else if (!privilegijaPostoji(svePrivilegije, privilegija3)) {
+            privilegijaRepozitorij.save(privilegija3);
         }
 
 

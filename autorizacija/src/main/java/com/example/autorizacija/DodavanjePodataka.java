@@ -88,6 +88,15 @@ public class DodavanjePodataka {
         privilegija3.setUloge(uloga);
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("brisanje-korisnika")) privilegijaRepozitorij.save(privilegija3);
 
+        uloga.clear();
+        Uloga uloga6 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        uloga.add(uloga6);
+
+        Privilegija privilegija4 = new Privilegija();
+        privilegija4.setNazivPrivilegije("pregled-zadace");
+        privilegija4.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("pregled-zadace")) privilegijaRepozitorij.save(privilegija4);
+
 
     }
 

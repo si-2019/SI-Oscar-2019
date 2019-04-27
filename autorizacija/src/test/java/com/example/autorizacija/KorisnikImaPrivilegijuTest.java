@@ -75,4 +75,14 @@ public class KorisnikImaPrivilegijuTest {
         assertThat(korisnik.imaPrivilegiju("editovanje-obavjestenja")).isEqualTo(true);
 
     }
+
+    @Test
+    public void testProfesorImaPrivilegijuEditovanjaTemeNaForumu() throws Exception {
+        Odsjek odsjek = odsjekRepozitorij.findById(Long.valueOf(1)).get();
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        Korisnik korisnik = new Korisnik(Long.valueOf(4), odsjek, uloga, "Emir", "Pozderac", new Date(1997, 2, 4), "0506997178963", "ekovac2@etf.unsa.ba", "Sarajevo", "Sarajevo", "BiH", "062589632", true, "Nakma Kovac", "Fudo Kovac", "Zupca", "ekovac2", "789456", "ekovac@linkedin.com", "ekovac@website.com", null, "17933", "1", "6", "admin");
+        korisnikRepozitorij.save(korisnik);
+        assertThat(korisnik.imaPrivilegiju("editovanje-teme-na-forumu")).isEqualTo(true);
+
+    }
 }

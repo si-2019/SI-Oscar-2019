@@ -147,15 +147,14 @@ public class DodavanjePodataka {
         }
 
         Privilegija privilegija4 = new Privilegija();
-        privilegija4.setNazivPrivilegije("obavjestenje_studenata_predmeta");
+        privilegija4.setNazivPrivilegije("kreiranje_obavjestenja");
         privilegija4.setUloge(uloga);
         if (nemaPrivilegija) {
             privilegijaRepozitorij.save(privilegija4);
         } else if (!privilegijaPostoji(svePrivilegije, privilegija4)) {
             privilegijaRepozitorij.save(privilegija4);
         }
-
-
+       
         
         
     }

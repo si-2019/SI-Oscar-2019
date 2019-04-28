@@ -166,6 +166,9 @@ public class DodavanjePodataka {
         } else if (!privilegijaPostoji(svePrivilegije, privilegija5)) {
             privilegijaRepozitorij.save(privilegija5);
         }
+        Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_obavjestenja");
+        (p.getUloge()).add(uloga2);
+        privilegijaRepozitorij.save(p);
 
     }
 }

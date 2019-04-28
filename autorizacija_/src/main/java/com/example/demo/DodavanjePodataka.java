@@ -15,21 +15,30 @@ public class DodavanjePodataka {
     private KorisnikRepozitorij korisnikRepozitorij;
     private UlogaRepozitorij ulogaRepozitorij;
     private PrivilegijaRepozitorij privilegijaRepozitorij;
+    private OdsjekRepozitorij odsjekRepozitorij;
 
     @Autowired
     public DodavanjePodataka(KorisnikRepozitorij korisnikRepozitorij, UlogaRepozitorij ulogaRepozitorij,
-            PrivilegijaRepozitorij privilegijaRepozitorij) {
+            PrivilegijaRepozitorij privilegijaRepozitorij, OdsjekRepozitorij odsjekRepozitorij){
         this.korisnikRepozitorij = korisnikRepozitorij;
         this.ulogaRepozitorij = ulogaRepozitorij;
         this.privilegijaRepozitorij = privilegijaRepozitorij;
+        this.odsjekRepozitorij=odsjekRepozitorij;
     }
 
     @EventListener
     public void dodaj(ApplicationReadyEvent event) {
         dodajUloge();
         dodajPrivilegije();
+        dodajOdsjek();
     }
 
+    private void dodajOdsjek(){
+        Odsjek odsjek1=odsjekRepozitorij.findBynazivOdsjeka("ri");
+        if(odsjek1==null){
+            odsjekRepozitorij.save(odsjek1);
+        }
+    }
     private boolean ulogaPostoji(List<Uloga> sveUloge, Uloga uloga) {
         boolean postoji = false;
         for (Uloga u : sveUloge) {

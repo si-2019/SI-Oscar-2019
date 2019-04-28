@@ -120,7 +120,7 @@ public class DodavanjePodataka {
         uloga.add(uloga1);
 
         Privilegija privilegija1 = new Privilegija();
-        privilegija1.setNazivPrivilegije("brisanje_kreirane_zadaće");
+        privilegija1.setNazivPrivilegije("brisanje_kreirane_zadace");
         privilegija1.setUloge(uloga);
         if (nemaPrivilegija) {
             privilegijaRepozitorij.save(privilegija1);
@@ -129,7 +129,7 @@ public class DodavanjePodataka {
         }
         
         Privilegija privilegija2 = new Privilegija();
-        privilegija2.setNazivPrivilegije("registrovanje_časa");
+        privilegija2.setNazivPrivilegije("registrovanje_casa");
         privilegija2.setUloge(uloga);
         if (nemaPrivilegija) {
             privilegijaRepozitorij.save(privilegija2);
@@ -137,13 +137,22 @@ public class DodavanjePodataka {
             privilegijaRepozitorij.save(privilegija2);
         }
 
-	Privilegija privilegija3 = new Privilegija();
+	    Privilegija privilegija3 = new Privilegija();
         privilegija3.setNazivPrivilegije("editovanje_termina_ispita");
         privilegija3.setUloge(uloga);
         if (nemaPrivilegija) {
             privilegijaRepozitorij.save(privilegija3);
         } else if (!privilegijaPostoji(svePrivilegije, privilegija3)) {
             privilegijaRepozitorij.save(privilegija3);
+        }
+
+        Privilegija privilegija4 = new Privilegija();
+        privilegija4.setNazivPrivilegije("obavjestenje_studenata_predmeta");
+        privilegija4.setUloge(uloga);
+        if (nemaPrivilegija) {
+            privilegijaRepozitorij.save(privilegija4);
+        } else if (!privilegijaPostoji(svePrivilegije, privilegija4)) {
+            privilegijaRepozitorij.save(privilegija4);
         }
 
 

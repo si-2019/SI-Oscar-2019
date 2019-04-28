@@ -54,4 +54,5 @@ public class Privilegija {
     public void setUloge(List<Uloga> uloge) {
         this.uloge = uloge;
     }
+
 }

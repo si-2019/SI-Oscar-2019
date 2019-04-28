@@ -154,8 +154,18 @@ public class DodavanjePodataka {
         } else if (!privilegijaPostoji(svePrivilegije, privilegija4)) {
             privilegijaRepozitorij.save(privilegija4);
         }
-       
         
-        
+        Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        uloga = new ArrayList<>();
+        uloga.add(uloga2);
+        Privilegija privilegija5 = new Privilegija();
+        privilegija5.setNazivPrivilegije("brisanje_teme");
+        privilegija5.setUloge(uloga);
+        if (nemaPrivilegija) {
+            privilegijaRepozitorij.save(privilegija5);
+        } else if (!privilegijaPostoji(svePrivilegije, privilegija5)) {
+            privilegijaRepozitorij.save(privilegija5);
+        }
+
     }
 }

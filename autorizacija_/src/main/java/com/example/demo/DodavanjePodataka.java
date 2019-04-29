@@ -1,4 +1,4 @@
-package com.example.demo;
+﻿package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -136,7 +136,14 @@ public class DodavanjePodataka {
             privilegijaRepozitorij.save(privilegija1);
         }
 
-        
-        
+       
+    }
+
+ private void dodajOdsjek(){ 
+        if((odsjekRepozitorij.findBynazivOdsjeka("ri"))==null){ 
+            Odsjek odsjek=new Odsjek();
+            odsjek.setId((long)(odsjekRepozitorij.count()+1)); 
+            odsjek.setNazivOdsjeka("ri"); odsjekRepozitorij.save(odsjek); 
+        } 
     }
 }

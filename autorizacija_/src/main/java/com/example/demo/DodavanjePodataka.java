@@ -174,9 +174,9 @@ public class DodavanjePodataka {
         Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_obavjestenja");
         List<Uloga> uloge=p.getUloge();
        
-        if((uloge.contains(uloga2))==false){
+        if(!(uloge.contains(uloga2))){
             uloge.add(uloga2);
-            privilegijaRepozitorij.save(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_obavjestenja"));
+            privilegijaRepozitorij.save(p);
        }
     }
  private void dodajOdsjek(){ 

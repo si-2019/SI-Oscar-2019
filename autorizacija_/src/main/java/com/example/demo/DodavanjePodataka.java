@@ -19,7 +19,7 @@ public class DodavanjePodataka {
 
     @Autowired
     public DodavanjePodataka(KorisnikRepozitorij korisnikRepozitorij, UlogaRepozitorij ulogaRepozitorij,
-            PrivilegijaRepozitorij privilegijaRepozitorij) {
+            PrivilegijaRepozitorij privilegijaRepozitorij,OdsjekRepozitorij odsjekRepozitorij) {
         this.korisnikRepozitorij = korisnikRepozitorij;
         this.ulogaRepozitorij = ulogaRepozitorij;
         this.privilegijaRepozitorij = privilegijaRepozitorij;
@@ -33,13 +33,9 @@ public class DodavanjePodataka {
         dodajPrivilegije();
         dodajOdsjek();
     }
-    
-    private void dodajOdsjek(){
-        Odsjek odsjek1=odsjekRepozitorij.findBynazivOdsjeka("ri");
-        if(odsjek1==null){
-            odsjekRepozitorij.save(odsjek1);
-        }
-    }
+
+ 
+
     private boolean ulogaPostoji(List<Uloga> sveUloge, Uloga uloga) {
         boolean postoji = false;
         for (Uloga u : sveUloge) {
@@ -178,4 +174,12 @@ public class DodavanjePodataka {
         }
 
     }
+    private void dodajOdsjek(){ 
+        if((odsjekRepozitorij.findBynazivOdsjeka("ri"))==null){ 
+            Odsjek odsjek=new Odsjek();
+            odsjek.setId((long)(odsjekRepozitorij.count()+1)); 
+            odsjek.setNazivOdsjeka("ri"); odsjekRepozitorij.save(odsjek); 
+        } 
+    }
+
 }

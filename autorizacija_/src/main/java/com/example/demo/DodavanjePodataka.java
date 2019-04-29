@@ -179,6 +179,7 @@ public class DodavanjePodataka {
             privilegijaRepozitorij.save(p);
        }
     }
+
  private void dodajOdsjek(){ 
         if((odsjekRepozitorij.findBynazivOdsjeka("ri"))==null){ 
             Odsjek odsjek=new Odsjek();

@@ -163,8 +163,13 @@ public class DodavanjePodataka {
         } else if (!privilegijaPostoji(svePrivilegije, privilegija4)) {
             privilegijaRepozitorij.save(privilegija4);
         }
-       
         
-        
+    }
+ private void dodajOdsjek(){ 
+        if((odsjekRepozitorij.findBynazivOdsjeka("ri"))==null){ 
+            Odsjek odsjek=new Odsjek();
+            odsjek.setId((long)(odsjekRepozitorij.count()+1)); 
+            odsjek.setNazivOdsjeka("ri"); odsjekRepozitorij.save(odsjek); 
+        } 
     }
 }

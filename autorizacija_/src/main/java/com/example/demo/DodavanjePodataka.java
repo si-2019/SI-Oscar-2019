@@ -180,9 +180,16 @@ public class DodavanjePodataka {
         Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_obavjestenja");
         List<Uloga> uloge=p.getUloge();
        
-        if(!(uloge.contains(uloga2))){
+        if((uloge.contains(uloga2))==false){
             uloge.add(uloga2);
-            privilegijaRepozitorij.save(p);
+            privilegijaRepozitorij.save(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_obavjestenja"));
        }
+    }
+ private void dodajOdsjek(){ 
+        if((odsjekRepozitorij.findBynazivOdsjeka("ri"))==null){ 
+            Odsjek odsjek=new Odsjek();
+            odsjek.setId((long)(odsjekRepozitorij.count()+1)); 
+            odsjek.setNazivOdsjeka("ri"); odsjekRepozitorij.save(odsjek); 
+        } 
     }
 }

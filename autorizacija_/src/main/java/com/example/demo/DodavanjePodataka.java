@@ -123,7 +123,7 @@ public class DodavanjePodataka {
         uloga.add(uloga1);
 
         Privilegija privilegija1 = new Privilegija();
-        privilegija1.setNazivPrivilegije("brisanje_kreirane_zadaće");
+        privilegija1.setNazivPrivilegije("brisanje_kreirane_zadace");
         privilegija1.setUloge(uloga);
         if (nemaPrivilegija) {
             privilegijaRepozitorij.save(privilegija1);
@@ -132,7 +132,7 @@ public class DodavanjePodataka {
         }
         
         Privilegija privilegija2 = new Privilegija();
-        privilegija2.setNazivPrivilegije("registrovanje_časa");
+        privilegija2.setNazivPrivilegije("registrovanje_casa");
         privilegija2.setUloge(uloga);
         if (nemaPrivilegija) {
             privilegijaRepozitorij.save(privilegija2);

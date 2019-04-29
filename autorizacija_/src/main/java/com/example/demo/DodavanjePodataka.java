@@ -128,7 +128,7 @@ public class DodavanjePodataka {
         uloga.add(uloga1);
 
         Privilegija privilegija1 = new Privilegija();
-        privilegija1.setNazivPrivilegije("brisanje_kreirane_zadaće");
+        privilegija1.setNazivPrivilegije("brisanje_kreirane_zadace");
         privilegija1.setUloge(uloga);
         if (nemaPrivilegija) {
             privilegijaRepozitorij.save(privilegija1);

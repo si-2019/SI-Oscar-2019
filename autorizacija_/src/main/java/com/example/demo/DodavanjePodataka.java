@@ -34,12 +34,6 @@ public class DodavanjePodataka {
         dodajOdsjek();
     }
 
-    private void dodajOdsjek(){
-        Odsjek odsjek1=odsjekRepozitorij.findBynazivOdsjeka("ri");
-        if(odsjek1==null){
-            odsjekRepozitorij.save(odsjek1);
-        }
-    }
 
     private boolean ulogaPostoji(List<Uloga> sveUloge, Uloga uloga) {
         boolean postoji = false;

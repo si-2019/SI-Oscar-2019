@@ -32,12 +32,6 @@ public class DodavanjePodataka {
         dodajOdsjek();
     }
 
-    private void dodajOdsjek(){
-        Odsjek odsjek1=odsjekRepozitorij.findBynazivOdsjeka("ri");
-    if(odsjek1==null){
-        odsjekRepozitorij.save(odsjek1);
-    }
-    }
 
     private boolean ulogaPostoji(List<Uloga> sveUloge, Uloga uloga) {
         boolean postoji = false;
@@ -153,10 +147,14 @@ public class DodavanjePodataka {
             privilegijaRepozitorij.save(privilegija3);
         } else if (!privilegijaPostoji(svePrivilegije, privilegija3)) {
             privilegijaRepozitorij.save(privilegija3);
-        }
-
-
+        }        
         
-        
+    }
+ private void dodajOdsjek(){ 
+        if((odsjekRepozitorij.findBynazivOdsjeka("ri"))==null){ 
+            Odsjek odsjek=new Odsjek();
+            odsjek.setId((long)(odsjekRepozitorij.count()+1)); 
+            odsjek.setNazivOdsjeka("ri"); odsjekRepozitorij.save(odsjek); 
+        } 
     }
 }

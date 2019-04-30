@@ -172,12 +172,12 @@ public class DodavanjePodataka {
             privilegijaRepozitorij.save(privilegija5);
         }
         Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_obavjestenja");
-        List<Uloga> uloge=p.getUloge();
-       
-        if(!(uloge.contains(uloga2))){
-            uloge.add(uloga2);
+     
+            List<Uloga> uloge=new ArrayList<>(); 
+            uloge.add(uloga1); 
+            uloge.add(uloga2);       
+            p.setUloge(uloge);
             privilegijaRepozitorij.save(p);
-       }
     }
 
  private void dodajOdsjek(){ 

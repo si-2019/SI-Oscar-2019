@@ -36,6 +36,5 @@ public class KorisnikImaPrivilegijuTest {
         assertThat(korisnik.imaPrivilegiju("editovanje-kreirane-zadace")).isEqualTo(true);
 
     }
-    
 
 }

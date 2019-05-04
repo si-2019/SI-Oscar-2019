@@ -25,7 +25,7 @@ public class PrivilegijaTest {
 	public void testProfesorImaMogucnostRegistrovanjaCasa() {
 
         Long id=(long) (korisnikRepozitorij.count()+1);
-        Korisnik korisnik = new Korisnik(id,odsjekRepozitorij.findBynazivOdsjeka("ri"),ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR), "Lejla", "Cardzic", new Date(1996,8, 22), "0506997178963", "lejla@unsa.ba", "Konjic", "HNK", "BiH", "1234567", true, "Nermina", "Almir", "Kolonija", "user", "pass", "lejla@linkedin.com", "lejla@website.com", null, "5281", "1", "6", "PROFESOR");
+        Korisnik korisnik = new Korisnik(id,odsjekRepozitorij.findBynazivOdsjeka("RI"),ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR), "Lejla", "Cardzic", new Date(1996,8, 22), "0506997178963", "lejla@unsa.ba", "Konjic", "HNK", "BiH", "1234567", true, "Nermina", "Almir", "Kolonija", "user", "pass", "lejla@linkedin.com", "lejla@website.com", null, "5281", "1", "6", "PROFESOR");
         korisnikRepozitorij.save(korisnik);
         assertEquals(true, (korisnik.imaPrivilegiju("registrovanje_casa")));
     }

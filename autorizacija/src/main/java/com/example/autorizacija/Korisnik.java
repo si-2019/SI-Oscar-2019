@@ -123,6 +123,8 @@ public class Korisnik {
         Titula = titula;
     }
 
+
+
     public String getIme() {
         return Ime;
     }

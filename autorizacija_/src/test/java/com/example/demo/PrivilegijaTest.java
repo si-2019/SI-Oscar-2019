@@ -22,12 +22,12 @@ public class PrivilegijaTest {
     private OdsjekRepozitorij odsjekRepozitorij;
 
     @Test
-	public void testProfesorImaMogucnostBrisanjaKreiraneZadace() {
+	public void testProfesorImaMogucnostBrisanjaZadace() {
 
         Long id=(long) (korisnikRepozitorij.count()+1);
-        Korisnik korisnik = new Korisnik(id,odsjekRepozitorij.findBynazivOdsjeka("ri"),ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR), "Maida", "Buturovic", new Date(1993,8, 22), "0506997178963", "maida@unsa.ba", "Jablanica", "HNK", "BiH", "1234567", true, "Munevera", "Semir", "ISAKA SAMOKOVLIJE", "user", "pass", "maida@linkedin.com", "maida@website.com", null, "5281", "1", "6", "PROFESOR");
+        Korisnik korisnik = new Korisnik(id,odsjekRepozitorij.findBynazivOdsjeka("RI"),ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR), "Maida", "Buturovic", new Date(1993,8, 22), "0506997178963", "maida@unsa.ba", "Jablanica", "HNK", "BiH", "1234567", true, "Munevera", "Semir", "ISAKA SAMOKOVLIJE", "user", "pass", "maida@linkedin.com", "maida@website.com", null, "5281", "1", "6", "PROFESOR");
         korisnikRepozitorij.save(korisnik);
-        assertEquals(true, (korisnik.imaPrivilegiju("brisanje_kreirane_zadace")));
+        assertEquals(true, (korisnik.imaPrivilegiju("brisanje_zadace")));
     }
 
 

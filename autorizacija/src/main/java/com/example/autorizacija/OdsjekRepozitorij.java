@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PrivilegijaRepozitorij extends JpaRepository<Privilegija, Long> {
-    boolean existsBynazivPrivilegije(String privilegija);
+public interface OdsjekRepozitorij extends JpaRepository<Odsjek, Long> {
+    boolean existsBynazivOdsjeka(String naziv);
 }

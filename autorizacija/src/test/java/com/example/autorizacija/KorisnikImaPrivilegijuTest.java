@@ -25,7 +25,7 @@ public class PrivilegijaTest {
 	public void testProfesorImaMogucnostZaObavjestenje() {
 
         Long id=(long) (korisnikRepozitorij.count()+1);
-        Korisnik korisnik = new Korisnik(id,odsjekRepozitorij.findBynazivOdsjeka("RI"),ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR), "Nate", "Kll", new Date(1996,5, 16), "0506997178963", "Nate@unsa.ba", "Sarajevo", "KS", "BiH", "1234567", true, "Kll", "Kll", "ISAKA SAMOKOVLIJE", "user", "pass", "Nate@linkedin.com", "Nate@website.com", null, "5281", "1", "6", "ASISTENT");
+        Korisnik korisnik = new Korisnik(id,odsjekRepozitorij.findBynazivOdsjeka("RI"),ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT), "Nate", "Kll", new Date(1996,5, 16), "0906999178963", "Nate@unsa.ba", "Sarajevo", "KS", "BiH", "1234567", true, "Kll", "Kll", "ISAKA SAMOKOVLIJE", "user", "pass", "Nate@linkedin.com", "Nate@website.com", null, "5281", "1", "6", "ASISTENT");
         korisnikRepozitorij.save(korisnik);
         assertEquals(true, (korisnik.imaPrivilegiju("registrovanje-nove-zadace")));
     }

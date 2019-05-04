@@ -25,7 +25,7 @@ public class PrivilegijaTest {
 	public void testAsistentImaMogucnostBrisanjaTeme() {
 
         Long id=(long) (korisnikRepozitorij.count()+1);
-        Korisnik korisnik = new Korisnik(id,odsjekRepozitorij.findBynazivOdsjeka("ri"),ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT), "Sara", "Halilovic", new Date(1996,11, 8), "0506997178963", "sara@unsa.ba", "Sarajevo", "KS", "BiH", "1234567", true, "Halilovic", "Halilovic", "ISAKA SAMOKOVLIJE", "user", "pass", "sara@linkedin.com", "sara@website.com", null, "5281", "1", "6", "ASISTENT");
+        Korisnik korisnik = new Korisnik(id,odsjekRepozitorij.findBynazivOdsjeka("RI"),ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT), "Sara", "Halilovic", new Date(1996,11, 8), "0506997178963", "sara@unsa.ba", "Sarajevo", "KS", "BiH", "1234567", true, "Halilovic", "Halilovic", "ISAKA SAMOKOVLIJE", "user", "pass", "sara@linkedin.com", "sara@website.com", null, "5281", "1", "6", "ASISTENT");
         korisnikRepozitorij.save(korisnik);
         assertEquals(true, (korisnik.imaPrivilegiju("brisanje_teme")));
     }

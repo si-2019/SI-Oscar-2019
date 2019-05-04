@@ -64,28 +64,10 @@ public class DodavanjePodataka {
         Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         uloga.add(uloga1);
 
-        Privilegija privilegija1 = new Privilegija();
-        privilegija1.setNazivPrivilegije("uvid-u-obavjestenja");
-        privilegija1.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije("uvid-u-obavjestenja")) privilegijaRepozitorij.save(privilegija1);
-
-        uloga.clear();
-        Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        uloga.add(uloga2);
-
-        Privilegija privilegija2 = new Privilegija();
-        privilegija2.setNazivPrivilegije("uvid-u-obavjestenja");
-        privilegija2.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije("uvid-u-obavjestenja")) privilegijaRepozitorij.save(privilegija2);
-
-        uloga.clear();
-        Uloga uloga3 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        uloga.add(uloga3);
-
-        Privilegija privilegija3 = new Privilegija();
-        privilegija3.setNazivPrivilegije("kreiranje-teme-na-forumu");
-        privilegija3.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije("kreiranje-teme-na-forumu")) privilegijaRepozitorij.save(privilegija3);
+        Privilegija privilegija = new Privilegija();
+        privilegija.setNazivPrivilegije("kreiranje-teme-na-forumu");
+        privilegija.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("kreiranje-teme-na-forumu")) privilegijaRepozitorij.save(privilegija);
 
 
     }

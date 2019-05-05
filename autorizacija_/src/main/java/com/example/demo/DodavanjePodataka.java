@@ -89,13 +89,19 @@ public class DodavanjePodataka {
         privilegija5.setUloge(uloga);
         if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_obavjestenja")==null) privilegijaRepozitorij.save(privilegija5);
         
-        uloga = new ArrayList<>();
-        uloga.add(uloga1);
-        Privilegija privilegija6 = new Privilegija();
-        privilegija6.setNazivPrivilegije("mogucnost_za_obavjestenje");
-        privilegija6.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("mogucnost_za_obavjestenje")==null) privilegijaRepozitorij.save(privilegija6);
+        Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_obavjestenja");
+        List<Uloga> uloge=p.getUloge();
+
+        if(!(uloge.contains(uloga1))){
+            uloge.add(uloga1);
+            uloge=new ArrayList<>(); 
+            uloge.add(uloga1); 
+            uloge.add(uloga2);       
+            p.setUloge(uloge);
+            privilegijaRepozitorij.save(p);
+       }
     }
+       
 
      private void dodajOdsjek(){ 
 

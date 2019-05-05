@@ -19,6 +19,6 @@ public class KorisnikKontroler {
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public boolean getAll() {
         Korisnik k = korisnikRepozitorij.findById(Long.valueOf(1)).get();
-        return k.imaPrivilegiju("izmjena-bodova-zadace");
+        return k.imaPrivilegiju("editovanje-kreirane-zadace");
     }
 }

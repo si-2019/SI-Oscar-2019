@@ -80,7 +80,12 @@ public class DodavanjePodataka {
         privilegija3.setNazivPrivilegije("brisanje_termina_ispita");
         privilegija3.setUloge(uloga);
         if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje_termina_ispita")==null) privilegijaRepozitorij.save(privilegija3);
-
+        
+        Privilegija privilegija4 = new Privilegija();
+        privilegija4.setNazivPrivilegije("izmjena_dodijeljenih_bodova");
+        privilegija4.setUloge(uloga);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("izmjena_dodijeljenih_bodova")==null) privilegijaRepozitorij.save(privilegija4);
+         
          
        }
        

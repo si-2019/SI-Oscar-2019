@@ -90,6 +90,14 @@ public class DodavanjePodataka {
         privilegija5.setNazivPrivilegije("izmjena_kviza");
         privilegija5.setUloge(uloga);
         if(privilegijaRepozitorij.findBynazivPrivilegije("izmjena_kviza")==null) privilegijaRepozitorij.save(privilegija5);
+        
+        uloga.clear();
+        Uloga uloga3 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        uloga.add(uloga3);
+        Privilegija privilegija6 = new Privilegija();
+        privilegija6.setNazivPrivilegije("izmjena_bodova_za_zadace");
+        privilegija6.setUloge(uloga);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("izmjena_bodova_za_zadace")==null) privilegijaRepozitorij.save(privilegija6);
          
          
        }

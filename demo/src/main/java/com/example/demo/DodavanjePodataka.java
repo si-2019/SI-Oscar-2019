@@ -66,6 +66,15 @@ public class DodavanjePodataka {
         privilegija1.setUloge(uloga);
         if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_zadace")==null) privilegijaRepozitorij.save(privilegija1);
         
+        uloga = new ArrayList<>();
+        Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+        uloga.add(uloga2);
+        Privilegija privilegija2 = new Privilegija();
+        privilegija2.setNazivPrivilegije("kreiranje_korisnika");
+        privilegija2.setUloge(uloga);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_korisnika")==null) privilegijaRepozitorij.save(privilegija2);
+
+
        }
        
 

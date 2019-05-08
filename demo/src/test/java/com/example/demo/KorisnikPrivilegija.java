@@ -11,10 +11,9 @@ import java.sql.Date;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class KorisnikPrivilegija {
 
     @Autowired
@@ -25,14 +24,17 @@ public class KorisnikPrivilegija {
 
     @Autowired
     private UlogaRepozitorij ulogaRepozitorij;
-    
+
     @Test
-    public void testAsistentImaPrivilegijuIzmjeneBodovaSaZadace() throws Exception {
+    public void testAsistentImaPrivilegijuPovezivanjaUlogaiPrivilegija() throws Exception {
         Odsjek odsjek = odsjekRepozitorij.findById(Long.valueOf(1)).get();
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        Korisnik korisnik = new Korisnik(Long.valueOf(4), odsjek, uloga, "Nedim", "Manovic", new Date(1997, 2, 4), "0506997178963", "nedim2@etf.unsa.ba", "Sarajevo", "Sarajevo", "BiH", "062589632", true, "Nahida Manovic", "Fudo Manovic", "Zupca", "ekovac2", "789456", "nedim@linkedin.com", "nedim@website.com", null, "17933", "1", "6", "asistent");
+        Korisnik korisnik = new Korisnik(Long.valueOf(4), odsjek, uloga, "Nedim", "Manovic", new Date(1997, 2, 4),
+                "0506997178963", "nedim2@etf.unsa.ba", "Sarajevo", "Sarajevo", "BiH", "062589632", true,
+                "Nahida Manovic", "Fudo Manovic", "Zupca", "ekovac2", "789456", "nedim@linkedin.com",
+                "nedim@website.com", null, "17933", "1", "6", "asistent");
         korisnikRepozitorij.save(korisnik);
-        assertThat(korisnik.imaPrivilegiju("izmjena_bodova_za_zadace")).isEqualTo(true);
+        assertThat(korisnik.imaPrivilegiju("povezivanje_privilegija_uloga")).isEqualTo(true);
 
     }
 }

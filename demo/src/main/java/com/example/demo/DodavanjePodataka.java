@@ -118,6 +118,14 @@ public class DodavanjePodataka {
         if (privilegijaRepozitorij.findBynazivPrivilegije("povezivanje_privilegija_uloga") == null)
             privilegijaRepozitorij.save(privilegija7);
 
+        uloga.clear();
+        uloga.add(uloga1);
+        Privilegija privilegija8 = new Privilegija();
+        privilegija8.setNazivPrivilegije("evidencija_studenata");
+        privilegija8.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("evidencija_studenata") == null)
+            privilegijaRepozitorij.save(privilegija8);
+
     }
 
     private void dodajOdsjek() {

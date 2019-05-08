@@ -26,7 +26,7 @@ public class KorisnikPrivilegija {
     private UlogaRepozitorij ulogaRepozitorij;
 
     @Test
-    public void testProfesorImaPrivilegijuEvidencijeStudenata() throws Exception {
+    public void testProfesorImaPrivilegijuBrisanjaTeme() throws Exception {
         Odsjek odsjek = odsjekRepozitorij.findById(Long.valueOf(1)).get();
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         Korisnik korisnik = new Korisnik(Long.valueOf(4), odsjek, uloga, "Nedim", "Manovic", new Date(1997, 2, 4),
@@ -34,7 +34,7 @@ public class KorisnikPrivilegija {
                 "Nahida Manovic", "Fudo Manovic", "Zupca", "ekovac2", "789456", "nedim@linkedin.com",
                 "nedim@website.com", null, "17933", "1", "6", "asistent");
         korisnikRepozitorij.save(korisnik);
-        assertThat(korisnik.imaPrivilegiju("evidencija_studenata")).isEqualTo(true);
+        assertThat(korisnik.imaPrivilegiju("brisanje_teme")).isEqualTo(true);
 
     }
 }

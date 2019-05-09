@@ -62,6 +62,11 @@ public class DodavanjePodataka {
 
         List<Uloga> uloga = new ArrayList<>();
         Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+        Uloga uloga3 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        Uloga uloga4 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        Uloga uloga5 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+
         uloga.add(uloga1);
 
         Privilegija privilegija1 = new Privilegija();
@@ -71,42 +76,47 @@ public class DodavanjePodataka {
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-kreirane-zadace")) privilegijaRepozitorij.save(privilegija1);
 
         uloga.clear();
-        Uloga uloga3 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+
         uloga.add(uloga3);
 
         Privilegija privilegija2 = new Privilegija();
         privilegija2.setNazivPrivilegije("brisanje-kreirane-zadace");
         privilegija2.setUloge(uloga);
+
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("brisanje-kreirane-zadace")) privilegijaRepozitorij.save(privilegija2);
 
         uloga.clear();
-        Uloga uloga5 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
-        uloga.add(uloga5);
+
+        uloga.add(uloga2);
 
         Privilegija privilegija3 = new Privilegija();
         privilegija3.setNazivPrivilegije("brisanje-korisnika");
         privilegija3.setUloge(uloga);
+
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("brisanje-korisnika")) privilegijaRepozitorij.save(privilegija3);
 
         uloga.clear();
-        Uloga uloga6 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        uloga.add(uloga6);
+
+        uloga.add(uloga3);
 
         Privilegija privilegija4 = new Privilegija();
         privilegija4.setNazivPrivilegije("pregled-zadace");
         privilegija4.setUloge(uloga);
+
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("pregled-zadace")) privilegijaRepozitorij.save(privilegija4);
 
         uloga.clear();
-        Uloga uloga7 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        uloga.add(uloga7);
+
+        uloga.add(uloga1);
 
         Privilegija privilegija5 = new Privilegija();
         privilegija5.setNazivPrivilegije("editovanje-obavjestenja");
         privilegija5.setUloge(uloga);
+
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-obavjestenja")) privilegijaRepozitorij.save(privilegija5);
 
-
+        uloga.clear();
+        
     }
 
 

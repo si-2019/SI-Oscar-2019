@@ -85,7 +85,7 @@ public class DodavanjePodataka {
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("brisanje-kreirane-zadace")) privilegijaRepozitorij.save(privilegija2);
 
         uloga.clear();
-        
+
     }
 
 

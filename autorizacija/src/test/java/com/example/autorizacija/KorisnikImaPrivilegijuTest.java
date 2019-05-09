@@ -59,5 +59,11 @@ public class KorisnikImaPrivilegijuTest {
         assertThat(uloga.imaPrivilegiju("brisanje-korisnika")).isEqualTo(true);
     }
 
+    @Test
+    public void testAdminNemaPrivilegijuBrisanjaKreiraneZadace() throws Exception {
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+        assertThat(uloga.imaPrivilegiju("brisanje-kreirane-zadace")).isEqualTo(false);
+    }
+
 
 }

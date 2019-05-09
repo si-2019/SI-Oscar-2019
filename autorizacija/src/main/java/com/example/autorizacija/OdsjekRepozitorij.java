@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OdsjekRepozitorij extends JpaRepository<Odsjek, Long> {
     boolean existsBynazivOdsjeka(String naziv);
+    Odsjek findBynazivOdsjeka (String naziv);
 }

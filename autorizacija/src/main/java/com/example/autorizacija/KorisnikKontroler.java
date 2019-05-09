@@ -16,10 +16,10 @@ public class KorisnikKontroler {
         this.korisnikRepozitorij = korisnikRepozitorij;
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/all", method = RequestMethod.GET)
     public boolean getAll() {
         Korisnik k = korisnikRepozitorij.findById(Long.valueOf(1)).get();
         return k.imaPrivilegiju("brisanje-kreirane-zadace");
 
-    }
+    }*/
 }

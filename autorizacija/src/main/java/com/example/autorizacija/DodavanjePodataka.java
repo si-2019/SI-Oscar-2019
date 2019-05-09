@@ -126,7 +126,7 @@ public class DodavanjePodataka {
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-teme-na-forumu")) privilegijaRepozitorij.save(privilegija6);
 
         uloga.clear();
-        
+
     }
 
 

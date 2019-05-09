@@ -106,7 +106,7 @@ public class DodavanjePodataka {
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("pregled-zadace")) privilegijaRepozitorij.save(privilegija4);
 
         uloga.clear();
-        
+
     }
 
 

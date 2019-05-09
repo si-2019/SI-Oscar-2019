@@ -81,6 +81,12 @@ public class KorisnikImaPrivilegijuTest {
     public void testProfesorImaPrivilegijuEditovanjaObavjestenja() throws Exception {
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertThat(uloga.imaPrivilegiju("editovanje-obavjestenja")).isEqualTo(true);
+    }
+
+    @Test
+    public void testProfesorNemaPrivilegijuKreiranjaKorisnika() throws Exception {
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertThat(uloga.imaPrivilegiju("kreiranje-korisnika")).isEqualTo(false);
 
     }
 }

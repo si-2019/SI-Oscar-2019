@@ -59,9 +59,13 @@ public class DodavanjePodataka {
 
     private void dodajPrivilegije() {
 
-
         List<Uloga> uloga = new ArrayList<>();
         Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+        Uloga uloga3 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        Uloga uloga4 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        Uloga uloga5 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+
         uloga.add(uloga1);
 
         Privilegija privilegija1 = new Privilegija();
@@ -71,15 +75,17 @@ public class DodavanjePodataka {
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-kreirane-zadace")) privilegijaRepozitorij.save(privilegija1);
 
         uloga.clear();
-        Uloga uloga3 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+
         uloga.add(uloga3);
 
         Privilegija privilegija2 = new Privilegija();
         privilegija2.setNazivPrivilegije("brisanje-kreirane-zadace");
         privilegija2.setUloge(uloga);
+
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("brisanje-kreirane-zadace")) privilegijaRepozitorij.save(privilegija2);
 
-
+        uloga.clear();
+        
     }
 
 

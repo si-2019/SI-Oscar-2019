@@ -29,21 +29,20 @@ public class KorisnikImaPrivilegijuTest {
 
     @Test
     public void testProfesorImaPrivilegijuEditovanjaKreiraneZadace() throws Exception {
-        Odsjek odsjek = odsjekRepozitorij.findById(Long.valueOf(1)).get();
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        Korisnik korisnik = new Korisnik(Long.valueOf(4), odsjek, uloga, "Ermin", "Sabotic", new Date(1997, 2, 4), "0506997178963", "ekovac2@etf.unsa.ba", "Sarajevo", "Sarajevo", "BiH", "062589632", true, "Nakma Kovac", "Fudo Kovac", "Zupca", "ekovac2", "789456", "ekovac@linkedin.com", "ekovac@website.com", null, "17933", "1", "6", "admin");
-        korisnikRepozitorij.save(korisnik);
-        assertThat(korisnik.imaPrivilegiju("editovanje-kreirane-zadace")).isEqualTo(true);
+        assertThat(uloga.imaPrivilegiju("editovanje-kreirane-zadace")).isEqualTo(true);
+    }
 
+    @Test
+    public void testProfesorNemaPrivilegijuBrisanjaKorisnika() throws Exception {
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertThat(uloga.imaPrivilegiju("brisanje-korisnika")).isEqualTo(false);
     }
 
     @Test
     public void testAsistentImaPrivilegijuBrisanjaKreiraneZadace() throws Exception {
-        Odsjek odsjek = odsjekRepozitorij.findById(Long.valueOf(1)).get();
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        Korisnik korisnik = new Korisnik(Long.valueOf(3), odsjek, uloga, "Damir", "Pozderac", new Date(1997, 2, 4), "0506997178963", "ekovac2@etf.unsa.ba", "Sarajevo", "Sarajevo", "BiH", "062589632", true, "Nakma Kovac", "Fudo Kovac", "Zupca", "ekovac2", "789456", "ekovac@linkedin.com", "ekovac@website.com", null, "17933", "1", "6", "admin");
-        korisnikRepozitorij.save(korisnik);
-        assertThat(korisnik.imaPrivilegiju("brisanje-kreirane-zadace")).isEqualTo(true);
+        assertThat(uloga.imaPrivilegiju("brisanje-kreirane-zadace")).isEqualTo(true);
 
     }
     

@@ -94,6 +94,11 @@ public class KorisnikImaPrivilegijuTest {
     public void testProfesorImaPrivilegijuEditovanjaTemeNaForumu() throws Exception {
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertThat(uloga.imaPrivilegiju("editovanje-teme-na-forumu")).isEqualTo(true);
+    }
 
+    @Test
+    public void testProfesorNemaPrivilegijuEditovanjeKorisnika() throws Exception {
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertThat(uloga.imaPrivilegiju("editovanje-korisnika")).isEqualTo(false);
     }
 }

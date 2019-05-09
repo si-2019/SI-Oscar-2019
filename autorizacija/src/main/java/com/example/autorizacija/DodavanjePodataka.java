@@ -96,7 +96,7 @@ public class DodavanjePodataka {
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("brisanje-korisnika")) privilegijaRepozitorij.save(privilegija3);
 
         uloga.clear();
-        
+
     }
 
 

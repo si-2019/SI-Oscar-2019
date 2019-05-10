@@ -128,12 +128,15 @@ public class DodavanjePodataka {
 
         uloga.clear();
 
+        uloga.add(uloga2);
+
         Privilegija privilegija7 = new Privilegija();
         privilegija7.setNazivPrivilegije("obavjestavanje-korisnika-sistema");
-        //privilegija6.setUloge(uloga);
+        privilegija7.setUloge(uloga);
 
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("obavjestavanje-korisnika-sistema")) privilegijaRepozitorij.save(privilegija6);
 
+        uloga.clear();
     }
 
 

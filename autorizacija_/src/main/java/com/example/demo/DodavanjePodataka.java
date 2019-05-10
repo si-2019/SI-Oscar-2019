@@ -83,20 +83,13 @@ public class DodavanjePodataka {
         privilegija4.setNazivPrivilegije("brisanje_teme");
         privilegija4.setUloge(uloga);
         if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje_teme")==null) privilegijaRepozitorij.save(privilegija4);
-
+        
+        uloga.add(uloga1);
         Privilegija privilegija5 = new Privilegija();
         privilegija5.setNazivPrivilegije("kreiranje_obavjestenja");
         privilegija5.setUloge(uloga);
         if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_obavjestenja")==null) privilegijaRepozitorij.save(privilegija5);
         
-        Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_obavjestenja");
-        List<Uloga> uloge=p.getUloge();
-        
-        uloge=new ArrayList<>(); 
-        uloge.add(uloga1); 
-        uloge.add(uloga2);       
-        p.setUloge(uloge);
-        privilegijaRepozitorij.save(p);
     }
        
 

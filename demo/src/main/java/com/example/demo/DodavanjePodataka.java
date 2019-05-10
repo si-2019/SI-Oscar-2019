@@ -62,9 +62,9 @@ public class DodavanjePodataka {
         uloga.add(uloga1);
 
         Privilegija privilegija1 = new Privilegija();
-        privilegija1.setNazivPrivilegije("kreiranje_zadace");
+        privilegija1.setNazivPrivilegije("kreiranje-zadace");
         privilegija1.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_zadace")==null) privilegijaRepozitorij.save(privilegija1);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-zadace")==null) privilegijaRepozitorij.save(privilegija1);
         
         uloga = new ArrayList<>();
         Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
@@ -77,14 +77,14 @@ public class DodavanjePodataka {
         uloga.clear();
         uloga.add(uloga1);
         Privilegija privilegija3 = new Privilegija();
-        privilegija3.setNazivPrivilegije("brisanje_termina_ispita");
+        privilegija3.setNazivPrivilegije("brisanje-termina-ispita");
         privilegija3.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje_termina_ispita")==null) privilegijaRepozitorij.save(privilegija3);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-termina-ispita")==null) privilegijaRepozitorij.save(privilegija3);
         
         Privilegija privilegija4 = new Privilegija();
         privilegija4.setNazivPrivilegije("izmjena_dodijeljenih_bodova");
         privilegija4.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("izmjena_dodijeljenih_bodova")==null) privilegijaRepozitorij.save(privilegija4);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("izmjena-dodijeljenih-bodova")==null) privilegijaRepozitorij.save(privilegija4);
         
         Privilegija privilegija5 = new Privilegija();
         privilegija5.setNazivPrivilegije("izmjena-kviza");

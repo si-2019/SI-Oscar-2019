@@ -134,7 +134,7 @@ public class DodavanjePodataka {
         privilegija7.setNazivPrivilegije("obavjestavanje-korisnika-sistema");
         privilegija7.setUloge(uloga);
 
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije("obavjestavanje-korisnika-sistema")) privilegijaRepozitorij.save(privilegija6);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("obavjestavanje-korisnika-sistema")) privilegijaRepozitorij.save(privilegija7);
 
         uloga.clear();
     }

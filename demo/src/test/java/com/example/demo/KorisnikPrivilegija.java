@@ -34,7 +34,7 @@ public class KorisnikPrivilegija {
                 "Nahida Manovic", "Fudo Manovic", "Zupca", "ekovac2", "789456", "nedim@linkedin.com",
                 "nedim@website.com", null, "17933", "1", "6", "asistent");
         korisnikRepozitorij.save(korisnik);
-        assertThat(korisnik.imaPrivilegiju("kreiranje_korisnika")).isEqualTo(true);
+        assertThat(korisnik.imaPrivilegiju("kreiranje-korisnika")).isEqualTo(true);
 
     }
 }

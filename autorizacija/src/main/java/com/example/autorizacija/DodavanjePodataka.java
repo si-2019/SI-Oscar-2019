@@ -148,9 +148,15 @@ public class DodavanjePodataka {
 
         uloga.clear();
 
+        uloga.add(uloga1);
+
         Privilegija privilegija9 = new Privilegija();
         privilegija9.setNazivPrivilegije("ostavljanje-komentara-na-rad-studenata");
-        //privilegija9.setUloge(uloga);
+        privilegija9.setUloge(uloga);
+
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("ostavljanje-komentara-na-rad-studenata")) privilegijaRepozitorij.save(privilegija9);
+
+        uloga.clear();
     }
 
 

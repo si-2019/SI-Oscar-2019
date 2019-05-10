@@ -126,4 +126,10 @@ public class KorisnikImaPrivilegijuTest {
         assertThat(uloga.imaPrivilegiju("editovanje-teme-na-forumu")).isEqualTo(false);
     }
 
+    @Test
+    public void testAsistentImaPrivilegijuPojedinacneEvidencijePrisustva() throws Exception {
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        assertThat(uloga.imaPrivilegiju("pojedinacna-evidencija-prisustva")).isEqualTo(true);
+    }
+
 }

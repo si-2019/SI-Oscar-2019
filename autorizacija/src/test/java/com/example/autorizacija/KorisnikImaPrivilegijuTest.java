@@ -120,7 +120,10 @@ public class KorisnikImaPrivilegijuTest {
         assertThat(uloga.imaPrivilegiju("obavjestavanje-korisnika-sistema")).isEqualTo(true);
     }
 
-
-
+    @Test
+    public void testAdminNemaPrivilegijuEditovanjaTemeNaForumu() throws Exception {
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+        assertThat(uloga.imaPrivilegiju("editovanje-teme-na-forumu")).isEqualTo(false);
+    }
 
 }

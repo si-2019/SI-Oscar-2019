@@ -1,4 +1,4 @@
-﻿package com.example.demo;
+package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -91,15 +91,12 @@ public class DodavanjePodataka {
         
         Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_obavjestenja");
         List<Uloga> uloge=p.getUloge();
-
-        if(!(uloge.contains(uloga1))){
-            uloge.add(uloga1);
-            uloge=new ArrayList<>(); 
-            uloge.add(uloga1); 
-            uloge.add(uloga2);       
-            p.setUloge(uloge);
-            privilegijaRepozitorij.save(p);
-       }
+        
+        uloge=new ArrayList<>(); 
+        uloge.add(uloga1); 
+        uloge.add(uloga2);       
+        p.setUloge(uloge);
+        privilegijaRepozitorij.save(p);
     }
        
 

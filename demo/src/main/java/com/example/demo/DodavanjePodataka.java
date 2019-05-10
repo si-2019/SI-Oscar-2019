@@ -76,9 +76,9 @@ public class DodavanjePodataka {
         Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
         uloga.add(uloga2);
         Privilegija privilegija2 = new Privilegija();
-        privilegija2.setNazivPrivilegije("kreiranje_korisnika");
+        privilegija2.setNazivPrivilegije("kreiranje-korisnika");
         privilegija2.setUloge(uloga);
-        if (privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_korisnika") == null)
+        if (privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-korisnika") == null)
             privilegijaRepozitorij.save(privilegija2);
 
         uloga.clear();
@@ -96,9 +96,9 @@ public class DodavanjePodataka {
             privilegijaRepozitorij.save(privilegija4);
 
         Privilegija privilegija5 = new Privilegija();
-        privilegija5.setNazivPrivilegije("izmjena_kviza");
+        privilegija5.setNazivPrivilegije("izmjena-kviza");
         privilegija5.setUloge(uloga);
-        if (privilegijaRepozitorij.findBynazivPrivilegije("izmjena_kviza") == null)
+        if (privilegijaRepozitorij.findBynazivPrivilegije("izmjena-kviza") == null)
             privilegijaRepozitorij.save(privilegija5);
 
         uloga.clear();
@@ -121,9 +121,9 @@ public class DodavanjePodataka {
         uloga.clear();
         uloga.add(uloga1);
         Privilegija privilegija8 = new Privilegija();
-        privilegija8.setNazivPrivilegije("evidencija_studenata");
+        privilegija8.setNazivPrivilegije("evidencija-prijavljenih-studenata");
         privilegija8.setUloge(uloga);
-        if (privilegijaRepozitorij.findBynazivPrivilegije("evidencija_studenata") == null)
+        if (privilegijaRepozitorij.findBynazivPrivilegije("evidencija-prijavljenih-studenata") == null)
             privilegijaRepozitorij.save(privilegija8);
 
     }

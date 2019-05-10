@@ -4,7 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Blob;
 import java.sql.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "Korisnik")
@@ -325,15 +324,5 @@ public class Korisnik {
         this.uloga_id = uloga_id;
     }
 
-    public boolean imaPrivilegiju (String privilegija){
-        boolean ima = false;
-        List<Privilegija> privilegije = this.getUloga_id().getPrivilegije();
-        for (Privilegija p: privilegije) {
-            if (p.getNazivPrivilegije().equals(privilegija)) {
-                ima = true;
-                break;
-            }
-        }
-        return ima;
-    }
+ 
 }

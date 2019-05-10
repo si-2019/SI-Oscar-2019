@@ -62,14 +62,14 @@ public class DodavanjePodataka {
         uloga.add(uloga1);
 
         Privilegija privilegija1 = new Privilegija();
-        privilegija1.setNazivPrivilegije("brisanje_zadace");
+        privilegija1.setNazivPrivilegije("brisanje-zadace");
         privilegija1.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje_zadace")==null) privilegijaRepozitorij.save(privilegija1);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-zadace")==null) privilegijaRepozitorij.save(privilegija1);
         
         Privilegija privilegija2 = new Privilegija();
-        privilegija2.setNazivPrivilegije("registrovanje_casa");
+        privilegija2.setNazivPrivilegije("registrovanje-casa");
         privilegija2.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("registrovanje_casa")==null) privilegijaRepozitorij.save(privilegija2);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("registrovanje-casa")==null) privilegijaRepozitorij.save(privilegija2);
         
     }
 
@@ -77,7 +77,6 @@ public class DodavanjePodataka {
 
         if((odsjekRepozitorij.findBynazivOdsjeka("RI"))==null){ 
             Odsjek odsjek1=new Odsjek();
-            odsjek1.setId((long)(odsjekRepozitorij.count()+1)); 
             odsjek1.setNazivOdsjeka("RI"); odsjekRepozitorij.save(odsjek1); 
         } 
     }

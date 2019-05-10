@@ -70,9 +70,9 @@ public class DodavanjePodataka {
         Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
         uloga.add(uloga2);
         Privilegija privilegija2 = new Privilegija();
-        privilegija2.setNazivPrivilegije("kreiranje_korisnika");
+        privilegija2.setNazivPrivilegije("kreiranje-korisnika");
         privilegija2.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_korisnika")==null) privilegijaRepozitorij.save(privilegija2);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-korisnika")==null) privilegijaRepozitorij.save(privilegija2);
 
 
        }

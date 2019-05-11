@@ -2,7 +2,6 @@ package com.example.demo;
 
 import static org.junit.Assert.assertEquals;
 
-import java.sql.Date;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ public class PrivilegijaTest {
 	public void testProfesorImaMogucnostBrisanjaZadace() {
 
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertEquals(true, (uloga.imaPrivilegiju("brisanje-zadace")));
+        assertEquals(true, (uloga.imaPrivilegiju("brisanje-kreirane-zadace")));
     }
 
 

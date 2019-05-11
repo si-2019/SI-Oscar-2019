@@ -62,9 +62,9 @@ public class DodavanjePodataka {
         uloga.add(uloga1);
 
         Privilegija privilegija1 = new Privilegija();
-        privilegija1.setNazivPrivilegije("brisanje-zadace");
+        privilegija1.setNazivPrivilegije("brisanje-kreirane-zadace");
         privilegija1.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-zadace")==null) privilegijaRepozitorij.save(privilegija1);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-kreirane-zadace")==null) privilegijaRepozitorij.save(privilegija1);
 
     }
 
@@ -74,5 +74,17 @@ public class DodavanjePodataka {
             Odsjek odsjek1=new Odsjek();
             odsjek1.setNazivOdsjeka("RI"); odsjekRepozitorij.save(odsjek1); 
         } 
+        if((odsjekRepozitorij.findBynazivOdsjeka("TK"))==null){ 
+            Odsjek odsjek1=new Odsjek();
+            odsjek1.setNazivOdsjeka("TK"); odsjekRepozitorij.save(odsjek1); 
+        }
+        if((odsjekRepozitorij.findBynazivOdsjeka("AIE"))==null){ 
+            Odsjek odsjek1=new Odsjek();
+            odsjek1.setNazivOdsjeka("AIE"); odsjekRepozitorij.save(odsjek1); 
+        }
+        if((odsjekRepozitorij.findBynazivOdsjeka("EE"))==null){ 
+            Odsjek odsjek1=new Odsjek();
+            odsjek1.setNazivOdsjeka("EE"); odsjekRepozitorij.save(odsjek1); 
+        }
     }
 }

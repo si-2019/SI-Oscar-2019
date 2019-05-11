@@ -1,19 +1,19 @@
 package com.example.autorizacija;
 
-import javax.persistence.*;
+import javax.persistence.;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = "uloga")
+@Table(name = Uloga)
 public class Uloga {
 
     @Id
-    @Column(name = "idUloga")
+    @Column(name = idUloga)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column (name = "naziv", length = 50)
+    @Column (name = naziv, length = 50)
     @NotNull
     @Enumerated(EnumType.STRING)
     private ImenaUloga nazivUloge;
@@ -21,10 +21,10 @@ public class Uloga {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "uloga_privilegija",
-            joinColumns = {@JoinColumn(name = "idUloga", referencedColumnName = "idUloga")},
-            inverseJoinColumns = {@JoinColumn(name = "idPrivilegija", referencedColumnName = "idPrivilegija")})
-    private List<Privilegija> privilegije;
+            name = uloga_privilegija,
+            joinColumns = {@JoinColumn(name = idUloga, referencedColumnName = idUloga)},
+            inverseJoinColumns = {@JoinColumn(name = idPrivilegija, referencedColumnName = idPrivilegija)})
+    private ListPrivilegija privilegije;
 
     public Uloga () {}
 
@@ -49,11 +49,23 @@ public class Uloga {
         this.nazivUloge = nazivUloge;
     }
 
-    public List<Privilegija> getPrivilegije() {
+    public ListPrivilegija getPrivilegije() {
         return privilegije;
     }
 
-    public void setPrivilegije(List<Privilegija> privilegije) {
+    public void setPrivilegije(ListPrivilegija privilegije) {
         this.privilegije = privilegije;
+    }
+
+    public boolean imaPrivilegiju (String privilegija){
+        boolean ima = false;
+        ListPrivilegija privilegije = this.getPrivilegije();
+        for (Privilegija p privilegije) {
+            if (p.getNazivPrivilegije().equals(privilegija)) {
+                ima = true;
+                break;
+            }
+        }
+        return ima;
     }
 }

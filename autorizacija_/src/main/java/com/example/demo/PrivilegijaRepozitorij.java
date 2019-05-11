@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PrivilegijaRepozitorij extends JpaRepository<Privilegija, Long> {
     Privilegija findBynazivPrivilegije(String naziv);
+    boolean existsBynazivPrivilegije(String privilegija);
+
 }

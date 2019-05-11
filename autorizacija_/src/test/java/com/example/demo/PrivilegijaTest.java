@@ -21,8 +21,9 @@ public class PrivilegijaTest {
     private OdsjekRepozitorij odsjekRepozitorij;
     
    @Test
-	public void test() {
-
+	public void testProfesorImaMogucnostUnosenjaBodovaIspita() {
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertEquals(true, (uloga.imaPrivilegiju("unosenje-bodova-ispita")));
     }
  
 

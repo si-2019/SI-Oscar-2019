@@ -32,36 +32,36 @@ public class Podaci {
     }
 
     private void dodajUloge() {
-        Uloga uloga1 = new Uloga();
-        uloga1.setNazivUloge(ImenaUloga.ADMIN);
-        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.ADMIN)) ulogaRepozitorij.save(uloga1);
+        Uloga admin = new Uloga();
+        admin.setNazivUloge(ImenaUloga.ADMIN);
+        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.ADMIN)) ulogaRepozitorij.save(admin);
 
-        Uloga uloga2 = new Uloga();
-        uloga2.setNazivUloge(ImenaUloga.STUDENT);
-        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.STUDENT)) ulogaRepozitorij.save(uloga2);
+        Uloga student = new Uloga();
+        student.setNazivUloge(ImenaUloga.STUDENT);
+        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.STUDENT)) ulogaRepozitorij.save(student);
 
-        Uloga uloga3 = new Uloga();
-        uloga3.setNazivUloge(ImenaUloga.PROFESOR);
-        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.PROFESOR)) ulogaRepozitorij.save(uloga3);
+        Uloga profesor = new Uloga();
+        profesor.setNazivUloge(ImenaUloga.PROFESOR);
+        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.PROFESOR)) ulogaRepozitorij.save(profesor);
 
-        Uloga uloga4 = new Uloga();
-        uloga4.setNazivUloge(ImenaUloga.ASISTENT);
-        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.ASISTENT)) ulogaRepozitorij.save(uloga4);
+        Uloga asistent = new Uloga();
+        asistent.setNazivUloge(ImenaUloga.ASISTENT);
+        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.ASISTENT)) ulogaRepozitorij.save(asistent);
 
-        Uloga uloga5 = new Uloga();
-        uloga5.setNazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
-        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA)) ulogaRepozitorij.save(uloga5);
+        Uloga studentska_sluzba = new Uloga();
+        studentska_sluzba.setNazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA)) ulogaRepozitorij.save(studentska_sluzba);
     }
 
     private void dodajPrivilegije() {
         List<Uloga> uloga = new ArrayList<>();
-        Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
-        Uloga uloga3 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        Uloga uloga4 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        Uloga uloga5 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        Uloga admin = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+        Uloga asistent = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        Uloga studentska_sluzba = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
 
-        uloga.add(uloga3);
+        uloga.add(asistent);
         Privilegija privilegija_registrovanje_casa = new Privilegija();
         privilegija_registrovanje_casa.setNazivPrivilegije("registrovanje-casa");
         privilegija_registrovanje_casa.setUloge(uloga);

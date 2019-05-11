@@ -77,6 +77,13 @@ public class Podaci {
         if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_editovanje_zadace.getNazivPrivilegije())) {
             privilegijaRepozitorij.save(privilegija_editovanje_zadace);
         }
+
+        Privilegija privilegija_editovanje_obavjestenja = new Privilegija();
+        privilegija_editovanje_obavjestenja.setNazivPrivilegije("editovanje-obavjestenja");
+        privilegija_editovanje_obavjestenja.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_editovanje_obavjestenja.getNazivPrivilegije())) {
+            privilegijaRepozitorij.save(privilegija_editovanje_obavjestenja);
+        }
         uloga.clear();
 
         uloga.add(profesor);

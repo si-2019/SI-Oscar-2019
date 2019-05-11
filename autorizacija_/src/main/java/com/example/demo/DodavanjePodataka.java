@@ -62,34 +62,34 @@ public class DodavanjePodataka {
         uloga.add(uloga1);
 
         Privilegija privilegija1 = new Privilegija();
-        privilegija1.setNazivPrivilegije("brisanje_zadace");
+        privilegija1.setNazivPrivilegije("brisanje-kreirane-zadace");
         privilegija1.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje_zadace")==null) privilegijaRepozitorij.save(privilegija1);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-kreirane-zadace")==null) privilegijaRepozitorij.save(privilegija1);
         
         Privilegija privilegija2 = new Privilegija();
-        privilegija2.setNazivPrivilegije("registrovanje_casa");
+        privilegija2.setNazivPrivilegije("registrovanje-casa");
         privilegija2.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("registrovanje_casa")==null) privilegijaRepozitorij.save(privilegija2);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("registrovanje-casa")==null) privilegijaRepozitorij.save(privilegija2);
 
         Privilegija privilegija3 = new Privilegija();
-        privilegija3.setNazivPrivilegije("editovanje_termina_ispita");
+        privilegija3.setNazivPrivilegije("editovanje-termina-ispita");
         privilegija3.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("editovanje_termina_ispita")==null) privilegijaRepozitorij.save(privilegija3);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("editovanje-termina-ispita")==null) privilegijaRepozitorij.save(privilegija3);
 
         uloga = new ArrayList<>();
         Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         uloga.add(uloga2);
         Privilegija privilegija4 = new Privilegija();
-        privilegija4.setNazivPrivilegije("brisanje_teme");
+        privilegija4.setNazivPrivilegije("brisanje-teme");
         privilegija4.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje_teme")==null) privilegijaRepozitorij.save(privilegija4);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-teme")==null) privilegijaRepozitorij.save(privilegija4);
 
         Privilegija privilegija5 = new Privilegija();
-        privilegija5.setNazivPrivilegije("kreiranje_obavjestenja");
+        privilegija5.setNazivPrivilegije("kreiranje-obavjestenja");
         privilegija5.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_obavjestenja")==null) privilegijaRepozitorij.save(privilegija5);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-obavjestenja")==null) privilegijaRepozitorij.save(privilegija5);
         
-        Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("kreiranje_obavjestenja");
+        Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-obavjestenja");
         uloga.add(uloga1);        
         p.setUloge(uloga);
         privilegijaRepozitorij.save(p);
@@ -97,9 +97,9 @@ public class DodavanjePodataka {
         uloga=new ArrayList<>();
         uloga.add(uloga2);
         Privilegija privilegija6 = new Privilegija();
-        privilegija6.setNazivPrivilegije("brisanje_obavjestenja");
+        privilegija6.setNazivPrivilegije("brisanje-obavjestenja");
         privilegija6.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje_obavjestenja")==null) privilegijaRepozitorij.save(privilegija6);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-obavjestenja")==null) privilegijaRepozitorij.save(privilegija6);
     }
        
 

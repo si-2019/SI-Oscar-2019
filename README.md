@@ -4,10 +4,6 @@
 ### Članovi tima
 - Bezdrob Hana (vođa tima)
 - Buturović Mahira
-- Đumišić Sanida
-- Fajić Amina
-- Hodžić Emir
-- Karahasanović Ajdin
 - Mujić Sulejman
 - Ramić Zerina
 

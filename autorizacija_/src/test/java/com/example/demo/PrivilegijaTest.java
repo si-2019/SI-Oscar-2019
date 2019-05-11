@@ -24,10 +24,8 @@ public class PrivilegijaTest {
     @Test
 	public void testProfesorImaMogucnostEditovanjaTerminaIspita() {
 
-        Long id=(long) (korisnikRepozitorij.count()+1);
-        Korisnik korisnik = new Korisnik(id,odsjekRepozitorij.findBynazivOdsjeka("RI"),ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR), "Vedran", "Simunovic", new Date(1993,8, 22), "0506997178963", "vedran@unsa.ba", "Konjic", "HNK", "BiH", "1234567", true, "Lejla", "Ivica", "Kolonija", "user", "pass", "vedran@linkedin.com", "vedran@website.com", null, "5281", "1", "6", "PROFESOR");
-        korisnikRepozitorij.save(korisnik);
-        assertEquals(true, (korisnik.imaPrivilegiju("editovanje_termina_ispita")));
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertEquals(true, (uloga.imaPrivilegiju("editovanje-termina-ispita")));
     }
 
 

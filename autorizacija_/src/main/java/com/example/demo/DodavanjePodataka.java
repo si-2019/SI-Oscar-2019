@@ -79,11 +79,23 @@ public class DodavanjePodataka {
         
     }
 
-     private void dodajOdsjek(){ 
+      private void dodajOdsjek(){ 
 
         if((odsjekRepozitorij.findBynazivOdsjeka("RI"))==null){ 
             Odsjek odsjek1=new Odsjek();
             odsjek1.setNazivOdsjeka("RI"); odsjekRepozitorij.save(odsjek1); 
         } 
+        if((odsjekRepozitorij.findBynazivOdsjeka("TK"))==null){ 
+            Odsjek odsjek1=new Odsjek();
+            odsjek1.setNazivOdsjeka("TK"); odsjekRepozitorij.save(odsjek1); 
+        }
+        if((odsjekRepozitorij.findBynazivOdsjeka("AIE"))==null){ 
+            Odsjek odsjek1=new Odsjek();
+            odsjek1.setNazivOdsjeka("AIE"); odsjekRepozitorij.save(odsjek1); 
+        }
+        if((odsjekRepozitorij.findBynazivOdsjeka("EE"))==null){ 
+            Odsjek odsjek1=new Odsjek();
+            odsjek1.setNazivOdsjeka("EE"); odsjekRepozitorij.save(odsjek1); 
+        }
     }
 }

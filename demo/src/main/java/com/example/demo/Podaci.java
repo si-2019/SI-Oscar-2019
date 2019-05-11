@@ -95,6 +95,13 @@ public class Podaci {
         if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_brisanje_kreiranog_casa.getNazivPrivilegije())) {
             privilegijaRepozitorij.save(privilegija_brisanje_kreiranog_casa);
         }
+
+        Privilegija privilegija_dodjela_bodova_zadace = new Privilegija();
+        privilegija_dodjela_bodova_zadace.setNazivPrivilegije("dodjela-bodova-za-zadace");
+        privilegija_dodjela_bodova_zadace.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_dodjela_bodova_zadace.getNazivPrivilegije())) {
+            privilegijaRepozitorij.save(privilegija_dodjela_bodova_zadace);
+        }
         uloga.clear();
     }
 

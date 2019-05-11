@@ -62,9 +62,9 @@ public class DodavanjePodataka {
         uloga.add(uloga1);
 
         Privilegija privilegija1 = new Privilegija();
-        privilegija1.setNazivPrivilegije("brisanje-zadace");
+        privilegija1.setNazivPrivilegije("brisanje-kreirane-zadace");
         privilegija1.setUloge(uloga);
-        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-zadace")==null) privilegijaRepozitorij.save(privilegija1);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-kreirane-zadace")==null) privilegijaRepozitorij.save(privilegija1);
         
         Privilegija privilegija2 = new Privilegija();
         privilegija2.setNazivPrivilegije("registrovanje-casa");
@@ -88,14 +88,31 @@ public class DodavanjePodataka {
         privilegija5.setNazivPrivilegije("kreiranje-obavjestenja");
         privilegija5.setUloge(uloga);
         if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-obavjestenja")==null) privilegijaRepozitorij.save(privilegija5);
-        
+    
+        Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-obavjestenja");
+        uloga.add(uloga1); 
+        p.setUloge(uloga);
+        privilegijaRepozitorij.save(p);
     }
+       
 
      private void dodajOdsjek(){ 
 
         if((odsjekRepozitorij.findBynazivOdsjeka("RI"))==null){ 
             Odsjek odsjek1=new Odsjek();
             odsjek1.setNazivOdsjeka("RI"); odsjekRepozitorij.save(odsjek1); 
+        } 
+        if((odsjekRepozitorij.findBynazivOdsjeka("TK"))==null){ 
+            Odsjek odsjek1=new Odsjek();
+            odsjek1.setNazivOdsjeka("TK"); odsjekRepozitorij.save(odsjek1); 
+        } 
+        if((odsjekRepozitorij.findBynazivOdsjeka("EE"))==null){ 
+            Odsjek odsjek1=new Odsjek();
+            odsjek1.setNazivOdsjeka("EE"); odsjekRepozitorij.save(odsjek1); 
+        } 
+        if((odsjekRepozitorij.findBynazivOdsjeka("AIE"))==null){ 
+            Odsjek odsjek1=new Odsjek();
+            odsjek1.setNazivOdsjeka("AIE"); odsjekRepozitorij.save(odsjek1); 
         } 
     }
 }

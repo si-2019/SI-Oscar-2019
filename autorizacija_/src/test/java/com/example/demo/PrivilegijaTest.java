@@ -21,7 +21,7 @@ public class PrivilegijaTest {
     private OdsjekRepozitorij odsjekRepozitorij;
     
    @Test
-	public void testAsistentImaMogucnostKreiranjaObavjestenja() {
+	public void testAdministratorImaMogucnostEditovanjaPostavljenihObavjestenja() {
 
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
         assertEquals(true, (uloga.imaPrivilegiju("editovanje-postavljenih-obavjestenja")));

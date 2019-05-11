@@ -102,6 +102,13 @@ public class Podaci {
         if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_dodjela_bodova_zadace.getNazivPrivilegije())) {
             privilegijaRepozitorij.save(privilegija_dodjela_bodova_zadace);
         }
+
+        Privilegija privilegija_kreiranje_kviza = new Privilegija();
+        privilegija_kreiranje_kviza.setNazivPrivilegije("kreiranje-kviza");
+        privilegija_kreiranje_kviza.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_kreiranje_kviza.getNazivPrivilegije())) {
+            privilegijaRepozitorij.save(privilegija_kreiranje_kviza);
+        }
         uloga.clear();
     }
 

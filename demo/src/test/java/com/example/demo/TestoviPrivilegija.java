@@ -96,4 +96,21 @@ public class TestoviPrivilegija {
         Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         assertThat(student.imaPrivilegiju("brisanje-kreiranog-casa")).isEqualTo(false);
     }
+
+    @Test
+    public void testPostojiDodjelaBodovaZadace() throws Exception {
+        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("dodjela-bodova-za-zadace")).isEqualTo(true);
+    }
+
+    @Test
+    public void testProfesorDodjelaBodovaZadace() throws Exception {
+        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertThat(profesor.imaPrivilegiju("dodjela-bodova-za-zadace")).isEqualTo(true);
+    }
+
+    @Test
+    public void testStudentskaDodjelaBodovaZadace() throws Exception {
+        Uloga studentska = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+        assertThat(studentska.imaPrivilegiju("dodjela-bodova-za-zadace")).isEqualTo(false);
+    }
 }

@@ -7,7 +7,7 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "korisnik")
+@Table(name = "Korisnik")
 public class Korisnik {
 
     @Id
@@ -327,7 +327,7 @@ public class Korisnik {
         this.uloga_id = uloga_id;
     }
 
-    public boolean imaPrivilegiju (String privilegija){
+    /*public boolean imaPrivilegiju (String privilegija){
         boolean ima = false;
         List<Privilegija> privilegije = this.getUloga_id().getPrivilegije();
         for (Privilegija p: privilegije) {
@@ -337,5 +337,5 @@ public class Korisnik {
             }
         }
         return ima;
-    }
+    }*/
 }

@@ -32,69 +32,68 @@ public class Podaci {
     }
 
     private void dodajUloge() {
-        Uloga uloga1 = new Uloga();
-        uloga1.setNazivUloge(ImenaUloga.ADMIN);
-        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.ADMIN)) ulogaRepozitorij.save(uloga1);
+        Uloga admin = new Uloga();
+        admin.setNazivUloge(ImenaUloga.ADMIN);
+        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.ADMIN)) ulogaRepozitorij.save(admin);
 
-        Uloga uloga2 = new Uloga();
-        uloga2.setNazivUloge(ImenaUloga.STUDENT);
-        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.STUDENT)) ulogaRepozitorij.save(uloga2);
+        Uloga student = new Uloga();
+        student.setNazivUloge(ImenaUloga.STUDENT);
+        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.STUDENT)) ulogaRepozitorij.save(student);
 
-        Uloga uloga3 = new Uloga();
-        uloga3.setNazivUloge(ImenaUloga.PROFESOR);
-        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.PROFESOR)) ulogaRepozitorij.save(uloga3);
+        Uloga profesor = new Uloga();
+        profesor.setNazivUloge(ImenaUloga.PROFESOR);
+        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.PROFESOR)) ulogaRepozitorij.save(profesor);
 
-        Uloga uloga4 = new Uloga();
-        uloga4.setNazivUloge(ImenaUloga.ASISTENT);
-        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.ASISTENT)) ulogaRepozitorij.save(uloga4);
+        Uloga asistent = new Uloga();
+        asistent.setNazivUloge(ImenaUloga.ASISTENT);
+        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.ASISTENT)) ulogaRepozitorij.save(asistent);
 
-        Uloga uloga5 = new Uloga();
-        uloga5.setNazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
-        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA)) ulogaRepozitorij.save(uloga5);
+        Uloga studentska_sluzba = new Uloga();
+        studentska_sluzba.setNazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+        if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA)) ulogaRepozitorij.save(studentska_sluzba);
     }
-
 
     private void dodajPrivilegije() {
         List<Uloga> uloga = new ArrayList<>();
-        Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
-        Uloga uloga3 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        Uloga uloga4 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        Uloga uloga5 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        Uloga admin = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+        Uloga asistent = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        Uloga studentska_sluzba = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
 
-        uloga.add(uloga1);
-        Privilegija privilegija1 = new Privilegija();
-        privilegija1.setNazivPrivilegije("izmjena-bodova-zadace");
-        privilegija1.setUloge(uloga);
+        uloga.add(asistent);
+        Privilegija privilegija_registrovanje_casa = new Privilegija();
+        privilegija_registrovanje_casa.setNazivPrivilegije("registrovanje-casa");
+        privilegija_registrovanje_casa.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_registrovanje_casa.getNazivPrivilegije())) {
+            privilegijaRepozitorij.save(privilegija_registrovanje_casa);
+        }
 
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije("izmjena-bodova-zadace")) privilegijaRepozitorij.save(privilegija1);
-        uloga.clear();
-
-        uloga.add(uloga3);
-        Privilegija privilegija_edit_zadace = new Privilegija();
-        privilegija_edit_zadace.setNazivPrivilegije("editovanje-kreirane-zadace");
-        privilegija_edit_zadace.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-kreirane-zadace")) privilegijaRepozitorij.save(privilegija_edit_zadace);
+        Privilegija privilegija_editovanje_zadace = new Privilegija();
+        privilegija_editovanje_zadace.setNazivPrivilegije("editovanje-kreirane-zadace");
+        privilegija_editovanje_zadace.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_editovanje_zadace.getNazivPrivilegije())) {
+            privilegijaRepozitorij.save(privilegija_editovanje_zadace);
+        }
         uloga.clear();
     }
 
-
     private void dodajOdsjek() {
         Odsjek ri = new Odsjek();
-        ri.setNazivOdsjeka("RI");
-        if(!odsjekRepozitorij.existsBynazivOdsjeka("RI")) odsjekRepozitorij.save(ri);
+        ri.setNazivOdsjeka("Racunarstvo i informatika");
+        if(!odsjekRepozitorij.existsBynazivOdsjeka(ri.getNazivOdsjeka())) odsjekRepozitorij.save(ri);
 
         Odsjek tk = new Odsjek();
-        tk.setNazivOdsjeka("TK");
-        if(!odsjekRepozitorij.existsBynazivOdsjeka("TK")) odsjekRepozitorij.save(tk);
+        tk.setNazivOdsjeka("Telekomunikacije");
+        if(!odsjekRepozitorij.existsBynazivOdsjeka(tk.getNazivOdsjeka())) odsjekRepozitorij.save(tk);
 
         Odsjek aie = new Odsjek();
-        aie.setNazivOdsjeka("AIE");
-        if(!odsjekRepozitorij.existsBynazivOdsjeka("AIE")) odsjekRepozitorij.save(aie);
+        aie.setNazivOdsjeka("Automatika i elektronika");
+        if(!odsjekRepozitorij.existsBynazivOdsjeka(aie.getNazivOdsjeka())) odsjekRepozitorij.save(aie);
 
         Odsjek ee = new Odsjek();
-        ee.setNazivOdsjeka("EE");
-        if(!odsjekRepozitorij.existsBynazivOdsjeka("EE")) odsjekRepozitorij.save(ee);
+        ee.setNazivOdsjeka("Elektroenergetika");
+        if(!odsjekRepozitorij.existsBynazivOdsjeka(ee.getNazivOdsjeka())) odsjekRepozitorij.save(ee);
     }
 
 }

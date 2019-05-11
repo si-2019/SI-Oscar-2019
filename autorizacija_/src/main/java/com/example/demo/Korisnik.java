@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Blob;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Korisnik")
@@ -324,5 +325,5 @@ public class Korisnik {
         this.uloga_id = uloga_id;
     }
 
- 
+
 }

@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Date;
@@ -112,5 +113,22 @@ public class TestoviPrivilegija {
     public void testStudentskaDodjelaBodovaZadace() throws Exception {
         Uloga studentska = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
         assertThat(studentska.imaPrivilegiju("dodjela-bodova-za-zadace")).isEqualTo(false);
+    }
+
+    @Test
+    public void testPostojiKreiranjeKviza() throws Exception {
+        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("kreiranje-kviza")).isEqualTo(true);
+    }
+
+    @Test
+    public void testProfesorKreiranjeKviza() throws Exception {
+        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertThat(profesor.imaPrivilegiju("kreiranje-kviza")).isEqualTo(true);
+    }
+
+    @Test
+    public void testStudentskaKreiranjeKviza() throws Exception {
+        Uloga studentska = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+        assertThat(studentska.imaPrivilegiju("kreiranje-kviza")).isEqualTo(false);
     }
 }

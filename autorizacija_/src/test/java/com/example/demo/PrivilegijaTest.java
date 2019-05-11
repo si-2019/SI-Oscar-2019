@@ -2,7 +2,6 @@ package com.example.demo;
 
 import static org.junit.Assert.assertEquals;
 
-import java.sql.Date;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +21,14 @@ public class PrivilegijaTest {
     private OdsjekRepozitorij odsjekRepozitorij;
     @Test
 	public void testAsistentImaMogucnostZaBrisanjObavjestenja() {
-        Long id=(long) (korisnikRepozitorij.count()+1);
-        Korisnik korisnik = new Korisnik(id,odsjekRepozitorij.findBynazivOdsjeka("RI"),ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT), "Medina", "Dacic", new Date(1996,5, 16), "0506997178963", "medina@unsa.ba", "Sarajevo", "KS", "BiH", "1234567", true, "Dacic", "Dacic", "ISAKA SAMOKOVLIJE", "user", "pass", "medina@linkedin.com", "medina@website.com", null, "5281", "1", "6", "ASISTENT");
-        korisnikRepozitorij.save(korisnik);
-        assertEquals(true, (korisnik.imaPrivilegiju("brisanje_obavjestenja")));
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        assertEquals(true, (uloga.imaPrivilegiju("brisanje-obavjestenja")));
+
     }
     @Test
 	public void testProfesorImaMogucnostZaBrisanjObavjestenja() {
-        Long id=(long) (korisnikRepozitorij.count()+1);
-        Korisnik korisnik = new Korisnik(id,odsjekRepozitorij.findBynazivOdsjeka("RI"),ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR), "Medina", "Dacic", new Date(1996,5, 16), "0506997178963", "medina@unsa.ba", "Sarajevo", "KS", "BiH", "1234567", true, "Dacic", "Dacic", "ISAKA SAMOKOVLIJE", "user", "pass", "medina@linkedin.com", "medina@website.com", null, "5281", "1", "6", "PROFESOR");
-        korisnikRepozitorij.save(korisnik);
-        assertEquals(true, (korisnik.imaPrivilegiju("brisanje_obavjestenja")));
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertEquals(true, (uloga.imaPrivilegiju("brisanje-obavjestenja")));
     }
-
 
 }

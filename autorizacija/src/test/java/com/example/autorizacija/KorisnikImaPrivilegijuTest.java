@@ -27,12 +27,9 @@ public class KorisnikImaPrivilegijuTest {
     private UlogaRepozitorij ulogaRepozitorij;
 
 	@Test
-	public void testStudentskaSluzbaImaMogucnostoPostavljanjaObavjestenja() {
-
-        Long id=(long) (korisnikRepozitorij.count()+1);
-        Korisnik korisnik = new Korisnik(id,odsjekRepozitorij.findBynazivOdsjeka("RI"),ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA), "Test2", "N2", new Date(1996,5, 16), "0806997178963", "Test2t@unsa.ba", "Sarajevo", "KS", "BiH", "1234567", true, "Kll", "Kll", "ISAKA SAMOKOVLIJE", "user", "pass", "Test2t@linkedin.com", "Test2t@website.com", null, "5281", "1", "6", "Studentska Sluzba");
-        korisnikRepozitorij.save(korisnik);
-        assertEquals(true, (korisnik.imaPrivilegiju("postavljanje-obavjestenja")));
+	public void testProfesorImaPrivilegijuUvidaUObavjestenja() {
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+		assertThat(uloga.imaPrivilegiju("uvid-u-obavjestenja")).isEqualTo(true);
     }
     
 

@@ -84,6 +84,13 @@ public class Podaci {
         if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_editovanje_obavjestenja.getNazivPrivilegije())) {
             privilegijaRepozitorij.save(privilegija_editovanje_obavjestenja);
         }
+
+        Privilegija privilegija_editovanje_teme_forum = new Privilegija();
+        privilegija_editovanje_teme_forum.setNazivPrivilegije("editovanje-teme-na-forumu");
+        privilegija_editovanje_teme_forum.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_editovanje_teme_forum.getNazivPrivilegije())) {
+            privilegijaRepozitorij.save(privilegija_editovanje_teme_forum);
+        }
         uloga.clear();
 
         uloga.add(profesor);

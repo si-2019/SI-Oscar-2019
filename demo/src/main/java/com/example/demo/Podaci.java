@@ -91,6 +91,9 @@ public class Podaci {
         if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_editovanje_teme_forum.getNazivPrivilegije())) {
             privilegijaRepozitorij.save(privilegija_editovanje_teme_forum);
         }
+        else {
+
+        }
         uloga.clear();
 
         uloga.add(profesor);

@@ -63,7 +63,7 @@ public class Podaci {
 
         uloga.add(admin);
         // PRIVILEGIJE ZA ADMINA
-        
+
         Privilegija privilegija_editovanje_korisnika = new Privilegija();
         privilegija_editovanje_korisnika.setNazivPrivilegije("editovanje-korisnika");
         privilegija_editovanje_korisnika.setUloge(uloga);

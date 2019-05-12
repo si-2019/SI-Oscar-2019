@@ -165,4 +165,21 @@ public class TestoviPrivilegija {
         Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         assertThat(student.imaPrivilegiju("editovanje-teme-na-forumu")).isEqualTo(false);
     }
+
+    @Test
+    public void testPostojiEditovanjeKorisnika() throws Exception {
+        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-korisnika")).isEqualTo(true);
+    }
+
+    @Test
+    public void testAdminEditovanjeKorisnika() throws Exception {
+        Uloga admin = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+        assertThat(admin.imaPrivilegiju("editovanje-korisnika")).isEqualTo(true);
+    }
+
+    @Test
+    public void testProfesorEditovanjeKorisnika() throws Exception {
+        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertThat(profesor.imaPrivilegiju("editovanje-korisnika")).isEqualTo(false);
+    }
 }

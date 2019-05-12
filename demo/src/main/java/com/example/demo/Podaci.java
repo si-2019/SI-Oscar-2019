@@ -61,6 +61,17 @@ public class Podaci {
         Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         Uloga studentska_sluzba = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
 
+        uloga.add(admin);
+        // PRIVILEGIJE ZA ADMINA
+        
+        Privilegija privilegija_editovanje_korisnika = new Privilegija();
+        privilegija_editovanje_korisnika.setNazivPrivilegije("editovanje-korisnika");
+        privilegija_editovanje_korisnika.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_editovanje_korisnika.getNazivPrivilegije())) {
+            privilegijaRepozitorij.save(privilegija_editovanje_korisnika);
+        }
+        uloga.clear();
+
         uloga.add(asistent);
         // PRIVILEGIJE ZA ASISTENTA
 

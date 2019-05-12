@@ -1,7 +1,5 @@
 package com.example.demo;
-
 import static org.junit.Assert.assertEquals;
-
 import java.sql.Date;
 import org.junit.Test;
 import org.junit.runner.RunWith;

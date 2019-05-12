@@ -82,7 +82,7 @@ public class DodavanjePodataka {
         if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-termina-ispita")==null) privilegijaRepozitorij.save(privilegija3);
         
         Privilegija privilegija4 = new Privilegija();
-        privilegija4.setNazivPrivilegije("izmjena_dodijeljenih_bodova");
+        privilegija4.setNazivPrivilegije("izmjena-dodijeljenih-bodova");
         privilegija4.setUloge(uloga);
         if(privilegijaRepozitorij.findBynazivPrivilegije("izmjena-dodijeljenih-bodova")==null) privilegijaRepozitorij.save(privilegija4);
         

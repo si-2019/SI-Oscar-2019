@@ -69,8 +69,10 @@ public class DodavanjePodataka {
         Privilegija privilegija1 = new Privilegija();
         privilegija1.setNazivPrivilegije("kreiranje-zadace");
         privilegija1.setUloge(uloga);
-        if (privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-zadace") == null)
-            privilegijaRepozitorij.save(privilegija1);
+
+        if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-zadace")==null) 
+          privilegijaRepozitorij.save(privilegija1);
+        
 
         uloga = new ArrayList<>();
         Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
@@ -78,6 +80,7 @@ public class DodavanjePodataka {
         Privilegija privilegija2 = new Privilegija();
         privilegija2.setNazivPrivilegije("kreiranje-korisnika");
         privilegija2.setUloge(uloga);
+      
         if (privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-korisnika") == null)
             privilegijaRepozitorij.save(privilegija2);
 
@@ -118,6 +121,7 @@ public class DodavanjePodataka {
         if (privilegijaRepozitorij.findBynazivPrivilegije("povezivanje-privilegija-uloga") == null)
             privilegijaRepozitorij.save(privilegija7);
 
+
         uloga.clear();
         uloga.add(uloga1);
         Privilegija privilegija8 = new Privilegija();
@@ -138,11 +142,12 @@ public class DodavanjePodataka {
 
     private void dodajOdsjek() {
 
-        if ((odsjekRepozitorij.findBynazivOdsjeka("RI")) == null) {
-            Odsjek odsjek1 = new Odsjek();
-            //odsjek1.setId((long) (odsjekRepozitorij.count() + 1));
+
+        if((odsjekRepozitorij.findBynazivOdsjeka("RI"))==null){ 
+            Odsjek odsjek1=new Odsjek();
             odsjek1.setNazivOdsjeka("RI");
-            odsjekRepozitorij.save(odsjek1);
-        }
+          odsjekRepozitorij.save(odsjek1); 
+        } 
+     
     }
 }

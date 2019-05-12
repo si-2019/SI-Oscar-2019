@@ -53,6 +53,25 @@ public class Podaci {
         if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA)) ulogaRepozitorij.save(studentska_sluzba);
     }
 
+    private void poveziUloguPrivilegiju(Privilegija privilegija, Uloga uloga) {
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija.getNazivPrivilegije())) {
+            privilegijaRepozitorij.save(privilegija);
+        }
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije(privilegija.getNazivPrivilegije()).getUloge();
+            boolean potrebno_dodati = true;
+            for (Uloga uloga1: noveUloge) {
+                if(uloga1.getNazivUloge().equals(uloga.getNazivUloge())) potrebno_dodati = false;
+            }
+            if(potrebno_dodati) {
+                noveUloge.add(uloga);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije(privilegija.getNazivPrivilegije()).getId());
+                privilegija.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija);
+            }
+        }
+    }
+
     private void dodajPrivilegije() {
         List<Uloga> uloga = new ArrayList<>();
         Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
@@ -67,16 +86,12 @@ public class Podaci {
         Privilegija privilegija_editovanje_korisnika = new Privilegija();
         privilegija_editovanje_korisnika.setNazivPrivilegije("editovanje-korisnika");
         privilegija_editovanje_korisnika.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_editovanje_korisnika.getNazivPrivilegije())) {
-            privilegijaRepozitorij.save(privilegija_editovanje_korisnika);
-        }
+        poveziUloguPrivilegiju(privilegija_editovanje_korisnika, admin);
 
         Privilegija privilegija_brisanje_obavjestenja = new Privilegija();
         privilegija_brisanje_obavjestenja.setNazivPrivilegije("brisanje-obavjestenja");
         privilegija_brisanje_obavjestenja.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_brisanje_obavjestenja.getNazivPrivilegije())) {
-            privilegijaRepozitorij.save(privilegija_brisanje_obavjestenja);
-        }
+        poveziUloguPrivilegiju(privilegija_brisanje_obavjestenja, admin);
         uloga.clear();
 
         uloga.add(asistent);
@@ -85,33 +100,22 @@ public class Podaci {
         Privilegija privilegija_registrovanje_casa = new Privilegija();
         privilegija_registrovanje_casa.setNazivPrivilegije("registrovanje-casa");
         privilegija_registrovanje_casa.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_registrovanje_casa.getNazivPrivilegije())) {
-            privilegijaRepozitorij.save(privilegija_registrovanje_casa);
-        }
+        poveziUloguPrivilegiju(privilegija_registrovanje_casa, asistent);
 
         Privilegija privilegija_editovanje_zadace = new Privilegija();
         privilegija_editovanje_zadace.setNazivPrivilegije("editovanje-kreirane-zadace");
         privilegija_editovanje_zadace.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_editovanje_zadace.getNazivPrivilegije())) {
-            privilegijaRepozitorij.save(privilegija_editovanje_zadace);
-        }
+        poveziUloguPrivilegiju(privilegija_editovanje_zadace, asistent);
 
         Privilegija privilegija_editovanje_obavjestenja = new Privilegija();
         privilegija_editovanje_obavjestenja.setNazivPrivilegije("editovanje-obavjestenja");
         privilegija_editovanje_obavjestenja.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_editovanje_obavjestenja.getNazivPrivilegije())) {
-            privilegijaRepozitorij.save(privilegija_editovanje_obavjestenja);
-        }
+        poveziUloguPrivilegiju(privilegija_editovanje_obavjestenja, asistent);
 
         Privilegija privilegija_editovanje_teme_forum = new Privilegija();
         privilegija_editovanje_teme_forum.setNazivPrivilegije("editovanje-teme-na-forumu");
         privilegija_editovanje_teme_forum.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_editovanje_teme_forum.getNazivPrivilegije())) {
-            privilegijaRepozitorij.save(privilegija_editovanje_teme_forum);
-        }
-        else {
-
-        }
+        poveziUloguPrivilegiju(privilegija_editovanje_teme_forum, asistent);
         uloga.clear();
 
         uloga.add(profesor);
@@ -120,30 +124,22 @@ public class Podaci {
         Privilegija privilegija_izmjena_bodova_zadace = new Privilegija();
         privilegija_izmjena_bodova_zadace.setNazivPrivilegije("izmjena-bodova-za-zadace");
         privilegija_izmjena_bodova_zadace.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_izmjena_bodova_zadace.getNazivPrivilegije())) {
-            privilegijaRepozitorij.save(privilegija_izmjena_bodova_zadace);
-        }
+        poveziUloguPrivilegiju(privilegija_izmjena_bodova_zadace, profesor);
 
         Privilegija privilegija_brisanje_kreiranog_casa = new Privilegija();
         privilegija_brisanje_kreiranog_casa.setNazivPrivilegije("brisanje-kreiranog-casa");
         privilegija_brisanje_kreiranog_casa.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_brisanje_kreiranog_casa.getNazivPrivilegije())) {
-            privilegijaRepozitorij.save(privilegija_brisanje_kreiranog_casa);
-        }
+        poveziUloguPrivilegiju(privilegija_brisanje_kreiranog_casa, profesor);
 
         Privilegija privilegija_dodjela_bodova_zadace = new Privilegija();
         privilegija_dodjela_bodova_zadace.setNazivPrivilegije("dodjela-bodova-za-zadace");
         privilegija_dodjela_bodova_zadace.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_dodjela_bodova_zadace.getNazivPrivilegije())) {
-            privilegijaRepozitorij.save(privilegija_dodjela_bodova_zadace);
-        }
+        poveziUloguPrivilegiju(privilegija_dodjela_bodova_zadace, profesor);
 
         Privilegija privilegija_kreiranje_kviza = new Privilegija();
         privilegija_kreiranje_kviza.setNazivPrivilegije("kreiranje-kviza");
         privilegija_kreiranje_kviza.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_kreiranje_kviza.getNazivPrivilegije())) {
-            privilegijaRepozitorij.save(privilegija_kreiranje_kviza);
-        }
+        poveziUloguPrivilegiju(privilegija_kreiranje_kviza, profesor);
         uloga.clear();
     }
 

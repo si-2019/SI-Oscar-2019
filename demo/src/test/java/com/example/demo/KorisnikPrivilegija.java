@@ -29,7 +29,7 @@ public class KorisnikPrivilegija {
     @Test
     public void testProfesorImaPrivilegijuIzmjeneBodova() throws Exception {
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(korisnik.imaPrivilegiju("izmjena-dodijeljenih-bodova")).isEqualTo(true);
+        assertThat(uloga.imaPrivilegiju("izmjena-dodijeljenih-bodova")).isEqualTo(true);
 
     }
 }

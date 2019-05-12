@@ -71,10 +71,12 @@ public class DodavanjePodataka {
         privilegija1.setUloge(uloga);
 
 
+
         if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-zadace")==null) 
           privilegijaRepozitorij.save(privilegija1);
 
         
+
 
         uloga = new ArrayList<>();
         Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
@@ -83,7 +85,6 @@ public class DodavanjePodataka {
         privilegija2.setNazivPrivilegije("kreiranje-korisnika");
         privilegija2.setUloge(uloga);
 
-      
         if (privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-korisnika") == null)
             privilegijaRepozitorij.save(privilegija2);
 
@@ -146,8 +147,6 @@ public class DodavanjePodataka {
     }
 
     private void dodajOdsjek() {
-
-
 
         if((odsjekRepozitorij.findBynazivOdsjeka("RI"))==null){ 
             Odsjek odsjek1=new Odsjek();

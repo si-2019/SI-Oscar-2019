@@ -26,11 +26,13 @@ public class KorisnikPrivilegija {
     private UlogaRepozitorij ulogaRepozitorij;
 
     @Test
+
     public void testAdministratorImaPrivilegijuKreiranjaNovihKorisnika() throws Exception {
      
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
         
         assertThat(uloga.imaPrivilegiju("kreiranje-korisnika")).isEqualTo(true);
+  
 
     }
 }

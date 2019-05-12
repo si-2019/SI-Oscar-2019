@@ -28,11 +28,8 @@ public class KorisnikImaPrivilegijuTest {
 
 	@Test
 	public void testAsistentImaPrivilegijuKreiranjaTemeNaForumu() {
-
-        Long id=(long) (korisnikRepozitorij.count()+1);
-        Korisnik korisnik = new Korisnik(id,odsjekRepozitorij.findBynazivOdsjeka("RI"),ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT), "Test", "N", new Date(1996,5, 16), "1212997178963", "Testt@unsa.ba", "Sarajevo", "KS", "BiH", "1234567", true, "Kll", "Kll", "ISAKA SAMOKOVLIJE", "user", "pass", "Testt@linkedin.com", "Testt@website.com", null, "5281", "1", "6", "ASISTENT");
-        korisnikRepozitorij.save(korisnik);
-        assertEquals(true, (korisnik.imaPrivilegiju("kreiranje-teme-na-forumu")));
+		Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+		assertThat(uloga.imaPrivilegiju("kreiranje-teme-na-forumu")).isEqualTo(true);
     }
     
 

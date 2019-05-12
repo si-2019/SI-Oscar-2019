@@ -74,7 +74,9 @@ public class DodavanjePodataka {
         privilegija1.setUloge(uloga);
 
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-kreirane-zadace")) privilegijaRepozitorij.save(privilegija1);
-
+        else {
+            //List<Uloga> noveUloge =
+        }
         uloga.clear();
 
         uloga.add(uloga3);

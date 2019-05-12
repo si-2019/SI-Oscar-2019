@@ -70,6 +70,13 @@ public class Podaci {
         if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_editovanje_korisnika.getNazivPrivilegije())) {
             privilegijaRepozitorij.save(privilegija_editovanje_korisnika);
         }
+
+        Privilegija privilegija_brisanje_obavjestenja = new Privilegija();
+        privilegija_brisanje_obavjestenja.setNazivPrivilegije("brisanje-obavjestenja");
+        privilegija_brisanje_obavjestenja.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija_brisanje_obavjestenja.getNazivPrivilegije())) {
+            privilegijaRepozitorij.save(privilegija_brisanje_obavjestenja);
+        }
         uloga.clear();
 
         uloga.add(asistent);

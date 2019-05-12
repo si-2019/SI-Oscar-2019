@@ -1,12 +1,11 @@
 package com.example.demo;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Blob;
 import java.sql.Date;
 import java.util.List;
 
-@Entity
+@Entity 
 @Table(name = "Korisnik")
 public class Korisnik {
 

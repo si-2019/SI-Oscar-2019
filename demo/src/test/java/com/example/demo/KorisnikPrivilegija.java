@@ -11,9 +11,16 @@ import java.sql.Date;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
+
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+
 public class KorisnikPrivilegija {
 
     @Autowired
@@ -25,13 +32,17 @@ public class KorisnikPrivilegija {
     @Autowired
     private UlogaRepozitorij ulogaRepozitorij;
 
+    
     @Test
-
-    public void testAdministratorImaPrivilegijuKreiranjaNovihKorisnika() throws Exception {
-     
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+    public void testProfesorImaPrivilegijuIzmjeneKreianogKviza() throws Exception {
         
-        assertThat(uloga.imaPrivilegiju("kreiranje-korisnika")).isEqualTo(true);
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        
+
+        assertThat(uloga.imaPrivilegiju("izmjena-kviza")).isEqualTo(true);
+
+
+
 
     }
 }

@@ -56,6 +56,7 @@ public class Uloga {
     public void setPrivilegije(List<Privilegija> privilegije) {
         this.privilegije = privilegije;
     }
+
     
         public boolean imaPrivilegiju (String privilegija){
 

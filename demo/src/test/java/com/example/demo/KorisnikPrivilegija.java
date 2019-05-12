@@ -30,7 +30,7 @@ public class KorisnikPrivilegija {
        
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
        
-        assertThat(korisnik.imaPrivilegiju("brisanje-termina-ispita")).isEqualTo(true);
+        assertThat(uloga.imaPrivilegiju("brisanje-termina-ispita")).isEqualTo(true);
 
     }
 }

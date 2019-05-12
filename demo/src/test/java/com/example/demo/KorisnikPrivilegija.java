@@ -27,14 +27,9 @@ public class KorisnikPrivilegija {
 
     @Test
     public void testAsistentImaPrivilegijuUnosRezultata() throws Exception {
-        Odsjek odsjek = odsjekRepozitorij.findById(Long.valueOf(1)).get();
+        //Odsjek odsjek = odsjekRepozitorij.findById(Long.valueOf(1)).get();
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        Korisnik korisnik = new Korisnik(Long.valueOf(4), odsjek, uloga, "Nedim", "Manovic", new Date(1997, 2, 4),
-                "0506997178963", "nedim2@etf.unsa.ba", "Sarajevo", "Sarajevo", "BiH", "062589632", true,
-                "Nahida Manovic", "Fudo Manovic", "Zupca", "ekovac2", "789456", "nedim@linkedin.com",
-                "nedim@website.com", null, "17933", "1", "6", "asistent");
-        korisnikRepozitorij.save(korisnik);
-        assertThat(korisnik.imaPrivilegiju("unos-rezultata")).isEqualTo(true);
+        assertThat(uloga.imaPrivilegiju("unos-rezultata")).isEqualTo(true);
 
     }
 }

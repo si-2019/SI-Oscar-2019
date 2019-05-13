@@ -65,9 +65,9 @@ public class DodavanjePodataka {
         uloga.add(uloga1);
 
         Privilegija privilegija2 = new Privilegija();
-        privilegija2.setNazivPrivilegije("brisanje-časa");
+        privilegija2.setNazivPrivilegije("brisanje-kreiranog-casa");
         privilegija2.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije("brisanje-časa")) privilegijaRepozitorij.save(privilegija2);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("brisanje-kreiranog-casa")) privilegijaRepozitorij.save(privilegija2);
 		
     }
 

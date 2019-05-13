@@ -72,9 +72,9 @@ public class DodavanjePodataka {
 
 
 
+
         if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-zadace")==null) 
           privilegijaRepozitorij.save(privilegija1);
-
         
 
 
@@ -150,12 +150,8 @@ public class DodavanjePodataka {
 
         if((odsjekRepozitorij.findBynazivOdsjeka("RI"))==null){ 
             Odsjek odsjek1=new Odsjek();
-
-          
-
             odsjek1.setNazivOdsjeka("RI");
           odsjekRepozitorij.save(odsjek1); 
-
         } 
      
     }

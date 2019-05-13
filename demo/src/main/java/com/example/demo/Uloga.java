@@ -56,7 +56,9 @@ public class Uloga {
     public void setPrivilegije(List<Privilegija> privilegije) {
         this.privilegije = privilegije;
     }
-       public boolean imaPrivilegiju (String privilegija){
+
+
+        public boolean imaPrivilegiju (String privilegija){
         boolean ima = false;
         List<Privilegija> privilegije = this.getPrivilegije();
         for (Privilegija p: privilegije) {

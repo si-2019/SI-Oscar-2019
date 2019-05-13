@@ -325,5 +325,5 @@ public class Korisnik {
         this.uloga_id = uloga_id;
     }
 
-   
+
 }

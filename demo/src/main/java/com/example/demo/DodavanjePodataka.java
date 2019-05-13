@@ -70,9 +70,6 @@ public class DodavanjePodataka {
         privilegija1.setNazivPrivilegije("kreiranje-zadace");
         privilegija1.setUloge(uloga);
 
-
-
-
         if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-zadace")==null) 
           privilegijaRepozitorij.save(privilegija1);
         
@@ -87,6 +84,7 @@ public class DodavanjePodataka {
 
         if (privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-korisnika") == null)
             privilegijaRepozitorij.save(privilegija2);
+
 
 
         uloga.clear();

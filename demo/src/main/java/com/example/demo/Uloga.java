@@ -68,4 +68,5 @@ public class Uloga {
         }
         return ima;
     }
+
 }

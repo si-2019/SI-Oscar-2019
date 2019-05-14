@@ -12,6 +12,7 @@ public class UlogaKontroler {
 
    private UlogaRepozitorij ulogaRepozitorij;
 
+
     @Autowired
     public UlogaKontroler(UlogaRepozitorij ulogaRepozitorij) {
         this.ulogaRepozitorij = ulogaRepozitorij;

@@ -71,11 +71,10 @@ public class DodavanjePodataka {
         privilegija1.setUloge(uloga);
 
 
+
         if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-zadace")==null) 
           privilegijaRepozitorij.save(privilegija1);
 
-
-        
 
 
         uloga = new ArrayList<>();
@@ -85,7 +84,6 @@ public class DodavanjePodataka {
         privilegija2.setNazivPrivilegije("kreiranje-korisnika");
         privilegija2.setUloge(uloga);
 
-
         if (privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-korisnika") == null)
             privilegijaRepozitorij.save(privilegija2);
 
@@ -94,6 +92,7 @@ public class DodavanjePodataka {
         Privilegija privilegija3 = new Privilegija();
         privilegija3.setNazivPrivilegije("brisanje-termina-ispita");
         privilegija3.setUloge(uloga);
+
         if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-termina-ispita")==null) privilegijaRepozitorij.save(privilegija3);
         
         Privilegija privilegija4 = new Privilegija();
@@ -104,11 +103,14 @@ public class DodavanjePodataka {
          
        
 
+
    
         Privilegija privilegija5 = new Privilegija();
         privilegija5.setNazivPrivilegije("izmjena-kviza");
         privilegija5.setUloge(uloga);
+
         if(privilegijaRepozitorij.findBynazivPrivilegije("izmjena-kviza")==null) privilegijaRepozitorij.save(privilegija5);
+
 
         uloga.clear();
         Uloga uloga3 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
@@ -145,10 +147,19 @@ public class DodavanjePodataka {
         if (privilegijaRepozitorij.findBynazivPrivilegije("brisanje-teme") == null)
             privilegijaRepozitorij.save(privilegija9);
 
+        uloga.clear();
+        uloga.add(uloga3);
+        Privilegija privilegija10 = new Privilegija();
+        privilegija10.setNazivPrivilegije("unos-rezultata");
+        privilegija10.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("unos-rezultata") == null)
+            privilegijaRepozitorij.save(privilegija10);
+
     }
 
 
     private void dodajOdsjek() {
+
 
         if((odsjekRepozitorij.findBynazivOdsjeka("RI"))==null){ 
             Odsjek odsjek1=new Odsjek();

@@ -39,5 +39,6 @@ public class KorisnikPrivilegija {
         assertThat(uloga.imaPrivilegiju("kreiranje-zadace")).isEqualTo(true);
 
 
+
     }
 }

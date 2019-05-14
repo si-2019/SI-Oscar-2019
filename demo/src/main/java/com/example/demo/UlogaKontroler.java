@@ -9,7 +9,10 @@ import java.util.Optional;
 
 @RestController
 public class UlogaKontroler {
-    private UlogaRepozitorij ulogaRepozitorij;
+
+   private UlogaRepozitorij ulogaRepozitorij;
+
+
 
     @Autowired
     public UlogaKontroler(UlogaRepozitorij ulogaRepozitorij) {

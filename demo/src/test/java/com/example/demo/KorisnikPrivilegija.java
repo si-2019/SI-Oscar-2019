@@ -34,11 +34,11 @@ public class KorisnikPrivilegija {
 
     
     @Test
-    public void testProfesorImaPrivilegijuIzmjeneKreianogKviza() throws Exception {
+    public void testProfesorImaPrivilegijuKreiranjaGrupa() throws Exception {
         
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         
-        assertThat(uloga.imaPrivilegiju("izmjena-kviza")).isEqualTo(true);
+        assertThat(uloga.imaPrivilegiju("kreiranje-grupa")).isEqualTo(true);
 
 
  

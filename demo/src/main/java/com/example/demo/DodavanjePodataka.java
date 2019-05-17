@@ -169,6 +169,14 @@ public class DodavanjePodataka {
         if (privilegijaRepozitorij.findBynazivPrivilegije("pristup-informacijama") == null)
             privilegijaRepozitorij.save(privilegija13);
 
+        uloga.clear();
+        uloga.add(uloga2);
+        Privilegija privilegija14 = new Privilegija();
+        privilegija14.setNazivPrivilegije("pregled-termina");
+        privilegija14.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("pregled-termina") == null)
+            privilegijaRepozitorij.save(privilegija14);
+
     }
 
     private void dodajOdsjek() {

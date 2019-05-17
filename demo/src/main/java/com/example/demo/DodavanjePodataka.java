@@ -334,6 +334,10 @@ public class DodavanjePodataka {
         uloga.clear();
 
         uloga.add(uloga1);
+
+        Privilegija privilegija12 = new Privilegija();
+        privilegija12.setNazivPrivilegije("uredjivanje-podataka-za-predmet");
+        privilegija12.setUloge(uloga);
     }
 
 

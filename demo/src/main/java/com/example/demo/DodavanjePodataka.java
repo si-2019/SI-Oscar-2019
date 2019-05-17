@@ -286,6 +286,10 @@ public class DodavanjePodataka {
         uloga.clear();
 
         uloga.add(uloga1);
+        
+        Privilegija privilegija10 = new Privilegija();
+        privilegija10.setNazivPrivilegije("preuzimanje-svih-zadaca");
+        privilegija10.setUloge(uloga);
     }
 
 

@@ -34,7 +34,7 @@ public class KorisnikPrivilegija {
 
     
     @Test
-    public void testProfesorImaPrivilegijuIzmjeneKreianogKviza() throws Exception {
+    public void testStudentImaPrivilegijuPregledaTerminaIspita() throws Exception {
         
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         

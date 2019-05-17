@@ -332,6 +332,8 @@ public class DodavanjePodataka {
             }
         }
         uloga.clear();
+
+        uloga.add(uloga1);
     }
 
 

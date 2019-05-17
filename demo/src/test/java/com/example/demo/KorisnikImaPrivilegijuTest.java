@@ -167,4 +167,10 @@ public class KorisnikImaPrivilegijuTest {
         assertThat(uloga.imaPrivilegiju("uvid-u-rezultate-anketa")).isEqualTo(true);
     }
 
+    @Test
+    public void testProfesorNemaPrivilegijuPregledaSvihKorisnikaSistema() throws Exception {
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertThat(uloga.imaPrivilegiju("pregled-svih-korisnika-sistema")).isEqualTo(false);
+    }
+
 }

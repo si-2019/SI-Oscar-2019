@@ -21,23 +21,18 @@ public class PrivilegijaTest {
     private PrivilegijaRepozitorij privilegijaRepozitorij;
 
    @Test
-	public void testStudentskaSluzbaImaMogucnostBrisanjaObavjestenja() {
-        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
-        assertEquals(true, (uloga.imaPrivilegiju("brisanje-obavjestenja")));
-        
-    }
-    @Test
-	public void tesProfesorImaMogucnostBrisanjaObavjestenja() {
-        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertEquals(true, (uloga.imaPrivilegiju("brisanje-obavjestenja")));
-        
-    }
-    @Test
-	public void testAsistentImaMogucnostBrisanjaObavjestenja() {
+	public void testAsistentImaMogucnostEditovanjaObavjestenja() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertEquals(true, (uloga.imaPrivilegiju("brisanje-obavjestenja")));
+        assertEquals(true, (uloga.imaPrivilegiju("editovanje-komentara")));
         
     }
- 
+    @Test
+	public void tesPostojiPrivilegija() {
+        boolean postoji_privilegija=privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-komentara");
+        assertEquals(true, postoji_privilegija);
+        
+    }
+  
+    
 
 }

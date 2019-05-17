@@ -19,22 +19,24 @@ public class PrivilegijaTest {
     private OdsjekRepozitorij odsjekRepozitorij;
     @Autowired
     private PrivilegijaRepozitorij privilegijaRepozitorij;
-    
+
    @Test
-	public void testProfesorImaMogucnostOstavljanjaKomentaraNaZadace() {
-        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertEquals(true, (uloga.imaPrivilegiju("ostavljanje-komentara-na-zadace")));
+	public void testStudentskaSluzbaImaMogucnostBrisanjaObavjestenja() {
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+        assertEquals(true, (uloga.imaPrivilegiju("brisanje-obavjestenja")));
         
     }
     @Test
-	public void testPostojiPrivilegija() {
-        boolean nadji_privilegiju=privilegijaRepozitorij.existsBynazivPrivilegije("ostavljanje-komentara-na-zadace");
-        assertEquals(true, nadji_privilegiju);
+	public void tesProfesorImaMogucnostBrisanjaObavjestenja() {
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertEquals(true, (uloga.imaPrivilegiju("brisanje-obavjestenja")));
+        
     }
     @Test
-	public void testPostojiUloga() {
-        boolean profesor=ulogaRepozitorij.existsBynazivUloge(ImenaUloga.PROFESOR);
-        assertEquals(true, profesor);
+	public void testAsistentImaMogucnostBrisanjaObavjestenja() {
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        assertEquals(true, (uloga.imaPrivilegiju("brisanje-obavjestenja")));
+        
     }
  
 

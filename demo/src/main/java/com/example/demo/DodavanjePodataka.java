@@ -310,6 +310,7 @@ public class DodavanjePodataka {
         uloga.clear();
 
         uloga.add(uloga1);
+        uloga.add(uloga3);
 
         Privilegija privilegija11 = new Privilegija();
         privilegija11.setNazivPrivilegije("uvid-u-rezultate-anketa");

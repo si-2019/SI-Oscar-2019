@@ -286,10 +286,28 @@ public class DodavanjePodataka {
         uloga.clear();
 
         uloga.add(uloga1);
-        
+
         Privilegija privilegija10 = new Privilegija();
         privilegija10.setNazivPrivilegije("preuzimanje-svih-zadaca");
         privilegija10.setUloge(uloga);
+
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("preuzimanje-svih-zadaca")) privilegijaRepozitorij.save(privilegija10);
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("preuzimanje-svih-zadaca").getUloge();
+            boolean trebaDodati = true;
+            for (Uloga u: noveUloge){
+                for (Uloga u1: uloga){
+                    if(u.getNazivUloge().equals(u1.getNazivUloge())) trebaDodati = false;
+                }
+            }
+            if(trebaDodati){
+                noveUloge.add(uloga1);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("preuzimanje-svih-zadaca").getId());
+                privilegija10.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija10);
+            }
+        }
+        uloga.clear();
     }
 
 

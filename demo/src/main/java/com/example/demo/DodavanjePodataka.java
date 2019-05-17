@@ -262,6 +262,7 @@ public class DodavanjePodataka {
         uloga.clear();
 
         uloga.add(uloga1);
+        uloga.add(uloga3);
 
         Privilegija privilegija9 = new Privilegija();
         privilegija9.setNazivPrivilegije("ostavljanje-komentara-na-rad-studenata");

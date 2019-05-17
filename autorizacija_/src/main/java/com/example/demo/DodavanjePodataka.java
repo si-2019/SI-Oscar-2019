@@ -341,7 +341,34 @@ public class DodavanjePodataka {
         p.setUloge(nove_uloge);
         privilegijaRepozitorij.save(p);
 
+        uloge = new ArrayList<>();
+        nove_uloge = new ArrayList<>();
 
+        Privilegija editovanje_komentara=new Privilegija();
+        uloge.add(asistent);
+        editovanje_komentara.setNazivPrivilegije("editovanje-komentara");
+        editovanje_komentara.setUloge(uloge);
+        
+        if(privilegijaRepozitorij.findBynazivPrivilegije("editovanje-komentara")==null){
+        privilegijaRepozitorij.save(editovanje_komentara);
+        }
+        else{
+        editovanje_komentara=privilegijaRepozitorij.findBynazivPrivilegije("editovanje-komentara");
+        nove_uloge=editovanje_komentara.getUloge();
+        for(Uloga u:nove_uloge){
+        for(Uloga u1:uloge){
+        if(u.getNazivUloge()==u1.getNazivUloge()){
+        treba_dodati=false;
+        }
+        }
+        }
+        if(treba_dodati){
+        nove_uloge.add(asistent);
+        privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("editovanje-komentara").getId());
+        editovanje_komentara.setUloge(nove_uloge);
+        privilegijaRepozitorij.save(editovanje_komentara);
+        }
+        }    
 }
        
 

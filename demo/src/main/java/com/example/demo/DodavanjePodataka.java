@@ -326,7 +326,6 @@ public class DodavanjePodataka {
             }
             if(trebaDodati){
                 noveUloge.add(uloga1);
-                noveUloge.add(uloga3);
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("uvid-u-rezultate-anketa").getId());
                 privilegija11.setUloge(noveUloge);
                 privilegijaRepozitorij.save(privilegija11);

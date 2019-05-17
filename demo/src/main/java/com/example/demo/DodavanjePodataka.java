@@ -314,6 +314,25 @@ public class DodavanjePodataka {
         Privilegija privilegija11 = new Privilegija();
         privilegija11.setNazivPrivilegije("uvid-u-rezultate-anketa");
         privilegija11.setUloge(uloga);
+
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("uvid-u-rezultate-anketa")) privilegijaRepozitorij.save(privilegija11);
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("uvid-u-rezultate-anketa").getUloge();
+            boolean trebaDodati = true;
+            for (Uloga u: noveUloge){
+                for (Uloga u1: uloga){
+                    if(u.getNazivUloge().equals(u1.getNazivUloge())) trebaDodati = false;
+                }
+            }
+            if(trebaDodati){
+                noveUloge.add(uloga1);
+                noveUloge.add(uloga3);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("uvid-u-rezultate-anketa").getId());
+                privilegija11.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija11);
+            }
+        }
+        uloga.clear();
     }
 
 

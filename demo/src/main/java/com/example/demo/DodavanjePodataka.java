@@ -279,6 +279,7 @@ public class DodavanjePodataka {
             }
             if(trebaDodati){
                 noveUloge.add(uloga1);
+                noveUloge.add(uloga3);
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("ostavljanje-komentara-na-rad-studenata").getId());
                 privilegija9.setUloge(noveUloge);
                 privilegijaRepozitorij.save(privilegija9);

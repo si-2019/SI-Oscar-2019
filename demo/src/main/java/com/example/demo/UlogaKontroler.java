@@ -17,7 +17,15 @@ public class UlogaKontroler {
     public UlogaKontroler(UlogaRepozitorij ulogaRepozitorij) {
         this.ulogaRepozitorij = ulogaRepozitorij;
     }
-
+ @RequestMapping(value = "/uloge", method = RequestMethod.GET)
+    public List<String> getAllUloge() {
+        List<Uloga> uloge = ulogaRepozitorij.findAll();
+        List<String> povratna = new ArrayList<String>();
+        for(Uloga u : uloge) {
+            povratna.add(u.getNazivUloge().toString());
+        }
+        return povratna;
+    }
     @RequestMapping(value = "/{idUloge}/{privilegija}", method = RequestMethod.GET)
     public boolean ulogaImaPrivilegiju(@PathVariable Long idUloge, @PathVariable String privilegija) {
         if(ulogaRepozitorij.findById(idUloge).equals(Optional.empty())) {

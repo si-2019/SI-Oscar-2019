@@ -20,6 +20,19 @@ public class PrivilegijaTest {
     @Autowired
     private PrivilegijaRepozitorij privilegijaRepozitorij;
 
+    
+    @Test
+	public void testPostojiPrivilegija() {
+        boolean postoji_privilegija=privilegijaRepozitorij.existsBynazivPrivilegije("prikaz-kalendara");
+        assertEquals(true, postoji_privilegija);
+    }
+
+   @Test
+	public void testStudentImaMogucnostPrikazaKalendara() {
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        assertEquals(true, (uloga.imaPrivilegiju("prikaz-kalendara")));
+    }
  
 
 }
+

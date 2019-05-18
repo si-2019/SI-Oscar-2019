@@ -344,7 +344,7 @@ public class DodavanjePodataka {
         treba_dodati=true;
 
         Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("brisanje-obavjestenja");
-        uloge=nove_uloge;
+        uloge=p.getUloge();
         nove_uloge.add(studentska_sluzba);
         for(Uloga u:nove_uloge){
             for(Uloga u1:uloge){

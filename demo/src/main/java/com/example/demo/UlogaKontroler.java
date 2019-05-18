@@ -25,4 +25,13 @@ public class UlogaKontroler {
         }
         return ulogaRepozitorij.findById(idUloge).get().imaPrivilegiju(privilegija);
     }
+   @RequestMapping(value = "/uloge", method = RequestMethod.GET)
+    public List<String> getAllUloge() {
+        List<Uloga> uloge = ulogaRepozitorij.findAll();
+        List<String> povratna = new ArrayList<String>();
+        for(Uloga u : uloge) {
+            povratna.add(u.getNazivUloge().toString());
+        }
+        return povratna;
+    }
 }

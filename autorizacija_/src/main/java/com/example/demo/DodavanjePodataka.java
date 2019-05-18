@@ -93,7 +93,8 @@ public class DodavanjePodataka {
         }
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
-        
+        treba_dodati=true;
+
         Privilegija registrovanje_casa=new Privilegija();
         uloge.add(profesor);
         registrovanje_casa.setNazivPrivilegije("registrovanje-casa");
@@ -124,7 +125,8 @@ public class DodavanjePodataka {
 
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
-        
+        treba_dodati=true;
+
         Privilegija editovanje_termina_ispita=new Privilegija();
         uloge.add(profesor);
         editovanje_termina_ispita.setNazivPrivilegije("editovanje-termina-ispita");
@@ -181,6 +183,7 @@ public class DodavanjePodataka {
         }
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
+        treba_dodati=true;
 
         Privilegija kreiranje_obavjestenja=new Privilegija();
         uloge.add(asistent);
@@ -213,6 +216,7 @@ public class DodavanjePodataka {
         }
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
+        treba_dodati=true;
 
         Privilegija brisanje_obavjestenja=new Privilegija();
         uloge.add(asistent);
@@ -245,6 +249,7 @@ public class DodavanjePodataka {
         }
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
+        treba_dodati=true;
 
         Privilegija editovanje_postavljenih_obavjestenja=new Privilegija();
         uloge.add(admin);
@@ -275,6 +280,7 @@ public class DodavanjePodataka {
         }
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
+        treba_dodati=true;
 
         Privilegija unosenje_bodova_ispita=new Privilegija();
         uloge.add(profesor);
@@ -306,6 +312,7 @@ public class DodavanjePodataka {
 
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
+        treba_dodati=true;
 
         Privilegija ostavljanje_komentara_na_zadace=new Privilegija();
         uloge.add(profesor);
@@ -334,15 +341,26 @@ public class DodavanjePodataka {
         }        
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
+        treba_dodati=true;
 
         Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("brisanje-obavjestenja");
-        nove_uloge=p.getUloge(); 
+        uloge=nove_uloge;
         nove_uloge.add(studentska_sluzba);
-        p.setUloge(nove_uloge);
-        privilegijaRepozitorij.save(p);
+        for(Uloga u:nove_uloge){
+            for(Uloga u1:uloge){
+            if(u.getNazivUloge()==u1.getNazivUloge()){
+            treba_dodati=false;
+            }
+        }
+        }
+            if(treba_dodati){
+            p.setUloge(nove_uloge);
+            privilegijaRepozitorij.save(p);
+         }
 
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
+        treba_dodati=true;
 
         Privilegija editovanje_komentara=new Privilegija();
         uloge.add(asistent);
@@ -372,7 +390,7 @@ public class DodavanjePodataka {
 
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
-
+        treba_dodati=true;
         Privilegija prikaz_kalendara=new Privilegija();
         uloge.add(student);
         prikaz_kalendara.setNazivPrivilegije("prikaz-kalendara");

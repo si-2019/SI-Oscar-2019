@@ -138,7 +138,7 @@ public class DodavanjePodataka {
             privilegijaRepozitorij.save(privilegija9);
 
         uloga.clear();
-        uloga.add(uloga3);
+        uloga.add(uloga1);
         Privilegija privilegija10 = new Privilegija();
         privilegija10.setNazivPrivilegije("kreiranje-grupa");
         privilegija10.setUloge(uloga);
@@ -146,7 +146,7 @@ public class DodavanjePodataka {
             privilegijaRepozitorij.save(privilegija10);
 
         uloga.clear();
-        uloga.add(uloga3);
+        uloga.add(uloga1);
         Privilegija privilegija11 = new Privilegija();
         privilegija11.setNazivPrivilegije("pristup-grupama");
         privilegija11.setUloge(uloga);
@@ -154,7 +154,7 @@ public class DodavanjePodataka {
             privilegijaRepozitorij.save(privilegija11);
 
         uloga.clear();
-        uloga.add(uloga3);
+        uloga.add(uloga1);
         Privilegija privilegija12 = new Privilegija();
         privilegija12.setNazivPrivilegije("pregled-komentara");
         privilegija12.setUloge(uloga);
@@ -162,7 +162,8 @@ public class DodavanjePodataka {
             privilegijaRepozitorij.save(privilegija12);
 
         uloga.clear();
-        uloga.add(uloga2);
+         Uloga uloga4 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        uloga.add(uloga4);
         Privilegija privilegija13 = new Privilegija();
         privilegija13.setNazivPrivilegije("pristup-informacijama");
         privilegija13.setUloge(uloga);
@@ -170,7 +171,7 @@ public class DodavanjePodataka {
             privilegijaRepozitorij.save(privilegija13);
 
         uloga.clear();
-        uloga.add(uloga2);
+        uloga.add(uloga4);
         Privilegija privilegija14 = new Privilegija();
         privilegija14.setNazivPrivilegije("pregled-termina");
         privilegija14.setUloge(uloga);

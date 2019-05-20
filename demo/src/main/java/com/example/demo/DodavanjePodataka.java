@@ -138,7 +138,7 @@ public class DodavanjePodataka {
             privilegijaRepozitorij.save(privilegija9);
 
         uloga.clear();
-        uloga.add(uloga3);
+        uloga.add(uloga1);
         Privilegija privilegija10 = new Privilegija();
         privilegija10.setNazivPrivilegije("kreiranje-grupa");
         privilegija10.setUloge(uloga);

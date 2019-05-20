@@ -160,9 +160,10 @@ public class DodavanjePodataka {
         privilegija12.setUloge(uloga);
         if (privilegijaRepozitorij.findBynazivPrivilegije("pregled-komentara") == null)
             privilegijaRepozitorij.save(privilegija12);
-Uloga uloga3 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        
+Uloga uloga4 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         uloga.clear();
-        uloga.add(uloga3);
+        uloga.add(uloga4);
         Privilegija privilegija13 = new Privilegija();
         privilegija13.setNazivPrivilegije("pristup-informacijama");
         privilegija13.setUloge(uloga);

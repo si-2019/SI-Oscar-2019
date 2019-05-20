@@ -3,6 +3,8 @@ package com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@Import(SwaggerConfig.class)
+
 @SpringBootApplication
 public class DemoApplication {
 

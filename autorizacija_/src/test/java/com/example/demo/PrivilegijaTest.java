@@ -21,7 +21,7 @@ public class PrivilegijaTest {
     private PrivilegijaRepozitorij privilegijaRepozitorij;
 
    @Test
-	public void testAsistentImaMogucnostEditovanjaObavjestenja() {
+	public void testAsistentImaMogucnostEditovanjaKomentara() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         assertEquals(true, (uloga.imaPrivilegiju("editovanje-komentara")));
         

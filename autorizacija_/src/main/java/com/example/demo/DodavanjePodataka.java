@@ -221,6 +221,7 @@ public class DodavanjePodataka {
         Privilegija brisanje_obavjestenja=new Privilegija();
         uloge.add(asistent);
         uloge.add(profesor);
+        uloge.add(studentska_sluzba);
         brisanje_obavjestenja.setNazivPrivilegije("brisanje-obavjestenja");
         brisanje_obavjestenja.setUloge(uloge);
 
@@ -240,6 +241,7 @@ public class DodavanjePodataka {
             if(treba_dodati){
                 nove_uloge.add(asistent);
                 nove_uloge.add(profesor);
+                nove_uloge.add(studentska_sluzba);
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-obavjestenja").getId());
                 brisanje_obavjestenja.setUloge(nove_uloge);
                 privilegijaRepozitorij.save(brisanje_obavjestenja);
@@ -339,24 +341,7 @@ public class DodavanjePodataka {
         privilegijaRepozitorij.save(ostavljanje_komentara_na_zadace);
         }
         }        
-        uloge = new ArrayList<>();
-        nove_uloge = new ArrayList<>();
-        treba_dodati=true;
-
-        Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("brisanje-obavjestenja");
-        uloge=p.getUloge();
-        nove_uloge.add(studentska_sluzba);
-        for(Uloga u:nove_uloge){
-            for(Uloga u1:uloge){
-            if(u.getNazivUloge()==u1.getNazivUloge()){
-            treba_dodati=false;
-            }
-        }
-        }
-            if(treba_dodati){
-            p.setUloge(nove_uloge);
-            privilegijaRepozitorij.save(p);
-         }
+      
 
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();

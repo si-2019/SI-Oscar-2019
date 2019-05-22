@@ -223,4 +223,9 @@ public class KorisnikImaPrivilegijuTest {
         assertThat(uloga.imaPrivilegiju("dizanje-bana")).isEqualTo(false);
     }
 
+    @Test
+    public void testProfesorImaPrivilegijuDodavanjaMaterijala() throws Exception {
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertThat(uloga.imaPrivilegiju("dodavanje-materijala")).isEqualTo(true);
+    }
 }

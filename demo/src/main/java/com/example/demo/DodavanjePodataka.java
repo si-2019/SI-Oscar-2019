@@ -446,6 +446,25 @@ public class DodavanjePodataka {
 
         Privilegija pisanje_komentara_na_forumu = new Privilegija();
         pisanje_komentara_na_forumu.setNazivPrivilegije("pisanje-komentara-na-forumu");
+        pisanje_komentara_na_forumu.setUloge(uloga);
+
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("pisanje-komentara-na-forumu")) privilegijaRepozitorij.save(pisanje_komentara_na_forumu);
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("pisanje-komentara-na-forumu").getUloge();
+            boolean trebaDodati = true;
+            for (Uloga u: noveUloge){
+                for (Uloga u1: uloga){
+                    if(u.getNazivUloge().equals(u1.getNazivUloge())) trebaDodati = false;
+                }
+            }
+            if(trebaDodati){
+                noveUloge.add(student);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("pisanje-komentara-na-forumu").getId());
+                pisanje_komentara_na_forumu.setUloge(noveUloge);
+                privilegijaRepozitorij.save(pisanje_komentara_na_forumu);
+            }
+        }
+        uloga.clear();
 
         //Privilegije studentske sluzbe
 

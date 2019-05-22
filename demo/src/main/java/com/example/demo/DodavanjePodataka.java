@@ -448,6 +448,25 @@ public class DodavanjePodataka {
 
         Privilegija upis_studenata_u_semestar = new Privilegija();
         upis_studenata_u_semestar.setNazivPrivilegije("upis-studenata-u-semestar");
+        upis_studenata_u_semestar.setUloge(uloga);
+
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("upis-studenata-u-semestar")) privilegijaRepozitorij.save(upis_studenata_u_semestar);
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("upis-studenata-u-semestar").getUloge();
+            boolean trebaDodati = true;
+            for (Uloga u: noveUloge){
+                for (Uloga u1: uloga){
+                    if(u.getNazivUloge().equals(u1.getNazivUloge())) trebaDodati = false;
+                }
+            }
+            if(trebaDodati){
+                noveUloge.add(studentska_sluzba);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("upis-studenata-u-semestar").getId());
+                upis_studenata_u_semestar.setUloge(noveUloge);
+                privilegijaRepozitorij.save(upis_studenata_u_semestar);
+            }
+        }
+        uloga.clear();
 
 
 

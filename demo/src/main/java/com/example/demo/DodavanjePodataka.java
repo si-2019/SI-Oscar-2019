@@ -446,6 +446,9 @@ public class DodavanjePodataka {
 
         uloga.add(studentska_sluzba);
 
+        Privilegija upis_studenata_u_semestar = new Privilegija();
+        upis_studenata_u_semestar.setNazivPrivilegije("upis-studenata-u-semestar");
+
 
 
 

@@ -240,4 +240,10 @@ public class KorisnikImaPrivilegijuTest {
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         assertThat(uloga.imaPrivilegiju("brisanje-materijala")).isEqualTo(true);
     }
+
+    @Test
+    public void testAsistentNemaPrivilegijuUnosaFinansijskihObaveza() throws Exception {
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        assertThat(uloga.imaPrivilegiju("unos-finansijskih-obaveza")).isEqualTo(false);
+    }
 }

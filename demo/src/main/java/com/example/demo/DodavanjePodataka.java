@@ -416,7 +416,7 @@ public class DodavanjePodataka {
         }
         uloga.clear();
 
-        //Privilegije studenta - novo
+        //Privilegije studenta
 
         uloga.add(student);
 
@@ -441,6 +441,10 @@ public class DodavanjePodataka {
             }
         }
         uloga.clear();
+
+        //Privilegije studentske sluzbe
+
+        uloga.add(studentska_sluzba);
 
 
 

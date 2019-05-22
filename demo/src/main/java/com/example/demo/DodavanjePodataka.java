@@ -342,6 +342,8 @@ public class DodavanjePodataka {
         uloga.clear();
 
         uloga.add(asistent);
+        Privilegija brisanje_materijala = new Privilegija();
+        brisanje_materijala.setNazivPrivilegije("brisanje-materijala");
 
 
         //Privilegije admina

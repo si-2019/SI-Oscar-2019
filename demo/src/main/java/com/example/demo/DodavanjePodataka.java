@@ -444,6 +444,9 @@ public class DodavanjePodataka {
 
         uloga.add(student);
 
+        Privilegija pisanje_komentara_na_forumu = new Privilegija();
+        pisanje_komentara_na_forumu.setNazivPrivilegije("pisanje-komentara-na-forumu");
+
         //Privilegije studentske sluzbe
 
         uloga.add(studentska_sluzba);

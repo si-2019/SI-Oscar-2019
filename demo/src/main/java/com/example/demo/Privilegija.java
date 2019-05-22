@@ -1,8 +1,8 @@
 package com.example.demo;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
-import javax.persistence.*;
 
 @Entity
 @Table(name = "Privilegija")

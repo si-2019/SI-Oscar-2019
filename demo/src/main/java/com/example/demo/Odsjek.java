@@ -18,6 +18,11 @@ public class Odsjek {
 
     public Odsjek() {}
 
+    public Odsjek(Long id, String nazivOdsjeka) {
+        this.id = id;
+        this.nazivOdsjeka = nazivOdsjeka;
+    }
+
     public Long getId() {
         return id;
     }

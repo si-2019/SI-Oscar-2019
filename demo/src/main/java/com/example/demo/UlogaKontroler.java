@@ -38,4 +38,15 @@ public class UlogaKontroler {
         return povratna;
     }
 
+    @RequestMapping(value = "/{idUloge}/privilegije", method = RequestMethod.GET)
+    public List<String> privilegijeUloge (@PathVariable Long idUloge) {
+        List<Privilegija> privilegije = ulogaRepozitorij.findById(idUloge).get().getPrivilegije();
+        List<String> povratna = new ArrayList<String>();
+        for (Privilegija p : privilegije){
+            povratna.add(p.getNazivPrivilegije());
+        }
+        return povratna;
+
+    }
+
 }

@@ -341,6 +341,8 @@ public class DodavanjePodataka {
         }
         uloga.clear();
 
+        uloga.add(asistent);
+
 
         //Privilegije admina
 

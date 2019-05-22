@@ -468,6 +468,8 @@ public class DodavanjePodataka {
         }
         uloga.clear();
 
+        uloga.add(studentska_sluzba);
+
 
 
 

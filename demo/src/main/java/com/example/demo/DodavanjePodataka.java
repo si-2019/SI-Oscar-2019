@@ -268,6 +268,8 @@ public class DodavanjePodataka {
         uloga.clear();
 
         uloga.add(profesor);
+        Privilegija dodavanje_materijala = new Privilegija();
+        dodavanje_materijala.setNazivPrivilegije("dodavanje-materijala");
 
 
         //Privilegije asistenta

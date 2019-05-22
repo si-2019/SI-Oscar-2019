@@ -470,6 +470,9 @@ public class DodavanjePodataka {
 
         uloga.add(studentska_sluzba);
 
+        Privilegija unos_finansijskih_obaveza_studenata = new Privilegija();
+        unos_finansijskih_obaveza_studenata.setNazivPrivilegije("unos-finansijskih-obaveza-studenata");
+
 
 
 

@@ -270,6 +270,25 @@ public class DodavanjePodataka {
         uloga.add(profesor);
         Privilegija dodavanje_materijala = new Privilegija();
         dodavanje_materijala.setNazivPrivilegije("dodavanje-materijala");
+        dodavanje_materijala.setUloge(uloga);
+
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("dodavanje-materijala")) privilegijaRepozitorij.save(dodavanje_materijala);
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("dodavanje-materijala").getUloge();
+            boolean trebaDodati = true;
+            for (Uloga u: noveUloge){
+                for (Uloga u1: uloga){
+                    if(u.getNazivUloge().equals(u1.getNazivUloge())) trebaDodati = false;
+                }
+            }
+            if(trebaDodati){
+                noveUloge.add(profesor);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("dodavanje-materijala").getId());
+                dodavanje_materijala.setUloge(noveUloge);
+                privilegijaRepozitorij.save(dodavanje_materijala);
+            }
+        }
+        uloga.clear();
 
 
         //Privilegije asistenta

@@ -28,12 +28,9 @@ public class DodavanjePodataka {
     public void dodaj (ApplicationReadyEvent event){
         dodajUloge();
         dodajPrivilegije();
-        dodajOdsjek();
     }
 
-
     private void dodajUloge() {
-
         Uloga uloga1 = new Uloga();
         uloga1.setNazivUloge(ImenaUloga.ADMIN);
         if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.ADMIN)) ulogaRepozitorij.save(uloga1);
@@ -53,7 +50,6 @@ public class DodavanjePodataka {
         Uloga uloga5 = new Uloga();
         uloga5.setNazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
         if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA)) ulogaRepozitorij.save(uloga5);
-
     }
 
 
@@ -710,21 +706,106 @@ public class DodavanjePodataka {
             }
         }
         uloga.clear();
+      
+      uloga = new ArrayList<>();
+        Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        uloga.add(uloga1);
+
+        Privilegija privilegija1 = new Privilegija();
+        privilegija1.setNazivPrivilegije("kreiranje-zadace");
+        privilegija1.setUloge(uloga);
 
 
 
+
+        if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-zadace")==null) 
+          privilegijaRepozitorij.save(privilegija1);
+
+
+
+
+        uloga = new ArrayList<>();
+        Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+        uloga.add(uloga2);
+        Privilegija privilegija2 = new Privilegija();
+        privilegija2.setNazivPrivilegije("kreiranje-korisnika");
+        privilegija2.setUloge(uloga);
+
+        if (privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-korisnika") == null)
+            privilegijaRepozitorij.save(privilegija2);
+
+        uloga.clear();
+        uloga.add(uloga1);
+        Privilegija privilegija3 = new Privilegija();
+        privilegija3.setNazivPrivilegije("brisanje-termina-ispita");
+        privilegija3.setUloge(uloga);
+
+
+        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-termina-ispita")==null) privilegijaRepozitorij.save(privilegija3);
+        
+        Privilegija privilegija4 = new Privilegija();
+        privilegija4.setNazivPrivilegije("izmjena-dodijeljenih-bodova");
+        privilegija4.setUloge(uloga);
+
+        if(privilegijaRepozitorij.findBynazivPrivilegije("izmjena-dodijeljenih-bodova")==null) privilegijaRepozitorij.save(privilegija4);
+
+
+         
+       
+
+
+   
+        Privilegija privilegija5 = new Privilegija();
+        privilegija5.setNazivPrivilegije("izmjena-kviza");
+        privilegija5.setUloge(uloga);
+
+
+        if(privilegijaRepozitorij.findBynazivPrivilegije("izmjena-kviza")==null) privilegijaRepozitorij.save(privilegija5);
+
+
+
+        uloga.clear();
+        Uloga uloga3 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        uloga.add(uloga3);
+        Privilegija privilegija6 = new Privilegija();
+        privilegija6.setNazivPrivilegije("izmjena-bodova-za-zadace");
+        privilegija6.setUloge(uloga);
+
+        if (privilegijaRepozitorij.findBynazivPrivilegije("izmjena-bodova-za-zadace") == null)
+            privilegijaRepozitorij.save(privilegija6);
+
+        uloga.clear();
+        uloga.add(uloga2);
+        Privilegija privilegija7 = new Privilegija();
+        privilegija7.setNazivPrivilegije("povezivanje-privilegija-uloga");
+        privilegija7.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("povezivanje-privilegija-uloga") == null)
+            privilegijaRepozitorij.save(privilegija7);
+
+
+        uloga.clear();
+        uloga.add(uloga1);
+        Privilegija privilegija8 = new Privilegija();
+        privilegija8.setNazivPrivilegije("evidencija-prijavljenih-studenata");
+        privilegija8.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("evidencija-prijavljenih-studenata") == null)
+            privilegijaRepozitorij.save(privilegija8);
+
+        uloga.clear();
+        uloga.add(uloga1);
+        Privilegija privilegija9 = new Privilegija();
+        privilegija9.setNazivPrivilegije("brisanje-teme");
+        privilegija9.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("brisanje-teme") == null)
+            privilegijaRepozitorij.save(privilegija9);
+
+        uloga.clear();
+        uloga.add(uloga3);
+        Privilegija privilegija10 = new Privilegija();
+        privilegija10.setNazivPrivilegije("unos-rezultata");
+        privilegija10.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("unos-rezultata") == null)
+            privilegijaRepozitorij.save(privilegija10);
 
     }
-
-
-    private void dodajOdsjek() {
-        Odsjek odsjek1 = new Odsjek();
-        odsjek1.setNazivOdsjeka("RI");
-        if(!odsjekRepozitorij.existsBynazivOdsjeka("RI")) odsjekRepozitorij.save(odsjek1);
-
-        Odsjek odsjek2 = new Odsjek();
-        odsjek2.setNazivOdsjeka("TK");
-        if(!odsjekRepozitorij.existsBynazivOdsjeka("TK")) odsjekRepozitorij.save(odsjek2);
-    }
-
 }

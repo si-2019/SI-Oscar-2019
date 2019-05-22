@@ -212,75 +212,11 @@ public class KorisnikImaPrivilegijuTest {
     //novo
 
     @Test
-    public void testStudentImaPrivilegijuPisanjaKomentaraNaForumu() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        assertThat(uloga.imaPrivilegiju("pisanje-komentara-na-forumu")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentNemaPrivilegijuDodavanjaUloge() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        assertThat(uloga.imaPrivilegiju("dodavanje-uloge")).isEqualTo(false);
-    }
-
-    @Test
     public void testStudentImaPrivilegijuPopunjavanjaAnkete() throws Exception {
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         assertThat(uloga.imaPrivilegiju("popunjavanje-ankete")).isEqualTo(true);
     }
 
-    @Test
-    public void testStudentNemaPrivilegijuDizanjaBana() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        assertThat(uloga.imaPrivilegiju("dizanje-bana")).isEqualTo(false);
-    }
 
-    @Test
-    public void testProfesorImaPrivilegijuDodavanjaMaterijala() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("dodavanje-materijala")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorNemaPrivilegijuUnosaFinansijskihObaveza() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("unos-finansijskih-obaveza")).isEqualTo(false);
-    }
-
-    @Test
-    public void testAsistentImaPrivilegijuBrisanjaMaterijala() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(uloga.imaPrivilegiju("brisanje-materijala")).isEqualTo(true);
-    }
-
-    @Test
-    public void testAsistentNemaPrivilegijuUnosaFinansijskihObaveza() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(uloga.imaPrivilegiju("unos-finansijskih-obaveza")).isEqualTo(false);
-    }
-
-    @Test
-    public void testStudentskaSluzbaImaPrivilegijuUpisaStudenataUSemestar() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
-        assertThat(uloga.imaPrivilegiju("upis-studenata-u-semestar")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentskaSluzbaNemaPrivilegijuBrisanjaKorisnika() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
-        assertThat(uloga.imaPrivilegiju("brisanje-korisnika")).isEqualTo(false);
-    }
-
-    @Test
-    public void testStudentskaSluzbaImaPrivilegijuUnosaFinansijskihObavezaStudenata() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
-        assertThat(uloga.imaPrivilegiju("unos-finansijskih-obaveza-studenata")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentskaSluzbaNemaPrivilegijuBrisanjaMaterijala() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
-        assertThat(uloga.imaPrivilegiju("brisanje-materijala")).isEqualTo(false);
-    }
 
 }

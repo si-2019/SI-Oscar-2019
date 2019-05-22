@@ -342,6 +342,7 @@ public class DodavanjePodataka {
         uloga.clear();
 
         uloga.add(asistent);
+        
         Privilegija brisanje_materijala = new Privilegija();
         brisanje_materijala.setNazivPrivilegije("brisanje-materijala");
         brisanje_materijala.setUloge(uloga);
@@ -418,6 +419,7 @@ public class DodavanjePodataka {
         //Privilegije studenta - novo
 
         uloga.add(student);
+
         Privilegija popunjavanje_ankete = new Privilegija();
         popunjavanje_ankete.setNazivPrivilegije("popunjavanje-ankete");
         popunjavanje_ankete.setUloge(uloga);

@@ -372,6 +372,8 @@ public class DodavanjePodataka {
         //Privilegije studenta - novo
 
         uloga.add(student);
+        Privilegija popunjavanje_ankete = new Privilegija();
+        popunjavanje_ankete.setNazivPrivilegije("popunjavanje-ankete");
 
 
 

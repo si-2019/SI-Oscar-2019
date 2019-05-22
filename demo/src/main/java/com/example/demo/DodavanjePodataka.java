@@ -344,6 +344,25 @@ public class DodavanjePodataka {
         uloga.add(asistent);
         Privilegija brisanje_materijala = new Privilegija();
         brisanje_materijala.setNazivPrivilegije("brisanje-materijala");
+        brisanje_materijala.setUloge(uloga);
+
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("brisanje-materijala")) privilegijaRepozitorij.save(brisanje_materijala);
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("brisanje-materijala").getUloge();
+            boolean trebaDodati = true;
+            for (Uloga u: noveUloge){
+                for (Uloga u1: uloga){
+                    if(u.getNazivUloge().equals(u1.getNazivUloge())) trebaDodati = false;
+                }
+            }
+            if(trebaDodati){
+                noveUloge.add(asistent);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-materijala").getId());
+                brisanje_materijala.setUloge(noveUloge);
+                privilegijaRepozitorij.save(brisanje_materijala);
+            }
+        }
+        uloga.clear();
 
 
         //Privilegije admina

@@ -442,6 +442,8 @@ public class DodavanjePodataka {
         }
         uloga.clear();
 
+        uloga.add(student);
+
         //Privilegije studentske sluzbe
 
         uloga.add(studentska_sluzba);

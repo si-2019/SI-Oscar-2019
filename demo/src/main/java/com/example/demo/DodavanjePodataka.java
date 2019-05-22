@@ -87,7 +87,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(profesor);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("editovanje-kreirane-zadace").getId());
                 editovanje_kreirane_zadace.setUloge(noveUloge);
                 privilegijaRepozitorij.save(editovanje_kreirane_zadace);
@@ -114,8 +123,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(asistent);
-                noveUloge.add(profesor);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("pregled-zadace").getId());
                 pregled_zadace.setUloge(noveUloge);
                 privilegijaRepozitorij.save(pregled_zadace);
@@ -141,7 +158,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(profesor);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("editovanje-obavjestenja").getId());
                 editovanje_obavjestenja.setUloge(noveUloge);
                 privilegijaRepozitorij.save(editovanje_obavjestenja);
@@ -167,7 +193,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(profesor);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("editovanje-teme-na-forumu").getId());
                 editovanje_teme_na_forumu.setUloge(noveUloge);
                 privilegijaRepozitorij.save(editovanje_teme_na_forumu);
@@ -194,8 +229,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(profesor);
-                noveUloge.add(asistent);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("ostavljanje-komentara-na-rad-studenata").getId());
                 ostavljanje_komentara_na_rad_studenata.setUloge(noveUloge);
                 privilegijaRepozitorij.save(ostavljanje_komentara_na_rad_studenata);
@@ -221,7 +264,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(profesor);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("preuzimanje-svih-zadaca").getId());
                 preuzimanje_svih_zadaca.setUloge(noveUloge);
                 privilegijaRepozitorij.save(preuzimanje_svih_zadaca);
@@ -248,8 +300,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(profesor);
-                noveUloge.add(asistent);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("uvid-u-rezultate-anketa").getId());
                 uvid_u_rezultate_anketa.setUloge(noveUloge);
                 privilegijaRepozitorij.save(uvid_u_rezultate_anketa);
@@ -275,7 +335,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(profesor);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("uredjivanje-podataka-za-predmet").getId());
                 uredjivanje_podataka_za_predmet.setUloge(noveUloge);
                 privilegijaRepozitorij.save(uredjivanje_podataka_za_predmet);
@@ -300,7 +369,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(profesor);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("dodavanje-materijala").getId());
                 dodavanje_materijala.setUloge(noveUloge);
                 privilegijaRepozitorij.save(dodavanje_materijala);
@@ -329,7 +407,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(asistent);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-kreirane-zadace").getId());
                 brisanje_kreirane_zadace.setUloge(noveUloge);
                 privilegijaRepozitorij.save(brisanje_kreirane_zadace);
@@ -355,7 +442,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(asistent);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("pojedinacna-evidencija-prisustva").getId());
                 pojedinacna_evidencija_prisustva.setUloge(noveUloge);
                 privilegijaRepozitorij.save(pojedinacna_evidencija_prisustva);
@@ -381,7 +477,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(asistent);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-materijala").getId());
                 brisanje_materijala.setUloge(noveUloge);
                 privilegijaRepozitorij.save(brisanje_materijala);
@@ -410,7 +515,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(admin);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-korisnika").getId());
                 brisanje_korisnika.setUloge(noveUloge);
                 privilegijaRepozitorij.save(brisanje_korisnika);
@@ -436,7 +550,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(admin);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("obavjestavanje-korisnika-sistema").getId());
                 obavjestavanje_korisnika_sistema.setUloge(noveUloge);
                 privilegijaRepozitorij.save(obavjestavanje_korisnika_sistema);
@@ -464,7 +587,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(student);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("popunjavanje-ankete").getId());
                 popunjavanje_ankete.setUloge(noveUloge);
                 privilegijaRepozitorij.save(popunjavanje_ankete);
@@ -490,7 +622,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(student);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("pisanje-komentara-na-forumu").getId());
                 pisanje_komentara_na_forumu.setUloge(noveUloge);
                 privilegijaRepozitorij.save(pisanje_komentara_na_forumu);
@@ -518,7 +659,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(studentska_sluzba);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("upis-studenata-u-semestar").getId());
                 upis_studenata_u_semestar.setUloge(noveUloge);
                 privilegijaRepozitorij.save(upis_studenata_u_semestar);
@@ -544,7 +694,16 @@ public class DodavanjePodataka {
                 }
             }
             if(brojac != uloga.size()){
-                noveUloge.add(studentska_sluzba);
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                        trebaDodati = true;
+                    }
+                }
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("unos-finansijskih-obaveza-studenata").getId());
                 unos_finansijskih_obaveza_studenata.setUloge(noveUloge);
                 privilegijaRepozitorij.save(unos_finansijskih_obaveza_studenata);

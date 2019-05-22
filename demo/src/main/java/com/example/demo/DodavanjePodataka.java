@@ -472,6 +472,25 @@ public class DodavanjePodataka {
 
         Privilegija unos_finansijskih_obaveza_studenata = new Privilegija();
         unos_finansijskih_obaveza_studenata.setNazivPrivilegije("unos-finansijskih-obaveza-studenata");
+        unos_finansijskih_obaveza_studenata.setUloge(uloga);
+
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("unos-finansijskih-obaveza-studenata")) privilegijaRepozitorij.save(unos_finansijskih_obaveza_studenata);
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("unos-finansijskih-obaveza-studenata").getUloge();
+            boolean trebaDodati = true;
+            for (Uloga u: noveUloge){
+                for (Uloga u1: uloga){
+                    if(u.getNazivUloge().equals(u1.getNazivUloge())) trebaDodati = false;
+                }
+            }
+            if(trebaDodati){
+                noveUloge.add(studentska_sluzba);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("unos-finansijskih-obaveza-studenata").getId());
+                unos_finansijskih_obaveza_studenata.setUloge(noveUloge);
+                privilegijaRepozitorij.save(unos_finansijskih_obaveza_studenata);
+            }
+        }
+        uloga.clear();
 
 
 

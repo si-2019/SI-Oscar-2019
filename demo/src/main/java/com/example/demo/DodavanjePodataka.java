@@ -267,6 +267,8 @@ public class DodavanjePodataka {
         }
         uloga.clear();
 
+        uloga.add(profesor);
+
 
         //Privilegije asistenta
 

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional; 
 import java.util.List;
 
+
 @RestController
 public class UlogaKontroler {
 
@@ -16,6 +17,14 @@ public class UlogaKontroler {
     @Autowired
     public UlogaKontroler(UlogaRepozitorij ulogaRepozitorij) {
         this.ulogaRepozitorij = ulogaRepozitorij;
+    }
+
+    @RequestMapping(value = "/{idUloge}/{privilegija}", method = RequestMethod.GET)
+    public boolean ulogaImaPrivilegiju(@PathVariable Long idUloge, @PathVariable String privilegija) {
+        if(ulogaRepozitorij.findById(idUloge).equals(Optional.empty())) {
+            return false;
+        }
+        return ulogaRepozitorij.findById(idUloge).get().imaPrivilegiju(privilegija);
     }
 
     @RequestMapping(value = "/uloge", method = RequestMethod.GET)
@@ -27,11 +36,14 @@ public class UlogaKontroler {
         }
         return povratna;
     }
-    @RequestMapping(value="/{idUloge}/{privilegija}", method=RequestMethod.GET)
-    public boolean ulogaImaPrivilegiju(@PathVariable Long idUloge, @PathVariable String privilegija){
-        if(ulogaRepozitorij.findById(idUloge).equals(Optional.empty())){
-            return false;
+
+    @RequestMapping(value = "/{idUloge}/privilegije", method = RequestMethod.GET)
+    public List<String> privilegijeUloge (@PathVariable Long idUloge) {
+        List<Privilegija> privilegije = ulogaRepozitorij.findById(idUloge).get().getPrivilegije();
+        List<String> povratna = new ArrayList<String>();
+        for (Privilegija p : privilegije){
+            povratna.add(p.getNazivPrivilegije());
         }
-        return ulogaRepozitorij.findById(idUloge).get().imaPrivilegiju(privilegija);
+        return povratna;
     }
 }

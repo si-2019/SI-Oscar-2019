@@ -13,11 +13,5 @@ public class KorisnikKontroler {
     public KorisnikKontroler(KorisnikRepozitorij korisnikRepozitorij) {
         this.korisnikRepozitorij = korisnikRepozitorij;
     }
-
-    /*@RequestMapping(value = "/all", method = RequestMethod.GET)
-    public boolean getAll() {
-        Korisnik k = korisnikRepozitorij.findById(Long.valueOf(1)).get();
-        return k.imaPrivilegiju("editovanje-kreirane-zadace");
-
-    }*/
 }
+public class KorisnikKontroler {}

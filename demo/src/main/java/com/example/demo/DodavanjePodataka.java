@@ -58,7 +58,7 @@ public class DodavanjePodataka {
         Uloga studentska_sluzba=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
         Uloga student=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
 
-        int brojac=0;
+        int counter=0;
         boolean treba_dodati=true;
         List<Uloga> uloge = new ArrayList<>();
         List<Uloga> nove_uloge = new ArrayList<>();
@@ -77,11 +77,11 @@ public class DodavanjePodataka {
             for(Uloga u:nove_uloge){
                 for(Uloga u1:uloge){
                     if(u.getNazivUloge()==u1.getNazivUloge()){
-                        brojac++;
+                        counter++;
                     }
                 }
             }
-            if(brojac!=uloge.size()){
+            if(counter!=uloge.size()){
                 for(Uloga u:uloge){
                     for(Uloga u1:nove_uloge){
                         if(u.getNazivUloge()==u1.getNazivUloge()){
@@ -100,7 +100,7 @@ public class DodavanjePodataka {
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
         treba_dodati=true;
-        brojac=0;
+        counter=0;
 
         Privilegija registrovanje_casa=new Privilegija();
         uloge.add(profesor);
@@ -116,11 +116,11 @@ public class DodavanjePodataka {
             for(Uloga u:nove_uloge){
                 for(Uloga u1:uloge){
                     if(u.getNazivUloge()==u1.getNazivUloge()){
-                        brojac++;
+                        counter++;
                     }
                 }
             }
-            if(brojac!=uloge.size()){
+            if(counter!=uloge.size()){
                 for(Uloga u:uloge){
                     for(Uloga u1:nove_uloge){
                         if(u.getNazivUloge()==u1.getNazivUloge()){
@@ -141,7 +141,7 @@ public class DodavanjePodataka {
 
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
-        brojac=0;
+        counter=0;
         treba_dodati=true;
         
         Privilegija editovanje_termina_ispita=new Privilegija();
@@ -158,11 +158,11 @@ public class DodavanjePodataka {
             for(Uloga u:nove_uloge){
                 for(Uloga u1:uloge){
                     if(u.getNazivUloge()==u1.getNazivUloge()){
-                        brojac++;
+                        counter++;
                     }
                 }
             }
-            if(brojac!=uloge.size()){
+            if(counter!=uloge.size()){
                 for(Uloga u:uloge){
                     for(Uloga u1:nove_uloge){
                         if(u.getNazivUloge()==u1.getNazivUloge()){
@@ -179,7 +179,7 @@ public class DodavanjePodataka {
         }
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
-        brojac=0;
+        counter=0;
         treba_dodati=true;
 
         Privilegija brisanje_teme=new Privilegija();
@@ -196,11 +196,11 @@ public class DodavanjePodataka {
             for(Uloga u:nove_uloge){
                 for(Uloga u1:uloge){
                     if(u.getNazivUloge()==u1.getNazivUloge()){
-                        brojac++;
+                        counter++;
                     }
                 }
             }
-            if(brojac!=uloge.size()){
+            if(counter!=uloge.size()){
                 for(Uloga u:uloge){
                     for(Uloga u1:nove_uloge){
                         if(u.getNazivUloge()==u1.getNazivUloge()){
@@ -219,7 +219,7 @@ public class DodavanjePodataka {
         }
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
-        brojac=0;
+        counter=0;
         treba_dodati=true;
 
         Privilegija kreiranje_obavjestenja=new Privilegija();
@@ -237,11 +237,11 @@ public class DodavanjePodataka {
             for(Uloga u:nove_uloge){
                 for(Uloga u1:uloge){
                     if(u.getNazivUloge()==u1.getNazivUloge()){
-                        brojac++;
+                        counter++;
                     }
                 }
             }
-            if(brojac!=uloge.size()){
+            if(counter!=uloge.size()){
                 for(Uloga u:uloge){
                     for(Uloga u1:nove_uloge){
                         if(u.getNazivUloge()==u1.getNazivUloge()){
@@ -261,7 +261,7 @@ public class DodavanjePodataka {
         }
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
-        brojac=0;
+        counter=0;
         treba_dodati=true;
 
         Privilegija brisanje_obavjestenja=new Privilegija();
@@ -280,11 +280,11 @@ public class DodavanjePodataka {
             for(Uloga u:nove_uloge){
                 for(Uloga u1:uloge){
                     if(u.getNazivUloge()==u1.getNazivUloge()){
-                        brojac++;
+                       counter++;
                     }
                 }
             }
-            if(brojac!=uloge.size()){
+            if(counter!=uloge.size()){
                 for(Uloga u:uloge){
                     for(Uloga u1:nove_uloge){
                         if(u.getNazivUloge()==u1.getNazivUloge()){
@@ -302,7 +302,7 @@ public class DodavanjePodataka {
         }
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
-        brojac=0;
+        counter=0;
         treba_dodati=true;
 
         Privilegija editovanje_postavljenih_obavjestenja=new Privilegija();
@@ -319,11 +319,11 @@ public class DodavanjePodataka {
             for(Uloga u:nove_uloge){
                 for(Uloga u1:uloge){
                     if(u.getNazivUloge()==u1.getNazivUloge()){
-                       brojac++;
+                       counter++;
                     }
                 }
             }
-            if(brojac!=uloge.size()){
+            if(counter!=uloge.size()){
                 for(Uloga u:uloge){
                     for(Uloga u1:nove_uloge){
                         if(u.getNazivUloge()==u1.getNazivUloge()){
@@ -342,7 +342,7 @@ public class DodavanjePodataka {
         }
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
-        brojac=0;
+        counter=0;
         treba_dodati=true;
 
         Privilegija unosenje_bodova_ispita=new Privilegija();
@@ -359,12 +359,11 @@ public class DodavanjePodataka {
             for(Uloga u:nove_uloge){
                 for(Uloga u1:uloge){
                     if(u.getNazivUloge()==u1.getNazivUloge()){
-                        brojac++;
+                        counter++;
                     }
                 }
             }
-            if(brojac!=nove_uloge.size()){
-                if(brojac!=uloge.size()){
+                if(counter!=uloge.size()){
                     for(Uloga u:uloge){
                         for(Uloga u1:nove_uloge){
                             if(u.getNazivUloge()==u1.getNazivUloge()){
@@ -379,10 +378,9 @@ public class DodavanjePodataka {
                 privilegijaRepozitorij.save(unosenje_bodova_ispita);
                } 
             }
-        }
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
-        brojac=0;
+        counter=0;
         treba_dodati=true;
 
         Privilegija ostavljanje_komentara_na_zadace=new Privilegija();
@@ -399,12 +397,12 @@ public class DodavanjePodataka {
             for(Uloga u:nove_uloge){
                  for(Uloga u1:uloge){
                       if(u.getNazivUloge()==u1.getNazivUloge()){
-                        brojac++;
+                        counter++;
                       }
                  }
             }
         
-            if(brojac!=uloge.size()){   
+            if(counter!=uloge.size()){   
                 for(Uloga u:uloge){
                     for(Uloga u1:nove_uloge){
                         if(u.getNazivUloge()==u1.getNazivUloge()){
@@ -422,7 +420,7 @@ public class DodavanjePodataka {
         }
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
-        brojac=0;
+        counter=0;
         treba_dodati=true;
 
         Privilegija editovanje_komentara=new Privilegija();
@@ -439,12 +437,12 @@ public class DodavanjePodataka {
             for(Uloga u:nove_uloge){
             for(Uloga u1:uloge){
             if(u.getNazivUloge()==u1.getNazivUloge()){
-                    brojac++;
+                    counter++;
                 }
             }
             }
     
-            if(brojac!=uloge.size()){
+            if(counter!=uloge.size()){
                 for(Uloga u:uloge){
                     for(Uloga u1:nove_uloge){
                         if(u.getNazivUloge()==u1.getNazivUloge()){
@@ -461,7 +459,7 @@ public class DodavanjePodataka {
         }
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
-        brojac=0;
+        counter=0;
         treba_dodati=true;
 
         Privilegija prikaz_kalendara=new Privilegija();
@@ -478,11 +476,11 @@ public class DodavanjePodataka {
             for(Uloga u:nove_uloge){
                 for(Uloga u1:uloge){
                     if(u.getNazivUloge()==u1.getNazivUloge()){
-                        brojac++;
+                        counter++;
                     }
                 }
             }
-                if(brojac!=uloge.size()){
+                if(counter!=uloge.size()){
                     for(Uloga u:uloge){
                         for(Uloga u1:nove_uloge){
                             if(u.getNazivUloge()==u1.getNazivUloge()){
@@ -500,7 +498,7 @@ public class DodavanjePodataka {
     }
         uloge = new ArrayList<>();
         nove_uloge = new ArrayList<>();
-        brojac=0;
+        counter=0;
         treba_dodati=true;
 
         Privilegija uvid_u_komentare=new Privilegija();
@@ -517,11 +515,11 @@ public class DodavanjePodataka {
         for(Uloga u:nove_uloge){
              for(Uloga u1:uloge){
                   if(u.getNazivUloge()==u1.getNazivUloge()){
-                    brojac++;
+                    counter++;
                   }
              }
         }
-        if(brojac!=uloge.size()){
+        if(counter!=uloge.size()){
             for(Uloga u:uloge){
                 for(Uloga u1:nove_uloge){
                     if(u.getNazivUloge()==u1.getNazivUloge()){

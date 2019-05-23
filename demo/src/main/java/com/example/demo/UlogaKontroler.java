@@ -19,6 +19,7 @@ public class UlogaKontroler {
         this.ulogaRepozitorij = ulogaRepozitorij;
     }
 
+
     @RequestMapping(value = "/{idUloge}/{privilegija}", method = RequestMethod.GET)
     public boolean ulogaImaPrivilegiju(@PathVariable Long idUloge, @PathVariable String privilegija) {
         if(ulogaRepozitorij.findById(idUloge).equals(Optional.empty())) {

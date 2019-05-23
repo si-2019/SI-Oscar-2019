@@ -8,6 +8,7 @@ import java.util.List;
 
 @Component
 public class DodavanjePodataka {
+
     private KorisnikRepozitorij korisnikRepozitorij;
     private UlogaRepozitorij ulogaRepozitorij;
     private PrivilegijaRepozitorij privilegijaRepozitorij;
@@ -49,6 +50,7 @@ public class DodavanjePodataka {
         uloga5.setNazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
         if (ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA)==null) ulogaRepozitorij.save(uloga5);
     }
+
 
     private void privilegije() {
 

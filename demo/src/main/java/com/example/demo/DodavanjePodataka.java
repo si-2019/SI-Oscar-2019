@@ -510,7 +510,7 @@ public class DodavanjePodataka {
         privilegijaRepozitorij.save(uvid_u_komentare);
         }
         else{
-        prikaz_kalendara=privilegijaRepozitorij.findBynazivPrivilegije("uvid-u-komentare");
+        uvid_u_komentare=privilegijaRepozitorij.findBynazivPrivilegije("uvid-u-komentare");
         nove_uloge=uvid_u_komentare.getUloge();
         for(Uloga u:nove_uloge){
              for(Uloga u1:uloge){

@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class DodavanjePrivilegijaIUloga {
+public class DodavanjePodataka {
     private KorisnikRepozitorij korisnikRepozitorij;
     private UlogaRepozitorij ulogaRepozitorij;
     private PrivilegijaRepozitorij privilegijaRepozitorij;
     private OdsjekRepozitorij odsjekRepozitorij;
 
     @Autowired
-    public DodavanjePrivilegijaIUloga(KorisnikRepozitorij korisnikRepozitorij, UlogaRepozitorij ulogaRepozitorij,
+    public DodavanjePodataka(KorisnikRepozitorij korisnikRepozitorij, UlogaRepozitorij ulogaRepozitorij,
             PrivilegijaRepozitorij privilegijaRepozitorij,OdsjekRepozitorij odsjekRepozitorij) {
         this.korisnikRepozitorij = korisnikRepozitorij;
         this.ulogaRepozitorij = ulogaRepozitorij;
@@ -25,7 +25,7 @@ public class DodavanjePrivilegijaIUloga {
     @EventListener
     public void dodajPodatke(ApplicationReadyEvent event) {
         dodajUloge();
-        dodavanjePrivilegija();
+        privilegije();
     }
     private void dodajUloge() {
 
@@ -50,7 +50,7 @@ public class DodavanjePrivilegijaIUloga {
         if (ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA)==null) ulogaRepozitorij.save(uloga5);
     }
 
-    private void dodavanjePrivilegija() {
+    private void privilegije() {
 
         Uloga profesor=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         Uloga asistent=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);

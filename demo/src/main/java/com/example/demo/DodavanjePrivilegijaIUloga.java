@@ -7,16 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class DodavanjePodataka {
-
-
+public class DodavanjePrivilegijaIUloga {
     private KorisnikRepozitorij korisnikRepozitorij;
     private UlogaRepozitorij ulogaRepozitorij;
     private PrivilegijaRepozitorij privilegijaRepozitorij;
     private OdsjekRepozitorij odsjekRepozitorij;
 
     @Autowired
-    public DodavanjePodataka(KorisnikRepozitorij korisnikRepozitorij, UlogaRepozitorij ulogaRepozitorij,
+    public DodavanjePrivilegijaIUloga(KorisnikRepozitorij korisnikRepozitorij, UlogaRepozitorij ulogaRepozitorij,
             PrivilegijaRepozitorij privilegijaRepozitorij,OdsjekRepozitorij odsjekRepozitorij) {
         this.korisnikRepozitorij = korisnikRepozitorij;
         this.ulogaRepozitorij = ulogaRepozitorij;
@@ -25,7 +23,7 @@ public class DodavanjePodataka {
     }
 
     @EventListener
-    public void dodaj(ApplicationReadyEvent event) {
+    public void dodajPodatke(ApplicationReadyEvent event) {
         dodajUloge();
         dodavanjePrivilegija();
     }

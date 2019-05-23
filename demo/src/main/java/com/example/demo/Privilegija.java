@@ -54,3 +54,4 @@ public class Privilegija {
         this.uloge = uloge;
     }
 }
+

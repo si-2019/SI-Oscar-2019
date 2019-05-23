@@ -323,5 +323,4 @@ public class Korisnik {
     public void setUloga_id(Uloga uloga_id) {
         this.uloga_id = uloga_id;
     }
-
 }

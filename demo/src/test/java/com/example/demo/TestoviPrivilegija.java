@@ -199,4 +199,21 @@ public class TestoviPrivilegija {
         Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         assertThat(student.imaPrivilegiju("brisanje-obavjestenja")).isEqualTo(false);
     }
+
+    @Test
+    public void testPostojiPregledPredmetaSaradnik() throws  Exception {
+        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("pregled-predmeta-saradnik")).isEqualTo(true);
+    }
+
+    @Test
+    public void testProfesorPregledPredmeta() throws Exception {
+        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertThat(profesor.imaPrivilegiju("pregled-predmeta-saradnik")).isEqualTo(true);
+    }
+
+    @Test
+    public void testStudentPregledKaoSaradnik() throws Exception {
+        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        assertThat(student.imaPrivilegiju("pregled-predmeta-saradnik")).isEqualTo(false);
+    }
 }

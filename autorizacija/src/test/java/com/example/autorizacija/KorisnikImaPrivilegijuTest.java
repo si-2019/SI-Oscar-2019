@@ -28,8 +28,12 @@ public class KorisnikImaPrivilegijuTest {
 
 	@Test
 	public void testProfesorImaPrivilegijuUvidaUObavjestenja() {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+
+		assertThat(uloga2.imaPrivilegiju("kreiranje-termina-ispita")).isEqualTo(true);
+
 		assertThat(uloga.imaPrivilegiju("izmjena-bodova-za-ispite")).isEqualTo(true);
+
     }
     
 

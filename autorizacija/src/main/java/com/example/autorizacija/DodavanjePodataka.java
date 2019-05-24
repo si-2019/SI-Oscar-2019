@@ -62,6 +62,16 @@ public class DodavanjePodataka {
 
         List<Uloga> uloga = new ArrayList<>();
 
+        Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        uloga.add(uloga1);
+
+        Privilegija privilegija39 = new Privilegija();
+        privilegija39.setNazivPrivilegije("uvid-u-obavjestenja");
+        privilegija39.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("uvid-u-obavjestenja")) privilegijaRepozitorij.save(privilegija39);
+		
+
+
         Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         uloga.add(uloga1);
 
@@ -154,6 +164,7 @@ public class DodavanjePodataka {
 
 
 		
+
 
 
     }

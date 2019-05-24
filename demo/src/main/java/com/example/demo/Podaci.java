@@ -11,24 +11,19 @@ import java.util.List;
 @Component
 public class Podaci {
 
-    private KorisnikRepozitorij korisnikRepozitorij;
     private UlogaRepozitorij ulogaRepozitorij;
     private PrivilegijaRepozitorij privilegijaRepozitorij;
-    private OdsjekRepozitorij odsjekRepozitorij;
 
     @Autowired
-    public Podaci(KorisnikRepozitorij korisnikRepozitorij, UlogaRepozitorij ulogaRepozitorij, PrivilegijaRepozitorij privilegijaRepozitorij, OdsjekRepozitorij odsjekRepozitorij) {
-        this.korisnikRepozitorij = korisnikRepozitorij;
+    public Podaci(UlogaRepozitorij ulogaRepozitorij, PrivilegijaRepozitorij privilegijaRepozitorij) {
         this.ulogaRepozitorij = ulogaRepozitorij;
         this.privilegijaRepozitorij = privilegijaRepozitorij;
-        this.odsjekRepozitorij = odsjekRepozitorij;
     }
 
     @EventListener
     public void dodaj (ApplicationReadyEvent event){
         dodajUloge();
         dodajPrivilegije();
-        dodajOdsjek();
     }
 
     private void dodajUloge() {
@@ -145,26 +140,6 @@ public class Podaci {
         privilegija_pregled_predmeta.setNazivPrivilegije("pregled-predmeta-saradnik");
         privilegija_pregled_predmeta.setUloge(uloga);
         poveziUloguPrivilegiju(privilegija_pregled_predmeta, profesor);
-
         uloga.clear();
     }
-
-    private void dodajOdsjek() {
-        Odsjek ri = new Odsjek();
-        ri.setNazivOdsjeka("Racunarstvo i informatika");
-        if(!odsjekRepozitorij.existsBynazivOdsjeka(ri.getNazivOdsjeka())) odsjekRepozitorij.save(ri);
-
-        Odsjek tk = new Odsjek();
-        tk.setNazivOdsjeka("Telekomunikacije");
-        if(!odsjekRepozitorij.existsBynazivOdsjeka(tk.getNazivOdsjeka())) odsjekRepozitorij.save(tk);
-
-        Odsjek aie = new Odsjek();
-        aie.setNazivOdsjeka("Automatika i elektronika");
-        if(!odsjekRepozitorij.existsBynazivOdsjeka(aie.getNazivOdsjeka())) odsjekRepozitorij.save(aie);
-
-        Odsjek ee = new Odsjek();
-        ee.setNazivOdsjeka("Elektroenergetika");
-        if(!odsjekRepozitorij.existsBynazivOdsjeka(ee.getNazivOdsjeka())) odsjekRepozitorij.save(ee);
-    }
-
 }

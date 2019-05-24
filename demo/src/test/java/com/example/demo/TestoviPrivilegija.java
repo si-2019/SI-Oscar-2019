@@ -233,4 +233,21 @@ public class TestoviPrivilegija {
         Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         assertThat(student.imaPrivilegiju("pristup-grupama-saradnik")).isEqualTo(false);
     }
+
+    @Test
+    public void testPostojiUvidUKomentareSaradnik() throws  Exception {
+        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("uvid-u-komentare-saradnik")).isEqualTo(true);
+    }
+
+    @Test
+    public void testAsistentUvidUKomentare() throws Exception {
+        Uloga asistent = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        assertThat(asistent.imaPrivilegiju("uvid-u-komentare-saradnik")).isEqualTo(true);
+    }
+
+    @Test
+    public void testStudentUvidUKomentareKaoSaradnik() throws Exception {
+        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        assertThat(student.imaPrivilegiju("uvid-u-komentare-saradnik")).isEqualTo(false);
+    }
 }

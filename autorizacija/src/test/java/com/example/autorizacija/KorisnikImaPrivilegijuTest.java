@@ -26,11 +26,46 @@ public class KorisnikImaPrivilegijuTest {
     @Autowired
     private UlogaRepozitorij ulogaRepozitorij;
 
+
 	@Test
 	public void testAsistentImaPrivilegijuKreiranjaTemeNaForumu() {
-		Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-		assertThat(uloga.imaPrivilegiju("kreiranje-teme-na-forumu")).isEqualTo(true);
+		Uloga uloga45 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+		assertThat(uloga45.imaPrivilegiju("kreiranje-teme-na-forumu")).isEqualTo(true);
     }
     
 
 }
+
+
+
+    
+	@Test
+	public void testStudentskasluzbapostavljanjaobavjestenja() {
+
+       Uloga uloga123 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+	   assertThat(uloga123.imaPrivilegiju("postavljanje-obavjestenja")).isEqualTo(true);
+    }
+
+}
+
+	@Test
+	public void testProfesorImaPrivilegijuUvidaUObavjestenja() {
+
+        Uloga uloga99 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+		assertThat(uloga99.imaPrivilegiju("brisanje-kreiranog-casa")).isEqualTo(true);
+
+
+        Uloga uloga44 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+		assertThat(uloga44.imaPrivilegiju("kreiranje-teme-na-forumu")).isEqualTo(true);
+        Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+
+		assertThat(uloga2.imaPrivilegiju("kreiranje-termina-ispita")).isEqualTo(true);
+
+		assertThat(uloga.imaPrivilegiju("izmjena-bodova-za-ispite")).isEqualTo(true);
+
+
+    }
+    
+
+}
+

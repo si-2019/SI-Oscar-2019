@@ -155,6 +155,11 @@ public class Podaci {
         privilegija_nacin_slanja.setNazivPrivilegije("izbor-nacina-slanja-zadace");
         privilegija_nacin_slanja.setUloge(uloga);
         poveziUloguPrivilegiju(privilegija_nacin_slanja, profesor);
+
+        Privilegija privilegija_unos_konacne_ocjene = new Privilegija();
+        privilegija_unos_konacne_ocjene.setNazivPrivilegije("unos-konacne-ocjene");
+        privilegija_unos_konacne_ocjene.setUloge(uloga);
+        poveziUloguPrivilegiju(privilegija_unos_konacne_ocjene, profesor);
         uloga.clear();
     }
 }

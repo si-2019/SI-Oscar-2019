@@ -1,4 +1,5 @@
-package com.example.demo;
+package com.example.autorizacija;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -66,6 +67,5 @@ public class Uloga {
             }
         }
         return ima;
-}
-
+    }
 }

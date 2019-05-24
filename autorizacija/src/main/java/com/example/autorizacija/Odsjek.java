@@ -1,4 +1,5 @@
-package com.example.demo;
+package com.example.autorizacija;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -21,6 +22,7 @@ public class Odsjek {
         this.id = id;
         this.nazivOdsjeka = nazivOdsjeka;
     }
+
     public Long getId() {
         return id;
     }

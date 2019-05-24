@@ -11,8 +11,10 @@ import java.util.List;
 
 @RestController
 public class PrivilegijaKontroler {
-    
-    private PrivilegijaRepozitorij privilegijaRepozitorij;
+
+
+  private PrivilegijaRepozitorij privilegijaRepozitorij;
+
 
     @Autowired
     public PrivilegijaKontroler(PrivilegijaRepozitorij privilegijaRepozitorij) {

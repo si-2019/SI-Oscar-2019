@@ -1,4 +1,5 @@
-package com.example.demo;
+package com.example.autorizacija;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Blob;
@@ -121,6 +122,8 @@ public class Korisnik {
         Semestar = semestar;
         Titula = titula;
     }
+
+
 
     public String getIme() {
         return Ime;
@@ -323,4 +326,5 @@ public class Korisnik {
     public void setUloga_id(Uloga uloga_id) {
         this.uloga_id = uloga_id;
     }
+
 }

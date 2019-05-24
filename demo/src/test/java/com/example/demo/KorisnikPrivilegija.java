@@ -30,12 +30,14 @@ public class KorisnikPrivilegija {
     @Autowired
     private UlogaRepozitorij ulogaRepozitorij;
 
-    
+
     @Test
+
     public void testStudentImaPrivilegijuPregledaTerminaIspita() throws Exception {
         
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         
         assertThat(uloga.imaPrivilegiju("pregled-termina")).isEqualTo(true);
+
     }
 }

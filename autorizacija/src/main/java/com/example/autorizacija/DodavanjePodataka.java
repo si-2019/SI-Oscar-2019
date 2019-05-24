@@ -64,10 +64,23 @@ public class DodavanjePodataka {
         Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         uloga.add(uloga1);
 
-        Privilegija privilegija2 = new Privilegija();
-        privilegija2.setNazivPrivilegije("kreiranje-teme-na-forumu");
+
+        Privilegija privilegija23 = new Privilegija();
+        privilegija23.setNazivPrivilegije("kreiranje-teme-na-forumu");
+        privilegija23.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("kreiranje-teme-na-forumu")) privilegijaRepozitorij.save(privilegija23);
+
+        Privilegija privilegija22 = new Privilegija();
+
+        privilegija22.setNazivPrivilegije("kreiranje-termina-ispita");
+        privilegija22.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("kreiranje-termina-ispita")) privilegijaRepozitorij.save(privilegija22);
+
+        privilegija2.setNazivPrivilegije("izmjena-bodova-za-ispite");
         privilegija2.setUloge(uloga);
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije("kreiranje-teme-na-forumu")) privilegijaRepozitorij.save(privilegija2);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("izmjena-bodova-za-ispite")) privilegijaRepozitorij.save(privilegija2);
+
+
 		
     }
 

@@ -1,4 +1,4 @@
-package com.example.autorizacija;
+package com.example.demo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,10 +12,13 @@ import java.sql.Date;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 
+
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
-public class KorisnikImaPrivilegijuTest {
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+
+public class KorisnikPrivilegija {
 
     @Autowired
     private KorisnikRepozitorij korisnikRepozitorij;
@@ -26,19 +29,16 @@ public class KorisnikImaPrivilegijuTest {
     @Autowired
     private UlogaRepozitorij ulogaRepozitorij;
 
-	@Test
-	public void testProfesorImaPrivilegijuUvidaUObavjestenja() {
 
-        Uloga uloga44 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-		assertThat(uloga44.imaPrivilegiju("kreiranje-teme-na-forumu")).isEqualTo(true);
-        Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+    @Test
 
-		assertThat(uloga2.imaPrivilegiju("kreiranje-termina-ispita")).isEqualTo(true);
+    public void testProfesorImaPrivilegijuKreiranjaNovihZadaca() throws Exception {
+        
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+       
+        assertThat(uloga.imaPrivilegiju("kreiranje-zadace")).isEqualTo(true);
 
-		assertThat(uloga.imaPrivilegiju("izmjena-bodova-za-ispite")).isEqualTo(true);
 
 
     }
-    
-
 }

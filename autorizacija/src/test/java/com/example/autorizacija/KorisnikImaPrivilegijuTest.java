@@ -28,8 +28,20 @@ public class KorisnikImaPrivilegijuTest {
 
 	@Test
 	public void testProfesorImaPrivilegijuUvidaUObavjestenja() {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-		assertThat(uloga.imaPrivilegiju("brisanje-kreiranog-casa")).isEqualTo(true);
+
+        Uloga uloga99 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+		assertThat(uloga99.imaPrivilegiju("brisanje-kreiranog-casa")).isEqualTo(true);
+
+
+        Uloga uloga44 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+		assertThat(uloga44.imaPrivilegiju("kreiranje-teme-na-forumu")).isEqualTo(true);
+        Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+
+		assertThat(uloga2.imaPrivilegiju("kreiranje-termina-ispita")).isEqualTo(true);
+
+		assertThat(uloga.imaPrivilegiju("izmjena-bodova-za-ispite")).isEqualTo(true);
+
+
     }
     
 

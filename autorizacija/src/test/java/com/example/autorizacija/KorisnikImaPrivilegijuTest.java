@@ -28,9 +28,15 @@ public class KorisnikImaPrivilegijuTest {
 
 
 	@Test
+
 	public void testAsistentImaPrivilegijuRegistrovanjaNoveZadace() {
         Uloga uloga897 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
 		assertThat(uloga897.imaPrivilegiju("registrovanje-nove-zadace")).isEqualTo(true);
+
+	public void testAsistentImaPrivilegijuKreiranjaTemeNaForumu() {
+		Uloga uloga45 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+		assertThat(uloga45.imaPrivilegiju("kreiranje-teme-na-forumu")).isEqualTo(true);
+
     }
     
 

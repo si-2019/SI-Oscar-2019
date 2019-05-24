@@ -36,4 +36,17 @@ public class UlogaKontroler {
         }
         return ulogaRepozitorij.findById(idUloge).get().imaPrivilegiju(privilegija);
     }
+
+    @RequestMapping(value = "/{idUloge}/privilegije", method = RequestMethod.GET)
+    public List<String> privilegijeUloge (@PathVariable Long idUloge) {
+        List<Privilegija> privilegije = new ArrayList<Privilegija>();
+        List<String> povratna = new ArrayList<String>();
+        if(ulogaRepozitorij.findById(idUloge).isPresent()) {
+            privilegije = ulogaRepozitorij.findById(idUloge).get().getPrivilegije();
+            for (Privilegija p : privilegije) {
+                povratna.add(p.getNazivPrivilegije());
+            }
+        }
+        return povratna;
+    }
 }

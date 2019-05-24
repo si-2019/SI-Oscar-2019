@@ -67,9 +67,8 @@ public class DodavanjePodataka {
         Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         Uloga studentska_sluzba = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
 
-        //Privilegije profesora
 
-        uloga.add(profesor);
+        uloga.add(studentska_sluzba);
 
         Privilegija editovanje_obavjestenja = new Privilegija();
         editovanje_obavjestenja.setNazivPrivilegije("editovanje-obavjestenja");
@@ -85,7 +84,7 @@ public class DodavanjePodataka {
                 }
             }
             if(trebaDodati){
-                noveUloge.add(profesor);
+                noveUloge.add(studentska_sluzba);
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("editovanje-obavjestenja").getId());
                 editovanje_obavjestenja.setUloge(noveUloge);
                 privilegijaRepozitorij.save(editovanje_obavjestenja);

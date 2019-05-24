@@ -1,31 +1,22 @@
 package com.example.demo;
-import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.Optional; 
-import java.util.List;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UlogaKontroler {
-
     private UlogaRepozitorij ulogaRepozitorij;
 
     @Autowired
     public UlogaKontroler(UlogaRepozitorij ulogaRepozitorij) {
         this.ulogaRepozitorij = ulogaRepozitorij;
-    }
-
-
-    @RequestMapping(value = "/{idUloge}/{privilegija}", method = RequestMethod.GET)
-    public boolean ulogaImaPrivilegiju(@PathVariable Long idUloge, @PathVariable String privilegija) {
-        if(ulogaRepozitorij.findById(idUloge).equals(Optional.empty())) {
-            return false;
-        }
-        return ulogaRepozitorij.findById(idUloge).get().imaPrivilegiju(privilegija);
     }
 
     @RequestMapping(value = "/uloge", method = RequestMethod.GET)
@@ -38,12 +29,23 @@ public class UlogaKontroler {
         return povratna;
     }
 
+    @RequestMapping(value = "/{idUloge}/{privilegija}", method = RequestMethod.GET)
+    public boolean ulogaImaPrivilegiju(@PathVariable Long idUloge, @PathVariable String privilegija) {
+        if(ulogaRepozitorij.findById(idUloge).equals(Optional.empty())) {
+            return false;
+        }
+        return ulogaRepozitorij.findById(idUloge).get().imaPrivilegiju(privilegija);
+    }
+
     @RequestMapping(value = "/{idUloge}/privilegije", method = RequestMethod.GET)
     public List<String> privilegijeUloge (@PathVariable Long idUloge) {
-        List<Privilegija> privilegije = ulogaRepozitorij.findById(idUloge).get().getPrivilegije();
+        List<Privilegija> privilegije = new ArrayList<Privilegija>();
         List<String> povratna = new ArrayList<String>();
-        for (Privilegija p : privilegije){
-            povratna.add(p.getNazivPrivilegije());
+        if(ulogaRepozitorij.findById(idUloge).isPresent()) {
+            privilegije = ulogaRepozitorij.findById(idUloge).get().getPrivilegije();
+            for (Privilegija p : privilegije) {
+                povratna.add(p.getNazivPrivilegije());
+            }
         }
         return povratna;
     }

@@ -1,4 +1,5 @@
 package com.example.demo;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Blob;
@@ -121,6 +122,8 @@ public class Korisnik {
         Semestar = semestar;
         Titula = titula;
     }
+
+
 
     public String getIme() {
         return Ime;
@@ -323,4 +326,16 @@ public class Korisnik {
     public void setUloga_id(Uloga uloga_id) {
         this.uloga_id = uloga_id;
     }
+
+    /*public boolean imaPrivilegiju (String privilegija){
+        boolean ima = false;
+        List<Privilegija> privilegije = this.getUloga_id().getPrivilegije();
+        for (Privilegija p: privilegije) {
+            if (p.getNazivPrivilegije().equals(privilegija)) {
+                ima = true;
+                break;
+            }
+        }
+        return ima;
+    }*/
 }

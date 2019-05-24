@@ -65,6 +65,16 @@ public class DodavanjePodataka {
         Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         uloga.add(uloga1);
 
+        Privilegija privilegija45 = new Privilegija();
+        privilegija45.setNazivPrivilegije("kreiranje-teme-na-forumu");
+        privilegija45.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("kreiranje-teme-na-forumu")) privilegijaRepozitorij.save(privilegija45);
+
+
+
+        Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        uloga.add(uloga1);
+
         Privilegija privilegija19 = new Privilegija();
         privilegija19.setNazivPrivilegije("registrovanje-nove-zadace");
         privilegija19.setUloge(uloga);
@@ -121,6 +131,7 @@ public class DodavanjePodataka {
 
 
 		
+
 
     }
 

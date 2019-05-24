@@ -150,6 +150,11 @@ public class Podaci {
         privilegija_pregled_predmeta.setNazivPrivilegije("pregled-predmeta-saradnik");
         privilegija_pregled_predmeta.setUloge(uloga);
         poveziUloguPrivilegiju(privilegija_pregled_predmeta, profesor);
+
+        Privilegija privilegija_nacin_slanja = new Privilegija();
+        privilegija_nacin_slanja.setNazivPrivilegije("izbor-nacina-slanja-zadace");
+        privilegija_nacin_slanja.setUloge(uloga);
+        poveziUloguPrivilegiju(privilegija_nacin_slanja, profesor);
         uloga.clear();
     }
 }

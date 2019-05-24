@@ -111,6 +111,11 @@ public class Podaci {
         privilegija_editovanje_teme_forum.setNazivPrivilegije("editovanje-teme-na-forumu");
         privilegija_editovanje_teme_forum.setUloge(uloga);
         poveziUloguPrivilegiju(privilegija_editovanje_teme_forum, asistent);
+        
+        Privilegija privilegija_pristup_grupama = new Privilegija();
+        privilegija_pristup_grupama.setNazivPrivilegije("pristup-grupama-saradnik");
+        privilegija_pristup_grupama.setUloge(uloga);
+        poveziUloguPrivilegiju(privilegija_pristup_grupama, asistent);
         uloga.clear();
 
         uloga.add(profesor);

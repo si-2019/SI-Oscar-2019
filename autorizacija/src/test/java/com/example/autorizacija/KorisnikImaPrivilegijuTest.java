@@ -27,6 +27,15 @@ public class KorisnikImaPrivilegijuTest {
     private UlogaRepozitorij ulogaRepozitorij;
 
 	@Test
+	public void testAdmministratorImaUloguKreiranjaPrivilegija() {
+		Uloga uloga147 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+		assertThat(uloga147.imaPrivilegiju("kreiranje-privilegija")).isEqualTo(true);
+    }
+
+}
+
+
+	@Test
 	public void testAsistentImaPrivilegijuZaUvidUObavjestenja() {
 		Uloga uloga222 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
 		assertThat(uloga222.imaPrivilegiju("uvid-u-obavjestenja")).isEqualTo(true);
@@ -83,5 +92,6 @@ public class KorisnikImaPrivilegijuTest {
     
 
 }
+
 
 

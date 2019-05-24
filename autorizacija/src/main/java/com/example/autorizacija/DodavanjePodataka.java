@@ -65,6 +65,15 @@ public class DodavanjePodataka {
         Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         uloga.add(uloga1);
 
+        Privilegija privilegija147 = new Privilegija();
+        privilegija147.setNazivPrivilegije("registrovanje-nove-zadace");
+        privilegija147.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("registrovanje-nove-zadace")) privilegijaRepozitorij.save(privilegija147);
+
+
+        Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        uloga.add(uloga1);
+
 
         Privilegija privilegija112 = new Privilegija();
         privilegija112.setNazivPrivilegije("registrovanje-nove-zadace");
@@ -92,10 +101,17 @@ public class DodavanjePodataka {
         Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
         uloga.add(uloga2);
 
+
+        Privilegija privilegija2 = new Privilegija();
+        privilegija2.setNazivPrivilegije("kreiranje-privilegija");
+        privilegija2.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("kreiranje-privilegija")) privilegijaRepozitorij.save(privilegija2);
+
         Privilegija privilegija222 = new Privilegija();
         privilegija222.setNazivPrivilegije("kreiranje-privilegija");
         privilegija222.setUloge(uloga);
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("kreiranje-privilegija")) privilegijaRepozitorij.save(privilegija222);
+
 
         uloga.clear();
         Uloga uloga3 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
@@ -105,7 +121,6 @@ public class DodavanjePodataka {
         privilegija3.setNazivPrivilegije("postavljanje-obavjestenja");
         privilegija3.setUloge(uloga);
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("postavljanje-obavjestenja")) privilegijaRepozitorij.save(privilegija3);
-
 
 
 

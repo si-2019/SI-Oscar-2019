@@ -28,7 +28,7 @@ public class KorisnikImaPrivilegijuTest {
 
     @Test
     public void testStudentImaPristupDashobardu() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         assertThat(uloga.imaPrivilegiju("pristup-dashboardu")).isEqualTo(true);
     }
 

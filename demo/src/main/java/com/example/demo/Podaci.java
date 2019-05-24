@@ -116,6 +116,11 @@ public class Podaci {
         privilegija_pristup_grupama.setNazivPrivilegije("pristup-grupama-saradnik");
         privilegija_pristup_grupama.setUloge(uloga);
         poveziUloguPrivilegiju(privilegija_pristup_grupama, asistent);
+
+        Privilegija privilegija_uvid_u_komentare = new Privilegija();
+        privilegija_uvid_u_komentare.setNazivPrivilegije("uvid-u-komentare-saradnik");
+        privilegija_uvid_u_komentare.setUloge(uloga);
+        poveziUloguPrivilegiju(privilegija_uvid_u_komentare, asistent);
         uloga.clear();
 
         uloga.add(profesor);

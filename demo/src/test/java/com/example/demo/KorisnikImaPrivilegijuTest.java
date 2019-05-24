@@ -28,7 +28,7 @@ public class KorisnikImaPrivilegijuTest {
 
     @Test
     public void testStudentskaSluzbaImaPrivilegijuEditovanjaObavjestenja() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
         assertThat(uloga.imaPrivilegiju("editovanje-obavjestenja")).isEqualTo(true);
     }
 

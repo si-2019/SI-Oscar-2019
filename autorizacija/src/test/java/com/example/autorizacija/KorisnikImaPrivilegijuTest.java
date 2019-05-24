@@ -26,6 +26,18 @@ public class KorisnikImaPrivilegijuTest {
     @Autowired
     private UlogaRepozitorij ulogaRepozitorij;
 
+
+
+    
+	@Test
+	public void testStudentskasluzbapostavljanjaobavjestenja() {
+
+       Uloga uloga123 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+	   assertThat(uloga123.imaPrivilegiju("postavljanje-obavjestenja")).isEqualTo(true);
+    }
+
+}
+
 	@Test
 	public void testProfesorImaPrivilegijuUvidaUObavjestenja() {
 
@@ -46,3 +58,4 @@ public class KorisnikImaPrivilegijuTest {
     
 
 }
+

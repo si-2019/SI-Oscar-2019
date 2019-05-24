@@ -12,20 +12,11 @@ import java.util.Optional;
 
 @RestController
 public class UlogaKontroler {
-
     private UlogaRepozitorij ulogaRepozitorij;
 
     @Autowired
     public UlogaKontroler(UlogaRepozitorij ulogaRepozitorij) {
         this.ulogaRepozitorij = ulogaRepozitorij;
-    }
-
-    @RequestMapping(value = "/{idUloge}/{privilegija}", method = RequestMethod.GET)
-    public boolean ulogaImaPrivilegiju(@PathVariable Long idUloge, @PathVariable String privilegija) {
-        if(ulogaRepozitorij.findById(idUloge).equals(Optional.empty())) {
-            return false;
-        }
-        return ulogaRepozitorij.findById(idUloge).get().imaPrivilegiju(privilegija);
     }
 
     @RequestMapping(value = "/uloge", method = RequestMethod.GET)
@@ -36,5 +27,13 @@ public class UlogaKontroler {
             povratna.add(u.getNazivUloge().toString());
         }
         return povratna;
+    }
+
+    @RequestMapping(value = "/{idUloge}/{privilegija}", method = RequestMethod.GET)
+    public boolean ulogaImaPrivilegiju(@PathVariable Long idUloge, @PathVariable String privilegija) {
+        if(ulogaRepozitorij.findById(idUloge).equals(Optional.empty())) {
+            return false;
+        }
+        return ulogaRepozitorij.findById(idUloge).get().imaPrivilegiju(privilegija);
     }
 }

@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,7 +19,6 @@ public class KorisnikKontroler {
     /*@RequestMapping(value = "/all", method = RequestMethod.GET)
     public boolean getAll() {
         Korisnik k = korisnikRepozitorij.findById(Long.valueOf(1)).get();
-        return k.imaPrivilegiju("brisanje-kreirane-zadace");
-
+        return k.imaPrivilegiju("registrovanje-casa");
     }*/
 }

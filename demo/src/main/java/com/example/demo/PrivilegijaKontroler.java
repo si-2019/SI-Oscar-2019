@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 public class PrivilegijaKontroler {
-
     private PrivilegijaRepozitorij privilegijaRepozitorij;
 
     @Autowired

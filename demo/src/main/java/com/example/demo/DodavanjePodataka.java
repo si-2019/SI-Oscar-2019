@@ -1205,16 +1205,39 @@ public class DodavanjePodataka {
       uloga = new ArrayList<>();
         Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         uloga.add(uloga1);
+        int counter=0;
+        
 
         Privilegija privilegija1 = new Privilegija();
         privilegija1.setNazivPrivilegije("kreiranje-zadace");
         privilegija1.setUloge(uloga);
 
 
+        if (privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-zadace") == null){
+            privilegijaRepozitorij.save(privilegija1);
+        }
+        else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-zadace").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga1);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-zadace").getId());
+                privilegija1.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija1);
+            }
+        }
+            
 
 
-        if(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-zadace")==null) 
-          privilegijaRepozitorij.save(privilegija1);
+
+
+     
+
 
 
 
@@ -1226,8 +1249,28 @@ public class DodavanjePodataka {
         privilegija2.setNazivPrivilegije("kreiranje-korisnika");
         privilegija2.setUloge(uloga);
 
-        if (privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-korisnika") == null)
+
+        if (privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-korisnika") == null){
             privilegijaRepozitorij.save(privilegija2);
+        }
+        
+         else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-korisnika").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga2);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-korisnika").getId());
+                privilegija2.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija2);
+            }
+        }
+
+       
 
         uloga.clear();
         uloga.add(uloga1);
@@ -1236,26 +1279,72 @@ public class DodavanjePodataka {
         privilegija3.setUloge(uloga);
 
 
-        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-termina-ispita")==null) privilegijaRepozitorij.save(privilegija3);
-        
+        if (privilegijaRepozitorij.findBynazivPrivilegije("brisanje-termina-ispita") == null){
+            privilegijaRepozitorij.save(privilegija3);
+        }
+         else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("brisanje-termina-ispita").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga1);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-termina-ispita").getId());
+                privilegija3.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija3);
+            }
+        }
+         
+
         Privilegija privilegija4 = new Privilegija();
         privilegija4.setNazivPrivilegije("izmjena-dodijeljenih-bodova");
         privilegija4.setUloge(uloga);
-
-        if(privilegijaRepozitorij.findBynazivPrivilegije("izmjena-dodijeljenih-bodova")==null) privilegijaRepozitorij.save(privilegija4);
-
-
-         
-       
-
-
-   
+        if (privilegijaRepozitorij.findBynazivPrivilegije("izmjena-dodijeljenih-bodova") == null){
+            privilegijaRepozitorij.save(privilegija4);
+        }
+        else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("izmjena-dodijeljenih-bodova").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga1);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("izmjena-dodijeljenih-bodova").getId());
+                privilegija1.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija4);
+            }
+        }
         Privilegija privilegija5 = new Privilegija();
         privilegija5.setNazivPrivilegije("izmjena-kviza");
         privilegija5.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("izmjena-kviza") == null){
+            privilegijaRepozitorij.save(privilegija5);
+        }
+         else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("izmjena-kviza").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga1);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("izmjena-kviza").getId());
+                privilegija5.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija5);
+            }
+        }
 
 
-        if(privilegijaRepozitorij.findBynazivPrivilegije("izmjena-kviza")==null) privilegijaRepozitorij.save(privilegija5);
+       
+
 
 
 
@@ -1266,16 +1355,50 @@ public class DodavanjePodataka {
         privilegija6.setNazivPrivilegije("izmjena-bodova-za-zadace");
         privilegija6.setUloge(uloga);
 
-        if (privilegijaRepozitorij.findBynazivPrivilegije("izmjena-bodova-za-zadace") == null)
+
+        if (privilegijaRepozitorij.findBynazivPrivilegije("izmjena-bodova-za-zadace") == null){
+
             privilegijaRepozitorij.save(privilegija6);
+        }
+        else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("izmjena-bodova-za-zadace").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga1);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("izmjena-bodova-za-zadace").getId());
+                privilegija6.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija6);
+            }
+        }
 
         uloga.clear();
         uloga.add(uloga2);
         Privilegija privilegija7 = new Privilegija();
         privilegija7.setNazivPrivilegije("povezivanje-privilegija-uloga");
         privilegija7.setUloge(uloga);
-        if (privilegijaRepozitorij.findBynazivPrivilegije("povezivanje-privilegija-uloga") == null)
+        if (privilegijaRepozitorij.findBynazivPrivilegije("povezivanje-privilegija-uloga") == null){
             privilegijaRepozitorij.save(privilegija7);
+        }
+        else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("povezivanje-privilegija-uloga").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga2);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("povezivanje-privilegija-uloga").getId());
+                privilegija7.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija7);
+            }
+        }
 
 
         uloga.clear();
@@ -1283,24 +1406,209 @@ public class DodavanjePodataka {
         Privilegija privilegija8 = new Privilegija();
         privilegija8.setNazivPrivilegije("evidencija-prijavljenih-studenata");
         privilegija8.setUloge(uloga);
-        if (privilegijaRepozitorij.findBynazivPrivilegije("evidencija-prijavljenih-studenata") == null)
+        if (privilegijaRepozitorij.findBynazivPrivilegije("evidencija-prijavljenih-studenata") == null){
             privilegijaRepozitorij.save(privilegija8);
+        }
+        else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("evidencija-prijavljenih-studenata").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga1);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("evidencija-prijavljenih-studenata").getId());
+                privilegija8.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija8);
+            }
+        }
+
 
         uloga.clear();
         uloga.add(uloga1);
         Privilegija privilegija9 = new Privilegija();
         privilegija9.setNazivPrivilegije("brisanje-teme");
         privilegija9.setUloge(uloga);
-        if (privilegijaRepozitorij.findBynazivPrivilegije("brisanje-teme") == null)
+        if (privilegijaRepozitorij.findBynazivPrivilegije("brisanje-teme") == null){
             privilegijaRepozitorij.save(privilegija9);
-
-        uloga.clear();
-        uloga.add(uloga3);
+        }
+          else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("brisanje-teme").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga1);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-teme").getId());
+                privilegija9.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija9);
+            }
+        }
+  uloga.clear();
+   uloga.add(uloga3);
         Privilegija privilegija10 = new Privilegija();
         privilegija10.setNazivPrivilegije("unos-rezultata");
         privilegija10.setUloge(uloga);
-        if (privilegijaRepozitorij.findBynazivPrivilegije("unos-rezultata") == null)
+        if (privilegijaRepozitorij.findBynazivPrivilegije("unos-rezultata") == null){
             privilegijaRepozitorij.save(privilegija10);
+        }
+   else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("unos-rezultata").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga3);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("unos-rezultata").getId());
+                privilegija10.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija10);
+            }
+        }
+        uloga.clear();
+        uloga.add(uloga1);
+        Privilegija privilegija11 = new Privilegija();
+        privilegija11.setNazivPrivilegije("kreiranje-grupa");
+        privilegija11.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-grupa") == null){
+            privilegijaRepozitorij.save(privilegija11);
+        }
+         else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-grupa").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga1);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("kreiranje-grupa").getId());
+                privilegija11.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija11);
+            }
+        }
+        uloga.clear();
+        uloga.add(uloga1);
+        Privilegija privilegija12 = new Privilegija();
+        privilegija12.setNazivPrivilegije("pristup-grupama");
+        privilegija12.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("pristup-grupama") == null){
+            privilegijaRepozitorij.save(privilegija12);
+        }
+
+          else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("pristup-grupama").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga1);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("pristup-grupama").getId());
+                privilegija12.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija12);
+            }
+        }
+        uloga.clear();
+        uloga.add(uloga1);
+        Privilegija privilegija13 = new Privilegija();
+        privilegija13.setNazivPrivilegije("pregled-komentara");
+        privilegija13.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("pregled-komentara") == null){
+            privilegijaRepozitorij.save(privilegija13);
+        }
+          else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("pregled-komentara").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga1);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("pregled-komentara").getId());
+                privilegija13.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija13);
+            }
+        }
+
+        uloga.clear();
+
+         Uloga uloga4 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        uloga.add(uloga4);
+        Privilegija privilegija14 = new Privilegija();
+        privilegija14.setNazivPrivilegije("pristup-informacijama");
+        privilegija14.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("pristup-informacijama") == null){
+            privilegijaRepozitorij.save(privilegija14);
+        
+        }
+          else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("pristup-informacijama").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga4);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("pristup-informacijama").getId());
+                privilegija14.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija14);
+            }
+        }
+
+        uloga.clear();
+        uloga.add(uloga4);
+        Privilegija privilegija15 = new Privilegija();
+        privilegija15.setNazivPrivilegije("pregled-termina");
+        privilegija15.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("pregled-termina") == null){
+            privilegijaRepozitorij.save(privilegija15);
+        
+        }
+          else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("pregled-termina").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga4);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("pregled-termina").getId());
+                privilegija15.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija15);
+            }
+        }
+
+    }
+
+    private void dodajOdsjek() {
+
+        if ((odsjekRepozitorij.findBynazivOdsjeka("RI")) == null) {
+            Odsjek odsjek1 = new Odsjek();
+
+            odsjek1.setNazivOdsjeka("RI");
+            odsjekRepozitorij.save(odsjek1);
+
+        }
+
+       
+
 
     }
 }

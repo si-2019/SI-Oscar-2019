@@ -5,7 +5,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.Optional; 
+
+import java.util.Optional;
+import java.util.ArrayList;
+
+
+
 import java.util.List;
 
 
@@ -17,6 +22,15 @@ public class UlogaKontroler {
     @Autowired
     public UlogaKontroler(UlogaRepozitorij ulogaRepozitorij) {
         this.ulogaRepozitorij = ulogaRepozitorij;
+    }
+    @RequestMapping(value = "/uloge", method = RequestMethod.GET)
+    public List<String> getAllUloge() {
+        List<Uloga> uloge = ulogaRepozitorij.findAll();
+        List<String> povratna = new ArrayList<String>();
+        for(Uloga u : uloge) {
+            povratna.add(u.getNazivUloge().toString());
+        }
+        return povratna;
     }
 
 

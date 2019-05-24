@@ -14,6 +14,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 
 
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -32,13 +33,11 @@ public class KorisnikPrivilegija {
 
     @Test
 
-    public void testProfesorImaPrivilegijuKreiranjaNovihZadaca() throws Exception {
+    public void testStudentImaPrivilegijuPregledaTerminaIspita() throws Exception {
         
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-       
-        assertThat(uloga.imaPrivilegiju("kreiranje-zadace")).isEqualTo(true);
-
-
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        
+        assertThat(uloga.imaPrivilegiju("pregled-termina")).isEqualTo(true);
 
     }
 }

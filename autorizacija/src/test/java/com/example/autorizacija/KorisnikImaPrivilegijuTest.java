@@ -25,10 +25,73 @@ public class KorisnikImaPrivilegijuTest {
 
     @Autowired
     private UlogaRepozitorij ulogaRepozitorij;
+
 	@Test
 	public void testAdmministratorImaUloguKreiranjaPrivilegija() {
-		Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
-		assertThat(uloga.imaPrivilegiju("kreiranje-privilegija")).isEqualTo(true);
+		Uloga uloga147 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+		assertThat(uloga147.imaPrivilegiju("kreiranje-privilegija")).isEqualTo(true);
     }
 
 }
+
+
+	@Test
+	public void testAsistentImaPrivilegijuZaUvidUObavjestenja() {
+		Uloga uloga222 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+		assertThat(uloga222.imaPrivilegiju("uvid-u-obavjestenja")).isEqualTo(true);
+    }
+
+    
+
+}
+
+	@Test
+
+	public void testAsistentImaPrivilegijuRegistrovanjaNoveZadace() {
+        Uloga uloga897 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+		assertThat(uloga897.imaPrivilegiju("registrovanje-nove-zadace")).isEqualTo(true);
+
+	public void testAsistentImaPrivilegijuKreiranjaTemeNaForumu() {
+		Uloga uloga45 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+		assertThat(uloga45.imaPrivilegiju("kreiranje-teme-na-forumu")).isEqualTo(true);
+
+    }
+    
+
+}
+
+
+
+    
+	@Test
+	public void testStudentskasluzbapostavljanjaobavjestenja() {
+
+       Uloga uloga123 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+	   assertThat(uloga123.imaPrivilegiju("postavljanje-obavjestenja")).isEqualTo(true);
+    }
+
+}
+
+	@Test
+	public void testProfesorImaPrivilegijuUvidaUObavjestenja() {
+
+        Uloga uloga99 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+		assertThat(uloga99.imaPrivilegiju("brisanje-kreiranog-casa")).isEqualTo(true);
+
+
+        Uloga uloga44 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+		assertThat(uloga44.imaPrivilegiju("kreiranje-teme-na-forumu")).isEqualTo(true);
+        Uloga uloga2 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+
+		assertThat(uloga2.imaPrivilegiju("kreiranje-termina-ispita")).isEqualTo(true);
+
+		assertThat(uloga.imaPrivilegiju("izmjena-bodova-za-ispite")).isEqualTo(true);
+
+
+    }
+    
+
+}
+
+
+

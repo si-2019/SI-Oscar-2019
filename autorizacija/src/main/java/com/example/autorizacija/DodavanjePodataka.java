@@ -61,6 +61,15 @@ public class DodavanjePodataka {
 
 
         List<Uloga> uloga = new ArrayList<>();
+
+        Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        uloga.add(uloga1);
+
+        Privilegija privilegija27 = new Privilegija();
+        privilegija27.setNazivPrivilegije("brisanje-kreiranog-casa");
+        privilegija27.setUloge(uloga);
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("brisanje-kreiranog-casa")) privilegijaRepozitorij.save(privilegija27);
+
         Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         uloga.add(uloga1);
 
@@ -79,6 +88,7 @@ public class DodavanjePodataka {
         privilegija2.setNazivPrivilegije("izmjena-bodova-za-ispite");
         privilegija2.setUloge(uloga);
         if(!privilegijaRepozitorij.existsBynazivPrivilegije("izmjena-bodova-za-ispite")) privilegijaRepozitorij.save(privilegija2);
+
 
 
 		

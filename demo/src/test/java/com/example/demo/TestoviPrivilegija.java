@@ -267,4 +267,21 @@ public class TestoviPrivilegija {
         Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         assertThat(student.imaPrivilegiju("izbor-nacina-slanja-zadace")).isEqualTo(false);
     }
+
+    @Test
+    public void testPostojiUnosKonacneOcjene() throws  Exception {
+        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("unos-konacne-ocjene")).isEqualTo(true);
+    }
+
+    @Test
+    public void testProfesorUnosiKonacnuOcjenu() throws Exception {
+        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertThat(profesor.imaPrivilegiju("unos-konacne-ocjene")).isEqualTo(true);
+    }
+
+    @Test
+    public void testAsistentUnosiKonacnuOcjenu() throws Exception {
+        Uloga asistent = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        assertThat(asistent.imaPrivilegiju("unos-konacne-ocjene")).isEqualTo(false);
+    }
 }

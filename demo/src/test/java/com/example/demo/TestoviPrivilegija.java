@@ -19,12 +19,6 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class TestoviPrivilegija {
     @Autowired
-    private KorisnikRepozitorij korisnikRepozitorij;
-
-    @Autowired
-    private OdsjekRepozitorij odsjekRepozitorij;
-
-    @Autowired
     private UlogaRepozitorij ulogaRepozitorij;
 
     @Autowired

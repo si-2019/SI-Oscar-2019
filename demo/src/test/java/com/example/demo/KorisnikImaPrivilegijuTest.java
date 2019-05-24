@@ -17,7 +17,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
 
-public class TestoviPrivilegija {
+public class KorisnikImaPrivilegijuTest {
     @Autowired
     private UlogaRepozitorij ulogaRepozitorij;
 

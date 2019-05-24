@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class Podaci {
+public class DodavanjePodataka {
 
     private UlogaRepozitorij ulogaRepozitorij;
     private PrivilegijaRepozitorij privilegijaRepozitorij;
 
     @Autowired
-    public Podaci(UlogaRepozitorij ulogaRepozitorij, PrivilegijaRepozitorij privilegijaRepozitorij) {
+    public DodavanjePodataka(UlogaRepozitorij ulogaRepozitorij, PrivilegijaRepozitorij privilegijaRepozitorij) {
         this.ulogaRepozitorij = ulogaRepozitorij;
         this.privilegijaRepozitorij = privilegijaRepozitorij;
     }
@@ -23,7 +23,7 @@ public class Podaci {
     @EventListener
     public void dodaj (ApplicationReadyEvent event){
         dodajUloge();
-        dodajPrivilegije();
+        dodajPrivilegijeHana();
     }
 
     private void dodajUloge() {
@@ -67,7 +67,7 @@ public class Podaci {
         }
     }
 
-    private void dodajPrivilegije() {
+    private void dodajPrivilegijeHana() {
         List<Uloga> uloga = new ArrayList<>();
         Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         Uloga admin = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);

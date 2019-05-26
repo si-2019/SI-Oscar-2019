@@ -1,16 +1,16 @@
 package com.example.demo;
-
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
 import java.util.List;
+ 
 
 @RestController
 public class PrivilegijaKontroler {
-    private PrivilegijaRepozitorij privilegijaRepozitorij;
+
+  private PrivilegijaRepozitorij privilegijaRepozitorij;
 
     @Autowired
     public PrivilegijaKontroler(PrivilegijaRepozitorij privilegijaRepozitorij) {
@@ -26,4 +26,5 @@ public class PrivilegijaKontroler {
         }
         return nazivi;
     }
+    
 }

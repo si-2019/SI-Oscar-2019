@@ -105,7 +105,7 @@ public class DodavanjePodataka {
             privilegijaRepozitorij.save(privilegija5);
 
         uloga.clear();
-         Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+         Uloga uloga3 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         uloga.add(uloga3);
         Privilegija privilegija6 = new Privilegija();
         privilegija6.setNazivPrivilegije("izmjena-bodova-za-zadace");

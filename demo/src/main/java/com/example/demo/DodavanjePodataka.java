@@ -1767,7 +1767,32 @@ public class DodavanjePodataka {
                 privilegijaRepozitorij
                         .deleteById(privilegijaRepozitorij.findBynazivPrivilegije("pregled-materijala").getId());
                 privilegija15.setUloge(noveUloge);
-                privilegijaRepozitorij.save(privilegija9);
+                privilegijaRepozitorij.save(privilegija19);
+            }
+        }
+        uloga.clear();
+        uloga.add(uloga4);
+        Privilegija privilegija20 = new Privilegija();
+        privilegija20.setNazivPrivilegije("pristup-izvjestaju");
+        privilegija20.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("pristup-izvjestaju") == null) {
+            privilegijaRepozitorij.save(privilegija20);
+
+        } else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("pristup-izvjestaju").getUloge();
+            boolean treba_dodati = true;
+            for (Uloga u : noveUloge) {
+                for (Uloga u1 : uloge) {
+                    if (u.getNazivUloge.equals(u1.getNazivUloge()))
+                        treba_dodati = false;
+                }
+            }
+            if (treba_dodati) {
+                noveUloge.add(uloga4);
+                privilegijaRepozitorij
+                        .deleteById(privilegijaRepozitorij.findBynazivPrivilegije("pristup-izvjestaju").getId());
+                privilegija15.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija20);
             }
         }
     }

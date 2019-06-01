@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.context.annotation.Import;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Import(SwaggerConfig.class)
 

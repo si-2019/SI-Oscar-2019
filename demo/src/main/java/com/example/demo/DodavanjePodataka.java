@@ -1620,6 +1620,32 @@ public class DodavanjePodataka {
         }
 
     }
+    uloga.clear();
+    uloga.add(uloga3);
+    Privilegija privilegija17 = new Privilegija();
+    privilegija17.setNazivPrivilegije("ostavljanje-komentara");
+    privilegija17.setUloge(uloga);
+    if (privilegijaRepozitorij.findBynazivPrivilegije("ostavljanje-komentara") == null){
+        privilegijaRepozitorij.save(privilegija17);
+    
+    }
+      else{
+        List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("ostavljanje-komentara").getUloge();
+        boolean treba_dodati=true;
+        for(Uloga u: noveUloge){
+            for(Uloga u1:uloge){
+                if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+            }
+        }
+        if(treba_dodati){
+            noveUloge.add(uloga3);
+            privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("ostavljanje-komentara").getId());
+            privilegija15.setUloge(noveUloge);
+            privilegijaRepozitorij.save(privilegija17);
+        }
+    }
+
+}
 
     private void dodajOdsjek() {
 

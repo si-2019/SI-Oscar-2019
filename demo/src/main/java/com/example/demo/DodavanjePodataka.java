@@ -1795,6 +1795,33 @@ public class DodavanjePodataka {
                 privilegijaRepozitorij.save(privilegija20);
             }
         }
+
+        uloga.clear();
+        Uloga uloga5 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+        uloga.add(uloga5);
+        Privilegija privilegija21 = new Privilegija();
+        privilegija21.setNazivPrivilegije("izdavanje-uvjerenja");
+        privilegija21.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("izdavanje-uvjerenja") == null) {
+            privilegijaRepozitorij.save(privilegija21);
+
+        } else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("izdavanje-uvjerenja").getUloge();
+            boolean treba_dodati = true;
+            for (Uloga u : noveUloge) {
+                for (Uloga u1 : uloge) {
+                    if (u.getNazivUloge.equals(u1.getNazivUloge()))
+                        treba_dodati = false;
+                }
+            }
+            if (treba_dodati) {
+                noveUloge.add(uloga5);
+                privilegijaRepozitorij
+                        .deleteById(privilegijaRepozitorij.findBynazivPrivilegije("izdavanje-uvjerenja").getId());
+                privilegija15.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija21);
+            }
+        }
     }
 
     private void dodajOdsjek() {

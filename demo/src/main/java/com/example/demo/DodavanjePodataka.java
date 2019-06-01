@@ -1594,6 +1594,30 @@ public class DodavanjePodataka {
                 privilegijaRepozitorij.save(privilegija15);
             }
         }
+        uloga.clear();
+        uloga.add(uloga4);
+        Privilegija privilegija16 = new Privilegija();
+        privilegija16.setNazivPrivilegije("pregled-anketa");
+        privilegija16.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("pregled-anketa") == null){
+            privilegijaRepozitorij.save(privilegija16);
+        
+        }
+          else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("pregled-anketa").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloge){
+                    if(u.getNazivUloge.equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga4);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("pregled-anketa").getId());
+                privilegija15.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija16);
+            }
+        }
 
     }
 

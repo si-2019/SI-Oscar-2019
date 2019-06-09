@@ -25,120 +25,116 @@ public class Korisnik {
 
     @Column (name = "ime", length = 50)
     @NotNull
-    private String Ime;
+    private String ime;
 
     @Column (name = "prezime", length = 50)
     @NotNull
-    private String Prezime;
+    private String prezime;
 
     @Column (name = "datumRodjenja")
-    private Date DatumRodjenja;
+    private Date datumRodjenja;
 
     @Column (name = "JMBG", length = 13)
-    private String Jmbg;
+    private String jmbg;
 
     @Column (name = "email", length = 50)
-    private String Email;
+    private String email;
 
     @Column (name = "mjestoRodjenja", length = 50)
-    private String MjestoRodjenja;
+    private String mjestoRodjenja;
 
     @Column (name = "kanton", length = 50)
-    private String Kanton;
+    private String kanton;
 
     @Column (name = "drzavljanstvo", length = 50)
-    private String Drzavljanstvo;
+    private String drzavljanstvo;
 
     @Column (name = "telefon", length = 50)
-    private String Telefon;
+    private String telefon;
 
     @Column (name = "spol")
-    private boolean Spol;
+    private boolean spol;
 
     @Column (name = "imePrezimeMajke", length = 100)
-    private String ImePrezimeMajke;
+    private String imePrezimeMajke;
 
     @Column (name = "imePrezimeOca", length = 100)
-    private String ImePrezimeOca;
+    private String imePrezimeOca;
 
     @Column (name = "adresa", length = 50)
-    private String Adresa;
+    private String adresa;
 
     @Column (name = "username", length = 50)
-    private String Username;
+    private String username;
 
     @Column (name = "password", length = 50)
-    private String Password;
+    private String password;
 
     @Column (name = "linkedin", length = 50)
-    private String Linkedin;
+    private String linkedin;
 
     @Column (name = "website", length = 50)
-    private String Website;
+    private String website;
 
     @Column (name = "fotografija")
-    private Blob Fotografija;
+    private Blob fotografija;
 
     @Column (name = "indeks", length = 50)
-    private String Indeks;
+    private String indeks;
 
     @Column (name = "ciklus", length = 50)
-    private String Ciklus;
+    private String ciklus;
 
     @Column (name = "semestar", length = 50)
-    private String Semestar;
+    private String semestar;
 
     @Column (name = "titula", length = 50)
-    private String Titula;
-
-
+    private String titula;
 
     public Korisnik() {}
 
     public Korisnik(Long id, Odsjek odsjek_id, Uloga uloga_id, @NotNull String ime, @NotNull String prezime, Date datumRodjenja, String jmbg, String email, String mjestoRodjenja, String kanton, String drzavljanstvo, String telefon, boolean spol, String imePrezimeMajke, String imePrezimeOca, String adresa, String username, String password, String linkedin, String website, Blob fotografija, String indeks, String ciklus, String semestar, String titula) {
-        Id = id;
+        this.Id = id;
         this.odsjek_id = odsjek_id;
         this.uloga_id = uloga_id;
-        Ime = ime;
-        Prezime = prezime;
-        DatumRodjenja = datumRodjenja;
-        Jmbg = jmbg;
-        Email = email;
-        MjestoRodjenja = mjestoRodjenja;
-        Kanton = kanton;
-        Drzavljanstvo = drzavljanstvo;
-        Telefon = telefon;
-        Spol = spol;
-        ImePrezimeMajke = imePrezimeMajke;
-        ImePrezimeOca = imePrezimeOca;
-        Adresa = adresa;
-        Username = username;
-        Password = password;
-        Linkedin = linkedin;
-        Website = website;
-        Fotografija = fotografija;
-        Indeks = indeks;
-        Ciklus = ciklus;
-        Semestar = semestar;
-        Titula = titula;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.datumRodjenja = datumRodjenja;
+        this.jmbg = jmbg;
+        this.email = email;
+        this.mjestoRodjenja = mjestoRodjenja;
+        this.kanton = kanton;
+        this.drzavljanstvo = drzavljanstvo;
+        this.telefon = telefon;
+        this.spol = spol;
+        this.imePrezimeMajke = imePrezimeMajke;
+        this.imePrezimeOca = imePrezimeOca;
+        this.adresa = adresa;
+        this.username = username;
+        this.password = password;
+        this.linkedin = linkedin;
+        this.website = website;
+        this.fotografija = fotografija;
+        this.indeks = indeks;
+        this.ciklus = ciklus;
+        this.semestar = semestar;
+        this.titula = titula;
     }
 
-
-
     public String getIme() {
-        return Ime;
+        return ime;
     }
 
     public void setIme(String ime) {
-        this.Ime = ime;
+        this.ime = ime;
     }
 
     public String getPrezime() {
-        return Prezime;
+        return prezime;
     }
 
     public void setPrezime(String prezime) {
-        this.Prezime = prezime;
+        this.prezime = prezime;
     }
 
     public Long getId() {
@@ -149,166 +145,164 @@ public class Korisnik {
         this.Id = id;
     }
 
-
-
     public Date getDatumRodjenja() {
-        return DatumRodjenja;
+        return datumRodjenja;
     }
 
     public void setDatumRodjenja(Date datumRodjenja) {
-        DatumRodjenja = datumRodjenja;
+        datumRodjenja = datumRodjenja;
     }
 
     public String getJmbg() {
-        return Jmbg;
+        return jmbg;
     }
 
     public void setJmbg(String jmbg) {
-        Jmbg = jmbg;
+        this.jmbg = jmbg;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getMjestoRodjenja() {
-        return MjestoRodjenja;
+        return mjestoRodjenja;
     }
 
     public void setMjestoRodjenja(String mjestoRodjenja) {
-        MjestoRodjenja = mjestoRodjenja;
+        this.mjestoRodjenja = mjestoRodjenja;
     }
 
     public String getKanton() {
-        return Kanton;
+        return kanton;
     }
 
     public void setKanton(String kanton) {
-        Kanton = kanton;
+        this.kanton = kanton;
     }
 
     public String getDrzavljanstvo() {
-        return Drzavljanstvo;
+        return drzavljanstvo;
     }
 
     public void setDrzavljanstvo(String drzavljanstvo) {
-        Drzavljanstvo = drzavljanstvo;
+        this.drzavljanstvo = drzavljanstvo;
     }
 
     public String getTelefon() {
-        return Telefon;
+        return telefon;
     }
 
     public void setTelefon(String telefon) {
-        Telefon = telefon;
+        this.telefon = telefon;
     }
 
     public boolean isSpol() {
-        return Spol;
+        return spol;
     }
 
     public void setSpol(boolean spol) {
-        Spol = spol;
+        this.spol = spol;
     }
 
     public String getImePrezimeMajke() {
-        return ImePrezimeMajke;
+        return imePrezimeMajke;
     }
 
     public void setImePrezimeMajke(String imePrezimeMajke) {
-        ImePrezimeMajke = imePrezimeMajke;
+        this.imePrezimeMajke = imePrezimeMajke;
     }
 
     public String getImePrezimeOca() {
-        return ImePrezimeOca;
+        return imePrezimeOca;
     }
 
     public void setImePrezimeOca(String imePrezimeOca) {
-        ImePrezimeOca = imePrezimeOca;
+        this.imePrezimeOca = imePrezimeOca;
     }
 
     public String getAdresa() {
-        return Adresa;
+        return adresa;
     }
 
     public void setAdresa(String adresa) {
-        Adresa = adresa;
+        this.adresa = adresa;
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public String getLinkedin() {
-        return Linkedin;
+        return linkedin;
     }
 
     public void setLinkedin(String linkedin) {
-        Linkedin = linkedin;
+        this.linkedin = linkedin;
     }
 
     public String getWebsite() {
-        return Website;
+        return website;
     }
 
     public void setWebsite(String website) {
-        Website = website;
+        this.website = website;
     }
 
     public Blob getFotografija() {
-        return Fotografija;
+        return fotografija;
     }
 
     public void setFotografija(Blob fotografija) {
-        Fotografija = fotografija;
+        this.fotografija = fotografija;
     }
 
     public String getIndeks() {
-        return Indeks;
+        return indeks;
     }
 
     public void setIndeks(String indeks) {
-        Indeks = indeks;
+        this.indeks = indeks;
     }
 
     public String getCiklus() {
-        return Ciklus;
+        return ciklus;
     }
 
     public void setCiklus(String ciklus) {
-        Ciklus = ciklus;
+        this.ciklus = ciklus;
     }
 
     public String getSemestar() {
-        return Semestar;
+        return semestar;
     }
 
     public void setSemestar(String semestar) {
-        Semestar = semestar;
+        this.semestar = semestar;
     }
 
     public String getTitula() {
-        return Titula;
+        return titula;
     }
 
     public void setTitula(String titula) {
-        Titula = titula;
+        this.titula = titula;
     }
 
     public Odsjek getOdsjek_id() {
@@ -319,7 +313,7 @@ public class Korisnik {
         this.odsjek_id = odsjek_id;
     }
 
-    public Uloga getUloga_id() {
+    Uloga getUloga_id() {
         return uloga_id;
     }
 
@@ -327,15 +321,20 @@ public class Korisnik {
         this.uloga_id = uloga_id;
     }
 
-    /*public boolean imaPrivilegiju (String privilegija){
+    boolean imaPrivilegiju(String privilegija){
         boolean ima = false;
         List<Privilegija> privilegije = this.getUloga_id().getPrivilegije();
         for (Privilegija p: privilegije) {
-            if (p.getNazivPrivilegije().equals(privilegija)) {
+            if (p.getNazivPrivilegije().toLowerCase().equals(privilegija.toLowerCase())) {
                 ima = true;
                 break;
             }
         }
         return ima;
-    }*/
+    }
+
+    boolean imaUlogu(String uloga) {
+        String ulogaKorisnika = this.getUloga_id().getNazivUloge().toString();
+        return uloga.toLowerCase().equals(ulogaKorisnika.toLowerCase());
+    }
 }

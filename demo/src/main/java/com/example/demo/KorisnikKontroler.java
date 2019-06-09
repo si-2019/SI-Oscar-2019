@@ -6,19 +6,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/korisnici")
 public class KorisnikKontroler {
 
     private KorisnikRepozitorij korisnikRepozitorij;
+    private PrivilegijaRepozitorij privilegijaRepozitorij;
+    private UlogaRepozitorij ulogaRepozitorij;
 
     @Autowired
-    public KorisnikKontroler(KorisnikRepozitorij korisnikRepozitorij) {
+    public KorisnikKontroler(KorisnikRepozitorij korisnikRepozitorij, PrivilegijaRepozitorij privilegijaRepozitorij, UlogaRepozitorij ulogaRepozitorij) {
         this.korisnikRepozitorij = korisnikRepozitorij;
+        this.privilegijaRepozitorij = privilegijaRepozitorij;
+        this.ulogaRepozitorij = ulogaRepozitorij;
     }
-
-    /*@RequestMapping(value = "/all", method = RequestMethod.GET)
-    public boolean getAll() {
-        Korisnik k = korisnikRepozitorij.findById(Long.valueOf(1)).get();
-        return k.imaPrivilegiju("registrovanje-casa");
-    }*/
 }

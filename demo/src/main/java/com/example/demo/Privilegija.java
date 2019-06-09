@@ -1,10 +1,14 @@
 package com.example.demo;
+
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
-import javax.persistence.*;
 
 @Entity
 @Table(name = "Privilegija")
+@DynamicUpdate
 public class Privilegija {
 
     @Id
@@ -54,4 +58,3 @@ public class Privilegija {
         this.uloge = uloge;
     }
 }
-

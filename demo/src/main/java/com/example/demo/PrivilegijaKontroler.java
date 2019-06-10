@@ -45,11 +45,11 @@ public class PrivilegijaKontroler {
 
     @RequestMapping(value = "/dodajPrivilegiju/{privilegija}", method = RequestMethod.POST)
     public String dodajPrivilegiju(@PathVariable String privilegija) {
-        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija)) {
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija.toLowerCase())) {
             Privilegija privilegijaNova = new Privilegija();
-            privilegijaNova.setNazivPrivilegije(privilegija);
+            privilegijaNova.setNazivPrivilegije(privilegija.toLowerCase());
             privilegijaRepozitorij.save(privilegijaNova);
-            return "Uspjesno dodana privilegija " + privilegija + "!";
+            return "Uspjesno dodana privilegija " + privilegija.toLowerCase() + "!";
         }
         else {
             return "Privilegija vec postoji u sistemu!";

@@ -855,4 +855,29 @@ public class TestoviPrivilegija {
 
         assertEquals("Sve privilegije vec postoje u bazi!", body);
     }
+
+    @Test
+    public void testDodajPrivilegijePrivilegijaNePostoji() throws IOException, JSONException {
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("dodaj-proba1")) {
+            URL url = new URL("http://localhost:31915/privilegije/dodajPrivilegije");
+            HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+            httpCon.setDoOutput(true);
+            httpCon.setRequestMethod("POST");
+            httpCon.setRequestProperty("Content-Type", "application/json");
+            OutputStreamWriter out = new OutputStreamWriter(httpCon.getOutputStream());
+
+            JSONObject jo = new JSONObject();
+            jo.put("naziv", "dodaj-proba1");
+
+            JSONArray ja = new JSONArray();
+            ja.put(jo);
+
+            out.write(ja.toString());
+            out.close();
+            httpCon.getInputStream();
+            String body = IOUtils.toString(httpCon.getInputStream(), Charset.forName("UTF-8"));
+
+            assertNotSame("Sve privilegije vec postoje u bazi!", body);
+        }
+    }
 }

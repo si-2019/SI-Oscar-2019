@@ -722,4 +722,13 @@ public class TestoviPrivilegija {
         String body = IOUtils.toString(in, Charset.forName("UTF-8"));
         assertEquals(false, body.isEmpty());
     }
+
+    @Test
+    public void testPrivilegijeKorisnikaKorisnikNePostoji() throws IOException {
+        URL url = new URL("http://localhost:31915/pretragaId/10000/dajPrivilegije");
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals(true, body.isEmpty());
+    }
 }

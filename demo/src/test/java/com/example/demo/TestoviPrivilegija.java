@@ -819,4 +819,17 @@ public class TestoviPrivilegija {
             assertNotSame("Privilegija vec postoji u sistemu!", body);
         }
     }
+
+    @Test
+    public void testDodajPrivilegijuPrivilegijaPostoji() throws IOException{
+        if(privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-korisnika")) {
+            URL url = new URL("http://localhost:31915/privilegije/dodajPrivilegiju/editovanje-korisnika");
+            HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+            httpCon.setDoOutput(true);
+            httpCon.setRequestMethod("POST");
+            InputStream in = httpCon.getInputStream();
+            String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+            assertEquals("Privilegija vec postoji u sistemu!", body);
+        }
+    }
 }

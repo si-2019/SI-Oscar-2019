@@ -880,4 +880,14 @@ public class TestoviPrivilegija {
             assertNotSame("Sve privilegije vec postoje u bazi!", body);
         }
     }
+
+    @Test
+    public void testPrivilegijeUlogeUlogaPostoji() throws IOException {
+        Long idUloge = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR).getId();
+        URL url = new URL("http://localhost:31915/uloga/" + idUloge + "/privilegije");
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals(false, body.isEmpty());
+    }
 }

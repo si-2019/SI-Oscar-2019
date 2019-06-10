@@ -740,5 +740,6 @@ public class TestoviPrivilegija {
         InputStream in = con.getInputStream();
         String body = IOUtils.toString(in, Charset.forName("UTF-8"));
         assertEquals(false, body.isEmpty());
+
     }
 }

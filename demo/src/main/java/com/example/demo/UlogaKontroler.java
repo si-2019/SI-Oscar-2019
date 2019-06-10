@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @RestController
+@RequestMapping(value = "/uloga")
 public class UlogaKontroler {
     private UlogaRepozitorij ulogaRepozitorij;
     private PrivilegijaRepozitorij privilegijaRepozitorij;
@@ -45,5 +46,18 @@ public class UlogaKontroler {
         }
         if(ima) return indeks;
         return -1;
+    }
+
+    @RequestMapping(value = "/{idUloge}/privilegije", method = RequestMethod.GET)
+    public List<String> privilegijeUloge(@PathVariable Long idUloge) {
+        List<Privilegija> privilegije = new ArrayList<Privilegija>();
+        List<String> povratna = new ArrayList<String>();
+        if(ulogaRepozitorij.findById(idUloge).isPresent()) {
+            privilegije = ulogaRepozitorij.findById(idUloge).get().getPrivilegije();
+            for (Privilegija p : privilegije) {
+                povratna.add(p.getNazivPrivilegije());
+            }
+        }
+        return povratna;
     }
 }

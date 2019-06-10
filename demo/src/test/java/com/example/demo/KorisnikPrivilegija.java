@@ -35,9 +35,9 @@ public class KorisnikPrivilegija {
 
     public void testStudentImaPrivilegijuPregledaTerminaIspita() throws Exception {
         
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         
-        assertThat(uloga.imaPrivilegiju("pregled-termina")).isEqualTo(true);
+        assertThat(uloga.imaPrivilegiju("ostavljanje-komentara")).isEqualTo(true);
 
     }
 }

@@ -890,4 +890,14 @@ public class TestoviPrivilegija {
         String body = IOUtils.toString(in, Charset.forName("UTF-8"));
         assertEquals(false, body.isEmpty());
     }
+
+    @Test
+    public void testPrivilegijeUlogeUlogaNePostoji() throws IOException {
+        URL url = new URL("http://localhost:31915/uloga/10000/privilegije");
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        JSONArray ja = new JSONArray();
+        assertEquals(ja.toString(), body);
+    }
 }

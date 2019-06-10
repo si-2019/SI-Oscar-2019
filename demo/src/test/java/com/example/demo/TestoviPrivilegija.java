@@ -806,4 +806,17 @@ public class TestoviPrivilegija {
 
         assertEquals("Niti jedna od navedenih privilegija ne postoji u bazi!", body);
     }
+
+    @Test
+    public void testDodajPrivilegijuPrivilegijaNePostoji() throws IOException {
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("dodaj-proba")) {
+            URL url = new URL("http://localhost:31915/privilegije/dodajPrivilegiju/dodaj-proba");
+            HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+            httpCon.setDoOutput(true);
+            httpCon.setRequestMethod("POST");
+            InputStream in = httpCon.getInputStream();
+            String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+            assertNotSame("Privilegija vec postoji u sistemu!", body);
+        }
+    }
 }

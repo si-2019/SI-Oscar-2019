@@ -783,4 +783,27 @@ public class TestoviPrivilegija {
 
         assertNotSame("Niti jedna od navedenih privilegija ne postoji u bazi!", body);
     }
+
+    @Test
+    public void testObrisiPrivilegijePrivilegijaNePostoji() throws IOException, JSONException {
+        URL url = new URL("http://localhost:31915/privilegije/obrisiPrivilegije");
+        HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+        httpCon.setDoOutput(true);
+        httpCon.setRequestMethod("DELETE");
+        httpCon.setRequestProperty("Content-Type", "application/json");
+        OutputStreamWriter out = new OutputStreamWriter(httpCon.getOutputStream());
+
+        JSONObject jo = new JSONObject();
+        jo.put("naziv", "kshahslhSL");
+
+        JSONArray ja = new JSONArray();
+        ja.put(jo);
+
+        out.write(ja.toString());
+        out.close();
+        httpCon.getInputStream();
+        String body = IOUtils.toString(httpCon.getInputStream(), Charset.forName("UTF-8"));
+
+        assertEquals("Niti jedna od navedenih privilegija ne postoji u bazi!", body);
+    }
 }

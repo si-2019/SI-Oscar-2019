@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @RestController
+@RequestMapping(value = "/privilegije")
 public class PrivilegijaKontroler {
     private PrivilegijaRepozitorij privilegijaRepozitorij;
 

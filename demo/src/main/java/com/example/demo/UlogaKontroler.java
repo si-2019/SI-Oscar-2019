@@ -47,4 +47,9 @@ public class UlogaKontroler {
         if(ima) return indeks;
         return -1;
     }
+	@RequestMapping(value = "/obrisiSveUloge", method = RequestMethod.DELETE)
+	public String obrisiSveUloge() {
+    ulogaRepozitorij.deleteAll();
+    return "Sve uloge su uspjesno obrisane!";
+	}
 }

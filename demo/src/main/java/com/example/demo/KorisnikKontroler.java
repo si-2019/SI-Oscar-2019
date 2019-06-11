@@ -21,14 +21,14 @@ public class KorisnikKontroler {
         this.privilegijaRepozitorij = privilegijaRepozitorij;
         this.ulogaRepozitorij = ulogaRepozitorij;
     }
-    @RequestMapping(value="pretragaUlogeId/{idKorisnika}/{idUloge}",method=RequestMethod.GET)
-    public boolean korisnikImaUlogu(@PathVariable Long idKorisnika,@PathVariable Long idUloge){
-
-    if(korisnikRepozitorij.findById(idKorisnika).equals(Optional.empty()) || !ulogaRepozitorij.findById(idUloge).isPresent()){
-        return false;
+    @RequestMapping(value = "/pretragaUsername/imaPrivilegiju/{username}/{privilegija}", method = RequestMethod.GET)
+    public boolean korisnikImaPrivilegijuUsername(@PathVariable String username, @PathVariable String privilegija) {
+        if (korisnikRepozitorij.findByusername(username) == null) {
+            return false;
+        }
+        return korisnikRepozitorij.findByusername(username).imaPrivilegiju(privilegija);
     }
-        return korisnikRepozitorij.findById(idKorisnika).get().imaUlogu(ulogaRepozitorij.findById(idUloge).get().getNazivUloge().toString());
-    }
+    
 
 
 }

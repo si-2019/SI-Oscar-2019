@@ -26,4 +26,13 @@ public class PrivilegijaKontroler {
                 .mapToObj(index -> ((JSONObject)jsonArray.get(index)).optString(key))
                 .collect(Collectors.toList());
     }
+	@RequestMapping(value = "/dajSvePrivilegije", method = RequestMethod.GET)
+	public List<String> dajSvePrivilegije() {
+    List<Privilegija> privilegije = privilegijaRepozitorij.findAll();
+    List<String> nazivi = new ArrayList<String>();
+    for (Privilegija p : privilegije) {
+        nazivi.add(p.getNazivPrivilegije());
+    }
+    return nazivi;
+	}
 }

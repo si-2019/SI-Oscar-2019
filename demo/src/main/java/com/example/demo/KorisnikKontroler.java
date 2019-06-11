@@ -24,5 +24,5 @@ public class KorisnikKontroler {
         return null;
     }
     return korisnikRepozitorij.findById(idKorisnika).get().getUloga_id().getNazivUloge().toString();
-	}
+}
 }

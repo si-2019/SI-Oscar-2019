@@ -23,7 +23,13 @@ public class PrivilegijaKontroler {
     private List<String> dajVrijednostiZaKljuc(String jsonArrayStr, String key) {
         JSONArray jsonArray = new JSONArray(jsonArrayStr);
         return IntStream.range(0, jsonArray.length())
-                .mapToObj(index -> ((JSONObject)jsonArray.get(index)).optString(key))
-                .collect(Collectors.toList());
+                .mapToObj(index -> ((JSONObject) jsonArray.get(index)).optString(key)).collect(Collectors.toList());
     }
+
+    @RequestMapping(value = "/obrisiSvePrivilegije", method = RequestMethod.DELETE)
+    public String obrisiSvePrivilegije() {
+        privilegijaRepozitorij.deleteAll();
+        return "Sve privilegije su uspjesno obrisane!";
+    }
+
 }

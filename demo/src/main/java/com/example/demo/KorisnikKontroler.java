@@ -16,19 +16,19 @@ public class KorisnikKontroler {
     private UlogaRepozitorij ulogaRepozitorij;
 
     @Autowired
-    public KorisnikKontroler(KorisnikRepozitorij korisnikRepozitorij, PrivilegijaRepozitorij privilegijaRepozitorij, UlogaRepozitorij ulogaRepozitorij) {
+    public KorisnikKontroler(KorisnikRepozitorij korisnikRepozitorij, PrivilegijaRepozitorij privilegijaRepozitorij,
+            UlogaRepozitorij ulogaRepozitorij) {
         this.korisnikRepozitorij = korisnikRepozitorij;
         this.privilegijaRepozitorij = privilegijaRepozitorij;
         this.ulogaRepozitorij = ulogaRepozitorij;
     }
-    @RequestMapping(value = "/pretragaUsername/imaPrivilegiju/{username}/{privilegija}", method = RequestMethod.GET)
-    public boolean korisnikImaPrivilegijuUsername(@PathVariable String username, @PathVariable String privilegija) {
+
+    @RequestMapping(value = "/pretragaUsername/imaUlogu/{username}/{uloga}", method = RequestMethod.GET)
+    public boolean korisnikImaUloguUsername(@PathVariable String username, @PathVariable String uloga) {
         if (korisnikRepozitorij.findByusername(username) == null) {
             return false;
         }
-        return korisnikRepozitorij.findByusername(username).imaPrivilegiju(privilegija);
+        return korisnikRepozitorij.findByusername(username).imaUlogu(uloga);
     }
-    
-
 
 }

@@ -26,4 +26,27 @@ public class PrivilegijaKontroler {
                 .mapToObj(index -> ((JSONObject)jsonArray.get(index)).optString(key))
                 .collect(Collectors.toList());
     }
+
+    @RequestMapping(value = "/obrisi/{privilegija}", method = RequestMethod.DELETE)
+    public String obrisiPrivilegiju(@PathVariable String privilegija){
+        if (privilegijaRepozitorij.findBynazivPrivilegije(privilegija).equals(Optional.empty())) {
+            return "Privilegija ne postoji!";
+        }
+        else{
+            privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije(privilegija).getId());
+            return "Privilegija je uspjesno obrisana!";
+        }
+    }
+    
+    @RequestMapping(value = "/obrisiId/{idPrivilegija}", method = RequestMethod.DELETE)
+    public String obrisiPrivilegijuPoId(@PathVariable Long idPrivilegija){
+        if (privilegijaRepozitorij.findById(idPrivilegija).equals(Optional.empty())) {
+            return "Privilegija ne postoji!";
+        }
+        else {
+            privilegijaRepozitorij.deleteById(idPrivilegija);
+            return "Privilegija je uspjesno obrisana!";
+        }
+    }
+    
 }

@@ -707,4 +707,5 @@ public class TestoviPrivilegija {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("registrovanje-casa")));
     }
+    
 }

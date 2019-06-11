@@ -18,4 +18,11 @@ public class KorisnikKontroler {
         this.privilegijaRepozitorij = privilegijaRepozitorij;
         this.ulogaRepozitorij = ulogaRepozitorij;
     }
+	@RequestMapping (value = "/pretragaUsername/{username}/dajUlogu", method = RequestMethod.GET)
+	public String vratiUloguUsername(@PathVariable String username) {
+    if(korisnikRepozitorij.findByusername(username) == null) {
+        return null;
+    }
+    return korisnikRepozitorij.findByusername(username).getUloga_id().getNazivUloge().toString();
+}
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 public class KorisnikKontroler {
@@ -20,7 +21,7 @@ public class KorisnikKontroler {
     }
 	@RequestMapping (value = "/pretragaUsername/{username}/dajUlogu", method = RequestMethod.GET)
 	public String vratiUloguUsername(@PathVariable String username) {
-    if(korisnikRepozitorij.findByusername(username) == null) {
+    if(korisnikRepozitorij.findByusername(username.toLowerCase()) == null) {
         return null;
     }
     return korisnikRepozitorij.findByusername(username).getUloga_id().getNazivUloge().toString();

@@ -23,11 +23,11 @@ public class Podaci {
     @EventListener
     public void dodaj (ApplicationReadyEvent event){
         dodajUloge();
-        dodajPrivilegijeHana();
-        dodajPrivilegijeSulejman();
+     	dodajPrivilegijeHana();
+     	dodajPrivilegijeSulejman();
         dodajPrivilegijeMahira();
-        dodajPrivilegijeZerina();
-        dodajPrivilegijeAmina();
+     	dodajPrivilegijeZerina();
+     	dodajPrivilegijeAmina();
     }
 
     private void dodajUloge() {

@@ -71,6 +71,8 @@ public class PrivilegijaKontroler {
         int brojac = 0, indeks = 0;
         String povratni = "Uspjesno su editovane privilegije: \n";
         for(String privilegija : starePrivilegije) {
+            privilegija = privilegija.toLowerCase();
+            novePrivilegije.set(indeks, novePrivilegije.get(indeks).toLowerCase());
             if(privilegijaRepozitorij.existsBynazivPrivilegije(privilegija) && !privilegijaRepozitorij.existsBynazivPrivilegije(novePrivilegije.get(indeks))) {
                 Long idPrivilegije = privilegijaRepozitorij.findBynazivPrivilegije(privilegija).getId();
                 Privilegija p = privilegijaRepozitorij.findById(idPrivilegije).get();

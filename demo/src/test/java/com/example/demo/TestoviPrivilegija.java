@@ -1,31 +1,17 @@
 package com.example.demo;
-
 import org.junit.Test;
-
 import org.junit.runner.RunWith;
-
 import io.micrometer.core.instrument.util.IOUtils;
-
 import org.json.JSONArray;
-
 import org.json.JSONException;
-
 import org.json.JSONObject;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
 import org.springframework.test.context.TestPropertySource;
-
 import org.springframework.test.context.junit4.SpringRunner;
-
 import java.io.IOException;
-
 import java.io.InputStream;
-
 import java.io.OutputStreamWriter;
 
 import java.net.HttpURLConnection;
@@ -742,7 +728,7 @@ public class TestoviPrivilegija {
                 "neko@website.com", null, "17933", "1", "6", "profesor");
         korisnikRepozitorij.save(korisnik);
         if(privilegijaRepozitorij.findBynazivPrivilegije("registrovanje-casa")!=null){
-            URL url = new URL("http://localhost:8080/pretragaPrivilegijeId/"+korisnik.getId().toString()+"/"+privilegijaRepozitorij.findBynazivPrivilegije("registrovanje-casa").getId().toString());
+            URL url = new URL("http://localhost:31915/pretragaPrivilegijeId/"+korisnik.getId().toString()+"/"+privilegijaRepozitorij.findBynazivPrivilegije("registrovanje-casa").getId().toString());
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setDoOutput(false);
             con.setRequestMethod("GET");

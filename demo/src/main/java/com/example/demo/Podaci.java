@@ -14,10 +14,12 @@ public class Podaci {
     private UlogaRepozitorij ulogaRepozitorij;
     private PrivilegijaRepozitorij privilegijaRepozitorij;
 
+
     @Autowired
     public Podaci(UlogaRepozitorij ulogaRepozitorij, PrivilegijaRepozitorij privilegijaRepozitorij) {
         this.ulogaRepozitorij = ulogaRepozitorij;
         this.privilegijaRepozitorij = privilegijaRepozitorij;
+        
     }
 
     @EventListener
@@ -28,6 +30,11 @@ public class Podaci {
         dodajPrivilegijeMahira();
         dodajPrivilegijeZerina();
         dodajPrivilegijeAmina();
+    }
+    private void dodajOdsjek(){
+        Odsjek o=new Odsjek();
+        o.setNazivOdsjeka("RI");
+        odsjekRepozitorij.save(o);
     }
 
     private void dodajUloge() {

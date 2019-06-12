@@ -64,4 +64,24 @@ public class PrivilegijaKontroler {
         }
     }
 
+    @RequestMapping(value = "/editujPrivilegije", method = RequestMethod.PUT)
+    public String editujPrivilegije(@RequestBody String nizPrivilegija) {
+        List<String> starePrivilegije = dajVrijednostiZaKljuc(nizPrivilegija, "nazivStare");
+        List<String> novePrivilegije = dajVrijednostiZaKljuc(nizPrivilegija, "nazivNove");
+        int brojac = 0, indeks = 0;
+        String povratni = "Uspjesno su editovane privilegije: \n";
+        for(String privilegija : starePrivilegije) {
+            if(privilegijaRepozitorij.existsBynazivPrivilegije(privilegija) && !privilegijaRepozitorij.existsBynazivPrivilegije(novePrivilegije.get(indeks))) {
+                Long idPrivilegije = privilegijaRepozitorij.findBynazivPrivilegije(privilegija).getId();
+                Privilegija p = privilegijaRepozitorij.findById(idPrivilegije).get();
+                p.setNazivPrivilegije(novePrivilegije.get(indeks));
+                privilegijaRepozitorij.save(p);
+                brojac++;
+                povratni += (privilegija + '\n');
+            }
+            indeks++;
+        }
+        if(brojac != 0) return povratni;
+        else return "Niti jedna od privilegija koju zelite editovati ne postoji u sistemu!";
+    }
 }

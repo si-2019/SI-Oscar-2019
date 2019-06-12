@@ -55,4 +55,15 @@ public class UlogaKontroler {
         }
         return ulogaRepozitorij.findById(idUloge).get().imaPrivilegiju(privilegijaRepozitorij.findById(idPrivilegije).get().getNazivPrivilegije());
     }
+
+    @RequestMapping(value = "/pretragaNaziv/{naziv}/{privilegija}", method = RequestMethod.GET)
+    public boolean ulogaNazivImaPrivilegiju(@PathVariable String naziv, @PathVariable String privilegija) {
+        ImenaUloga[] niz = ImenaUloga.values();
+        int indeks = provjeriPostojanjeUloge(naziv);
+        if(indeks != -1) {
+            privilegija = privilegija.toLowerCase();
+            return ulogaRepozitorij.findBynazivUloge(niz[indeks]).imaPrivilegiju(privilegija);
+        }
+        return false;
+    }
 }

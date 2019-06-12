@@ -23,11 +23,11 @@ public class Podaci {
     @EventListener
     public void dodaj (ApplicationReadyEvent event){
         dodajUloge();
-        dodajPrivilegijeHana();
+        /*dodajPrivilegijeHana();
         dodajPrivilegijeSulejman();
         dodajPrivilegijeMahira();
         dodajPrivilegijeZerina();
-        dodajPrivilegijeAmina();
+        dodajPrivilegijeAmina();*/
     }
 
     private void dodajUloge() {
@@ -52,7 +52,7 @@ public class Podaci {
         if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA)) ulogaRepozitorij.save(studentska_sluzba);
     }
 
-    private void poveziUloguPrivilegiju(Privilegija privilegija, Uloga uloga) {
+    void poveziUloguPrivilegiju(Privilegija privilegija, Uloga uloga) {
         if (!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija.getNazivPrivilegije())) {
             privilegijaRepozitorij.save(privilegija);
         } else {

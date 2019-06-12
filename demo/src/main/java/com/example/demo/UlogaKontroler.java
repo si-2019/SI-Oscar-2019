@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @RestController
-@RequestMapping(value = "/uloga")
 public class UlogaKontroler {
     private UlogaRepozitorij ulogaRepozitorij;
     private PrivilegijaRepozitorij privilegijaRepozitorij;
@@ -33,7 +32,7 @@ public class UlogaKontroler {
                 .collect(Collectors.toList());
     }
 
-    private int provjeriPostojanjeUloge(String nazivUloge) {
+    int provjeriPostojanjeUloge(String nazivUloge) {
         ImenaUloga[] niz = ImenaUloga.values();
         boolean ima = false;
         int indeks = 0;

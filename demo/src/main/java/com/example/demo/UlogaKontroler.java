@@ -66,4 +66,15 @@ public class UlogaKontroler {
         }
         return false;
     }
+
+    @RequestMapping(value = "/obrisiId/{idUloge}", method = RequestMethod.DELETE)
+    public String obrisiUlogu(@PathVariable Long idUloge) {
+        if(ulogaRepozitorij.findById(idUloge).equals(Optional.empty())) {
+            return "Uloga ne postoji!";
+        }
+        else {
+            ulogaRepozitorij.deleteById(idUloge);
+            return "Uloga je uspjesno obrisana!";
+        }
+    }
 }

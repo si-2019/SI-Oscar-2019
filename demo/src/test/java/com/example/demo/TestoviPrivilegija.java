@@ -900,4 +900,23 @@ public class TestoviPrivilegija {
         JSONArray ja = new JSONArray();
         assertEquals(ja.toString(), body);
     }
+
+    @Test
+    public void testprivilegijeUlogeNazivUlogaPostoji() throws IOException {
+        URL url = new URL("http://localhost:31915/uloga/vratiPoNazivu/student/privilegije");
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals(false, body.isEmpty());
+    }
+
+    @Test
+    public void testprivilegijeUlogeNazivUlogaNePostoji() throws IOException {
+        URL url = new URL("http://localhost:31915/uloga/vratiPoNazivu/yhkhdal/privilegije");
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        JSONArray ja = new JSONArray();
+        assertEquals(ja.toString(), body);
+    }
 }

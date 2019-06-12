@@ -60,4 +60,19 @@ public class UlogaKontroler {
         }
         return povratna;
     }
+
+    @RequestMapping(value = "/vratiPoNazivu/{naziv}/privilegije", method = RequestMethod.GET)
+    public List<String> privilegijeUlogeNaziv(@PathVariable String naziv) {
+        List<Privilegija> privilegije = new ArrayList<>();
+        List<String> povratna = new ArrayList<>();
+        ImenaUloga[] niz = ImenaUloga.values();
+        int indeks = provjeriPostojanjeUloge(naziv);
+        if(indeks != -1 && ulogaRepozitorij.existsBynazivUloge(niz[indeks])) {
+            privilegije = ulogaRepozitorij.findBynazivUloge(niz[indeks]).getPrivilegije();
+            for(Privilegija p : privilegije) {
+                povratna.add(p.getNazivPrivilegije());
+            }
+        }
+        return povratna;
+    }
 }

@@ -721,7 +721,7 @@ public class TestoviPrivilegija {
     @Test
     public void testKorisnikImaPrivilegiju() throws IOException{
        
-            URL url = new URL("http://localhost:8080/pretragaPrivilegijeId/1/nesto");
+            URL url = new URL("http://localhost:31915/pretragaPrivilegijeId/1/nesto");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setDoOutput(false);
             con.setRequestMethod("GET");

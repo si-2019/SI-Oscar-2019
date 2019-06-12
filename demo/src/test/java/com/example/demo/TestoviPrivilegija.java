@@ -720,7 +720,7 @@ public class TestoviPrivilegija {
         assertEquals(true, (uloga.imaPrivilegiju("registrovanje-casa")));
     }
     @Test 
-    public void obrisiPrivilegiju() throws IOException{
+    public void testObrisiPrivilegiju() throws IOException{
 
         Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("registrovanje-casa");
         URL url = new URL("http://localhost:31915/privilegije/obrisi/"+p.getNazivPrivilegije());

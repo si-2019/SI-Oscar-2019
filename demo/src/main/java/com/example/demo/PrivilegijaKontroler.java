@@ -29,6 +29,7 @@ public class PrivilegijaKontroler {
 
     @RequestMapping(value = "/obrisi/{privilegija}", method = RequestMethod.DELETE)
     public String obrisiPrivilegiju(@PathVariable String privilegija){
+        privilegija=privilegija.toLowerCase();
         if(privilegijaRepozitorij.findBynazivPrivilegije(privilegija).equals(Optional.empty()))
             return "Privilegija ne postoji!";
         else{

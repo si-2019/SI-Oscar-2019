@@ -44,4 +44,24 @@ public class PrivilegijaKontroler {
         }
         return "Specificirana uloga ili privilegija ne postoje!";
     }
+
+    @RequestMapping(value = "/editujPrivilegiju/{stara}/{nova}", method = RequestMethod.PUT)
+    public String editujPrivilegiju(@PathVariable String stara, @PathVariable String nova) {
+        stara = stara.toLowerCase();
+        nova = nova.toLowerCase();
+        if(privilegijaRepozitorij.existsBynazivPrivilegije(stara) && !privilegijaRepozitorij.existsBynazivPrivilegije(nova)) {
+            Long idPrivilegije = privilegijaRepozitorij.findBynazivPrivilegije(stara).getId();
+            Privilegija p = privilegijaRepozitorij.findById(idPrivilegije).get();
+            p.setNazivPrivilegije(nova);
+            privilegijaRepozitorij.save(p);
+            return "Privilegija uspjesno editovana!";
+        }
+        else if(privilegijaRepozitorij.existsBynazivPrivilegije(nova)) {
+            return "Privilegija sa nazivom koji zelite postaviti vec postoji!";
+        }
+        else {
+            return "Privilegija koju zelite editovati ne postoji u sistemu!";
+        }
+    }
+
 }

@@ -26,10 +26,4 @@ public class PrivilegijaKontroler {
                 .mapToObj(index -> ((JSONObject) jsonArray.get(index)).optString(key)).collect(Collectors.toList());
     }
 
-    @RequestMapping(value = "/obrisiSvePrivilegije", method = RequestMethod.DELETE)
-    public String obrisiSvePrivilegije() {
-        privilegijaRepozitorij.deleteAll();
-        return "Sve privilegije su uspjesno obrisane!";
-    }
-
 }

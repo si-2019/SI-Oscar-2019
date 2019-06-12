@@ -23,12 +23,12 @@ public class KorisnikKontroler {
         this.ulogaRepozitorij = ulogaRepozitorij;
     }
 
-    @RequestMapping(value = "/pretragaUsername/imaUlogu/{username}/{uloga}", method = RequestMethod.GET)
-    public boolean korisnikImaUloguUsername(@PathVariable String username, @PathVariable String uloga) {
-        if (korisnikRepozitorij.findByusername(username) == null) {
+    @RequestMapping(value = "/pretragaId/imaPrivilegiju/{idKorisnika}/{privilegija}", method = RequestMethod.GET)
+    public boolean korisnikImaPrivilegiju(@PathVariable Long idKorisnika, @PathVariable String privilegija) {
+        if (korisnikRepozitorij.findById(idKorisnika).equals(Optional.empty())) {
             return false;
         }
-        return korisnikRepozitorij.findByusername(username).imaUlogu(uloga);
+        return korisnikRepozitorij.findById(idKorisnika).get().imaPrivilegiju(privilegija);
     }
 
 }

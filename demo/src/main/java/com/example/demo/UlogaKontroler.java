@@ -3,10 +3,7 @@ package com.example.demo;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,5 +84,31 @@ public class UlogaKontroler {
             return "Uloga je uspjesno obrisana!";
         }
         return "Uloga ne postoji!";
+    }
+
+    @RequestMapping(value = "/obrisiUloge", method = RequestMethod.DELETE)
+    public String obrisiUloge(@RequestBody String nizUloga) {
+        List<String> uloge = dajVrijednostiZaKljuc(nizUloga, "naziv");
+        ImenaUloga[] niz = ImenaUloga.values();
+        int brojac = 0;
+        String povratni = "Uspjesno su obrisane uloge: \n";
+        for(String uloga : uloge) {
+            boolean ima = false;
+            int indeks = 0;
+            for(ImenaUloga imeUloge : niz) {
+                if(uloga.toLowerCase().equals(imeUloge.toString().toLowerCase())) {
+                    ima = true;
+                    break;
+                }
+                indeks++;
+            }
+            if(ima) {
+                brojac++;
+                ulogaRepozitorij.deleteById(ulogaRepozitorij.findBynazivUloge(niz[indeks]).getId());
+                povratni += (uloga + '\n');
+            }
+        }
+        if(brojac != 0) return povratni;
+        else return "Niti jedna od navedenih uloga ne postoji u bazi!";
     }
 }

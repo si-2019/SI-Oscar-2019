@@ -723,7 +723,7 @@ public class TestoviPrivilegija {
     public void obrisiPrivilegijuPoId() throws IOException{
 
         Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("registrovanje-casa");
-        URL url = new URL("http://localhost:8080/privilegije/obrisiId/"+p.getId().toString());
+        URL url = new URL("http://localhost:31915/privilegije/obrisiId/"+p.getId().toString());
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setDoOutput(true);
         con.setRequestMethod("DELETE");

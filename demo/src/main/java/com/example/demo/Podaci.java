@@ -31,12 +31,7 @@ public class Podaci {
         dodajPrivilegijeZerina();
         dodajPrivilegijeAmina();
     }
-    private void dodajOdsjek(){
-        Odsjek o=new Odsjek();
-        o.setNazivOdsjeka("RI");
-        odsjekRepozitorij.save(o);
-    }
-
+   
     private void dodajUloge() {
         Uloga admin = new Uloga();
         admin.setNazivUloge(ImenaUloga.ADMIN);

@@ -77,4 +77,15 @@ public class UlogaKontroler {
             return "Uloga je uspjesno obrisana!";
         }
     }
+
+    @RequestMapping(value = "/obrisiNaziv/{naziv}", method = RequestMethod.DELETE)
+    public String obrisiUloguNaziv(@PathVariable String naziv) {
+        ImenaUloga[] niz = ImenaUloga.values();
+        int indeks = provjeriPostojanjeUloge(naziv);
+        if(indeks != -1) {
+            ulogaRepozitorij.deleteById(ulogaRepozitorij.findBynazivUloge(niz[indeks]).getId());
+            return "Uloga je uspjesno obrisana!";
+        }
+        return "Uloga ne postoji!";
+    }
 }

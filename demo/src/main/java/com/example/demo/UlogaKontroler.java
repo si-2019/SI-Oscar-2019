@@ -47,4 +47,13 @@ public class UlogaKontroler {
         if(ima) return indeks;
         return -1;
     }
+	@RequestMapping(value = "/dajSveUloge", method = RequestMethod.GET)
+	public List<String> getAllUloge() {
+    List<Uloga> uloge = ulogaRepozitorij.findAll();
+    List<String> povratna = new ArrayList<String>();
+    for(Uloga u : uloge) {
+        povratna.add(u.getNazivUloge().toString());
+    }
+    return povratna;
+	}
 }

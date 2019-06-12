@@ -47,4 +47,14 @@ public class UlogaKontroler {
         if(ima) return indeks;
         return -1;
     }
+
+    @RequestMapping(value = "/{idUloge}/{privilegija}", method = RequestMethod.GET)
+    public boolean ulogaImaPrivilegiju(@PathVariable Long idUloge, @PathVariable String privilegija) {
+    
+        privilegija=privilegija.toLowerCase();
+        if(ulogaRepozitorij.findById(idUloge).equals(Optional.empty())) {
+            return false;
+        }
+        return ulogaRepozitorij.findById(idUloge).get().imaPrivilegiju(privilegija);
+    }
 }

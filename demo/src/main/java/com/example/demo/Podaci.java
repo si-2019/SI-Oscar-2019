@@ -10,7 +10,7 @@ import java.util.List;
 
 @Component
 public class Podaci {
-
+{
     private UlogaRepozitorij ulogaRepozitorij;
     private PrivilegijaRepozitorij privilegijaRepozitorij;
 
@@ -1595,7 +1595,6 @@ public class Podaci {
         }
         uloga.clear();
     }
-
     private void dodajPrivilegijeAmina() {
         List<Uloga> uloga = new ArrayList<>();
         Uloga uloga1 = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);

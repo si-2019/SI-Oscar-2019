@@ -49,6 +49,13 @@ public class UlogaKontroler {
         return -1;
     }
 
+    @RequestMapping(value = "/{idUloge}/{privilegija}", method = RequestMethod.GET)
+    public boolean ulogaImaPrivilegiju(@PathVariable Long idUloge, @PathVariable String privilegija) {
+        if(ulogaRepozitorij.findById(idUloge).equals(Optional.empty())) {
+            return false;
+        }
+        return ulogaRepozitorij.findById(idUloge).get().imaPrivilegiju(privilegija);
+}
     @RequestMapping(value = "/{idUloge}/privilegije", method = RequestMethod.GET)
     public List<String> privilegijeUloge(@PathVariable Long idUloge) {
         List<Privilegija> privilegije = new ArrayList<Privilegija>();
@@ -142,5 +149,6 @@ public class UlogaKontroler {
         }
         if(brojac != 0) return povratni;
         else return "Niti jedna od navedenih uloga ne postoji u bazi!";
+
     }
 }

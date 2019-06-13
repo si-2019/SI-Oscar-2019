@@ -1,9 +1,5 @@
 package com.example.demo;
 
-import io.micrometer.core.instrument.util.IOUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import io.micrometer.core.instrument.util.IOUtils;
@@ -15,22 +11,23 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
+
 import java.net.HttpURLConnection;
+
+
 import java.net.URL;
 import java.net.URLConnection;
-
-import java.nio.charset.Charset;
 import java.sql.Date;
 import java.nio.charset.Charset;
-
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.Assert.*;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+
 
 import static org.junit.Assert.assertSame;
 
@@ -738,6 +735,19 @@ public class TestoviPrivilegija {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("registrovanje-casa")));
     }
+    @Test 
+    public void obrisiPrivilegijuPoId() throws IOException{
+
+        Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("registrovanje-casa");
+        URL url = new URL("http://localhost:31915/privilegije/obrisiId/"+p.getId().toString());
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setDoOutput(true);
+        con.setRequestMethod("DELETE");
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals("Privilegija je uspjesno obrisana!",body);
+    }
+    
 
     @Test
     public void testKorisnikImaUlogu() throws IOException {
@@ -957,4 +967,5 @@ public class TestoviPrivilegija {
         String body = IOUtils.toString(in, Charset.forName("UTF-8"));
         assertSame("Specificirana uloga ili privilegija ne postoje!", body);
     }
+
 }

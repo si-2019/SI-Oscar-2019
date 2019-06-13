@@ -641,7 +641,6 @@ public class TestoviPrivilegija {
     public void testAsistentImaMogucnostEditovanjaKomentara() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         assertEquals(true, (uloga.imaPrivilegiju("editovanje-komentara")));
-
     }
 
     @Test
@@ -741,17 +740,15 @@ public class TestoviPrivilegija {
     }
 
     @Test
-    public void testKorisnikImaUlogu() throws IOException{
-
-            URL url = new URL("http://localhost:31915/pretragaUlogeId/1/12345/");
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setDoOutput(true);
-            con.setRequestMethod("GET");
-            InputStream in = con.getInputStream();
-            String body = IOUtils.toString(in, Charset.forName("UTF-8"));
-            assertEquals("false", body);
-
-
+    public void testKorisnikImaUlogu() throws IOException {
+        URL url = new URL("http://localhost:31915/pretragaUlogeId/1/12345/");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setDoOutput(true);
+        con.setRequestMethod("GET");
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals("false", body);
+    }
 
     @Test
     public void testPrivilegijeKorisnikaKorisnikPostoji() throws IOException {
@@ -779,7 +776,6 @@ public class TestoviPrivilegija {
         InputStream in = con.getInputStream();
         String body = IOUtils.toString(in, Charset.forName("UTF-8"));
         assertEquals(false, body.isEmpty());
-
     }
 
     @Test
@@ -960,6 +956,5 @@ public class TestoviPrivilegija {
         InputStream in = con.getInputStream();
         String body = IOUtils.toString(in, Charset.forName("UTF-8"));
         assertSame("Specificirana uloga ili privilegija ne postoje!", body);
-
     }
 }

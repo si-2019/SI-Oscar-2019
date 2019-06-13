@@ -26,21 +26,21 @@ public class KorisnikKontroler {
         this.ulogaRepozitorij = ulogaRepozitorij;
     }
 
-
     @RequestMapping(value = "/pretragaId/imaPrivilegiju/{idKorisnika}/{privilegija}", method = RequestMethod.GET)
     public boolean korisnikImaPrivilegiju(@PathVariable Long idKorisnika, @PathVariable String privilegija) {
         if (korisnikRepozitorij.findById(idKorisnika).equals(Optional.empty())) {
-
+            return false;
+        }
+        return korisnikRepozitorij.findById(idKorisnika).get().imaPrivilegiju(privilegija.toLowerCase());
+    }
 
     @RequestMapping(value = "/pretragaUsername/imaUlogu/{username}/{uloga}", method = RequestMethod.GET)
     public boolean korisnikImaUloguUsername(@PathVariable String username, @PathVariable String uloga) {
         if (korisnikRepozitorij.findByusername(username) == null) {
-
             return false;
         }
-        return korisnikRepozitorij.findById(idKorisnika).get().imaPrivilegiju(privilegija);
+        return korisnikRepozitorij.findByusername(username.toLowerCase()).imaUlogu(uloga.toLowerCase());
     }
-
 
     @RequestMapping(value = "/pretragaId/{idKorisnika}/dajPrivilegije", method = RequestMethod.GET)
     public List<String> privilegijeKorisnika (@PathVariable Long idKorisnika) {

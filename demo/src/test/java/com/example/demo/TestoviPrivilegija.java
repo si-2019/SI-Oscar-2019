@@ -1,5 +1,4 @@
 package com.example.demo;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import io.micrometer.core.instrument.util.IOUtils;
@@ -15,22 +14,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 
-import java.net.HttpURLConnection;
 
+import java.net.HttpURLConnection;
 
 import java.net.URL;
 import java.net.URLConnection;
 import java.sql.Date;
 import java.nio.charset.Charset;
+
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.Assert.*;
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
-
-
-import static org.junit.Assert.assertSame;
-
 
 import static org.junit.Assert.assertNotSame;
 
@@ -736,6 +732,18 @@ public class TestoviPrivilegija {
         assertEquals(true, (uloga.imaPrivilegiju("registrovanje-casa")));
     }
     @Test 
+    public void testObrisiPrivilegiju() throws IOException{
+
+        Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("registrovanje-casa");
+        URL url = new URL("http://localhost:31915/privilegije/obrisi/"+p.getNazivPrivilegije());
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setDoOutput(true);
+        con.setRequestMethod("DELETE");
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals("Privilegija je uspjesno obrisana!",body);
+    }
+
     public void obrisiPrivilegijuPoId() throws IOException{
 
         Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("registrovanje-casa");

@@ -51,6 +51,7 @@ public class UlogaKontroler {
 
     @RequestMapping(value = "/{idUloge}/{privilegija}", method = RequestMethod.GET)
     public boolean ulogaImaPrivilegiju(@PathVariable Long idUloge, @PathVariable String privilegija) {
+        privilegija = privilegija.toLowerCase();
         if(ulogaRepozitorij.findById(idUloge).equals(Optional.empty())) {
             return false;
         }
@@ -149,6 +150,5 @@ public class UlogaKontroler {
         }
         if(brojac != 0) return povratni;
         else return "Niti jedna od navedenih uloga ne postoji u bazi!";
-
     }
 }

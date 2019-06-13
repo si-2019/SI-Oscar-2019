@@ -1,5 +1,9 @@
 package com.example.demo;
 
+import io.micrometer.core.instrument.util.IOUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +11,19 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
-
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.charset.Charset;
 import java.sql.Date;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.junit.Assert.*;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.Assert.assertEquals;
-
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -613,17 +624,20 @@ public class TestoviPrivilegija {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("uvid-u-komentare")));
     }
+
     @Test
     public void testAsistentImaMogucnostEditovanjaKomentara() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         assertEquals(true, (uloga.imaPrivilegiju("editovanje-komentara")));
 
     }
+
     @Test
     public void testPostojiPrivilegijaEditovanjeKomentara() {
         boolean postoji_privilegija=privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-komentara");
         assertEquals(true, postoji_privilegija);
     }
+
     @Test
     public void testPostojiPrivilegijaPrikazKalendara() {
         boolean postoji_privilegija=privilegijaRepozitorij.existsBynazivPrivilegije("prikaz-kalendara");
@@ -635,34 +649,35 @@ public class TestoviPrivilegija {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         assertEquals(true, (uloga.imaPrivilegiju("prikaz-kalendara")));
     }
+
     @Test
     public void testProfesorImaMogucnostOstavljanjaKomentaraNaZadace() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("ostavljanje-komentara-na-zadace")));
-
     }
+
     @Test
     public void testPostojiPrivilegijaOstavljanjeKomentaraNaZadace() {
         boolean nadji_privilegiju=privilegijaRepozitorij.existsBynazivPrivilegije("ostavljanje-komentara-na-zadace");
         assertEquals(true, nadji_privilegiju);
     }
+
     @Test
     public void testStudentskaSluzbaImaMogucnostBrisanjaObavjestenja() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
         assertEquals(true, (uloga.imaPrivilegiju("brisanje-obavjestenja")));
-
     }
+
     @Test
     public void tesProfesorImaMogucnostBrisanjaObavjestenja() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("brisanje-obavjestenja")));
-
     }
+
     @Test
     public void testAsistentImaMogucnostBrisanjaObavjestenja() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         assertEquals(true, (uloga.imaPrivilegiju("brisanje-obavjestenja")));
-
     }
 
     @Test
@@ -670,6 +685,7 @@ public class TestoviPrivilegija {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("unosenje-bodova-ispita")));
     }
+
     @Test
     public void testAdministratorImaMogucnostEditovanjaPostavljenihObavjestenja() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
@@ -681,11 +697,13 @@ public class TestoviPrivilegija {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("editovanje-termina-ispita")));
     }
+  
     @Test
     public void testAsistentImaMogucnostBrisanjaTeme() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         assertEquals(true, (uloga.imaPrivilegiju("brisanje-teme")));
     }
+  
     @Test
     public void testProfesorImaMogucnostBrisanjaZadace() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
@@ -697,14 +715,26 @@ public class TestoviPrivilegija {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("kreiranje-obavjestenja")));
     }
+
     @Test
     public void testAsistentImaMogucnostKreiranjaObavjestenja() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         assertEquals(true, (uloga.imaPrivilegiju("kreiranje-obavjestenja")));
     }
+
     @Test
     public void testProfesorImaMogucnostRegistrovanjaCasa() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("registrovanje-casa")));
+    }
+
+    @Test
+    public void testPovezivanjeUlogePrivilegijeUlogaNePostoji() throws IOException {
+        String uloga = "nekaUloga", privilegija = "registrovanje-casa";
+        URL url = new URL("http://localhost:31915/privilegije/poveziUloguPrivilegijuPoNazivu/" + uloga + "/" + privilegija);
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertSame("Specificirana uloga ili privilegija ne postoje!", body);
     }
 }

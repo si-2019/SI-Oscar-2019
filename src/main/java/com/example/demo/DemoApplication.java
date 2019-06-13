@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoApplication {
     @GetMapping("/")
     public String defaultPoruka() {
-        return "Dobrodosli na pocetnu stranicu modula za Autorizaciju! Za pregled dostupnih servisa, unesite https://si2019oscar.herokuapp.com/swagger-ui.html";
+        return "Dobrodošli na početnu stranicu modula za Autorizaciju! Za pregled dostupnih servisa, unesite https://si2019oscar.herokuapp.com/swagger-ui.html";
     }
 
     public static void main(String[] args) {

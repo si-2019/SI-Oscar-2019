@@ -49,6 +49,34 @@ public class UlogaKontroler {
         return -1;
     }
 
+    @RequestMapping(value = "/{idUloge}/privilegije", method = RequestMethod.GET)
+    public List<String> privilegijeUloge(@PathVariable Long idUloge) {
+        List<Privilegija> privilegije = new ArrayList<Privilegija>();
+        List<String> povratna = new ArrayList<String>();
+        if(ulogaRepozitorij.findById(idUloge).isPresent()) {
+            privilegije = ulogaRepozitorij.findById(idUloge).get().getPrivilegije();
+            for (Privilegija p : privilegije) {
+                povratna.add(p.getNazivPrivilegije());
+            }
+        }
+        return povratna;
+    }
+
+    @RequestMapping(value = "/vratiPoNazivu/{naziv}/privilegije", method = RequestMethod.GET)
+    public List<String> privilegijeUlogeNaziv(@PathVariable String naziv) {
+        List<Privilegija> privilegije = new ArrayList<>();
+        List<String> povratna = new ArrayList<>();
+        ImenaUloga[] niz = ImenaUloga.values();
+        int indeks = provjeriPostojanjeUloge(naziv);
+        if(indeks != -1 && ulogaRepozitorij.existsBynazivUloge(niz[indeks])) {
+            privilegije = ulogaRepozitorij.findBynazivUloge(niz[indeks]).getPrivilegije();
+            for(Privilegija p : privilegije) {
+                povratna.add(p.getNazivPrivilegije());
+            }
+        }
+        return povratna;
+    }
+
     @RequestMapping(value = "/pretragaId/{idUloge}/{idPrivilegije}", method = RequestMethod.GET)
     public boolean ulogaIdImaPrivilegiju(@PathVariable Long idUloge, @PathVariable Long idPrivilegije) {
         if(!ulogaRepozitorij.findById(idUloge).isPresent() || !privilegijaRepozitorij.findById(idPrivilegije).isPresent()) {

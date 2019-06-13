@@ -29,6 +29,37 @@ public class PrivilegijaKontroler {
                 .collect(Collectors.toList());
     }
 
+    @RequestMapping(value = "/dajSvePrivilegije", method = RequestMethod.GET)
+    public List<String> dajSvePrivilegije() {
+        List<Privilegija> privilegije = privilegijaRepozitorij.findAll();
+        List<String> nazivi = new ArrayList<String>();
+        for (Privilegija p : privilegije) {
+            nazivi.add(p.getNazivPrivilegije());
+        }
+        return nazivi;
+    }
+
+    @RequestMapping(value = "/obrisi/{privilegija}", method = RequestMethod.DELETE)
+    public String obrisiPrivilegiju (@PathVariable String privilegija) {
+        if (privilegijaRepozitorij.findBynazivPrivilegije(privilegija.toLowerCase()).equals(Optional.empty())) {
+            return "Privilegija ne postoji!";
+        }
+        else {
+            privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije(privilegija.toLowerCase()).getId());
+            return "Privilegija je uspjesno obrisana!";
+        }
+    }
+
+    @RequestMapping(value = "/obrisiId/{idPrivilegija}", method = RequestMethod.DELETE)
+    public String obrisiPrivilegijuPoId(@PathVariable Long idPrivilegija) {
+        if (privilegijaRepozitorij.findById(idPrivilegija).equals(Optional.empty())) {
+            return "Privilegija ne postoji!";
+        }
+        else {
+            privilegijaRepozitorij.deleteById(idPrivilegija);
+            return "Privilegija je uspjesno obrisana!";
+        }
+    }
 
     @RequestMapping(value = "/obrisiPrivilegije", method = RequestMethod.DELETE)
     public String obrisiPrivilegije(@RequestBody String nizPrivilegija) {
@@ -44,6 +75,12 @@ public class PrivilegijaKontroler {
         }
         if(brojac != 0) return povratni;
         else return "Niti jedna od navedenih privilegija ne postoji u bazi!";
+    }
+
+    @RequestMapping(value = "/obrisiSvePrivilegije", method = RequestMethod.DELETE)
+    public String obrisiSvePrivilegije() {
+        privilegijaRepozitorij.deleteAll();
+        return "Sve privilegije su uspjesno obrisane!";
     }
 
     @RequestMapping(value = "/dodajPrivilegiju/{privilegija}", method = RequestMethod.POST)

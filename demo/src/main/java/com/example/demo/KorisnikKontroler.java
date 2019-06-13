@@ -23,10 +23,10 @@ public class KorisnikKontroler {
     }
     @RequestMapping(value = "/pretragaUsername/imaPrivilegiju/{username}/{privilegija}", method = RequestMethod.GET)
     public boolean korisnikImaPrivilegijuUsername(@PathVariable String username, @PathVariable String privilegija) {
-        if (korisnikRepozitorij.findByusername(username) == null) {
+        if (korisnikRepozitorij.findByusername(username.toLowerCase()) == null) {
             return false;
         }
-        return korisnikRepozitorij.findByusername(username).imaPrivilegiju(privilegija);
+        return korisnikRepozitorij.findByusername(username).imaPrivilegiju(privilegija.toLowerCase());
     }
     
 

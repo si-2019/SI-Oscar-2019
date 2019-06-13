@@ -29,6 +29,8 @@ public class PrivilegijaKontroler {
     }
 
 
+
+
     @RequestMapping(value = "/obrisiSvePrivilegije", method = RequestMethod.DELETE)
     public String obrisiSvePrivilegije() {
         privilegijaRepozitorij.deleteAll();
@@ -141,4 +143,5 @@ public class PrivilegijaKontroler {
         if(brojac != 0) return povratni;
         else return "Niti jedna od privilegija koju zelite editovati ne postoji u sistemu!";
     }
+
 }

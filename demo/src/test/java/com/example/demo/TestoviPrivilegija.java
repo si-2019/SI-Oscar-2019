@@ -6,6 +6,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import io.micrometer.core.instrument.util.IOUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -18,13 +22,19 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+
 import java.nio.charset.Charset;
 import java.sql.Date;
+import java.nio.charset.Charset;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.Assert.*;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.Assert.assertEquals;
+
+import static org.junit.Assert.assertSame;
+
+
 import static org.junit.Assert.assertNotSame;
 
 @RunWith(SpringRunner.class)
@@ -731,6 +741,19 @@ public class TestoviPrivilegija {
     }
 
     @Test
+    public void testKorisnikImaUlogu() throws IOException{
+
+            URL url = new URL("http://localhost:31915/pretragaUlogeId/1/12345/");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setDoOutput(true);
+            con.setRequestMethod("GET");
+            InputStream in = con.getInputStream();
+            String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+            assertEquals("false", body);
+
+
+
+    @Test
     public void testPrivilegijeKorisnikaKorisnikPostoji() throws IOException {
         URL url = new URL("http://localhost:31915/pretragaId/1/dajPrivilegije");
         URLConnection con = url.openConnection();
@@ -937,5 +960,6 @@ public class TestoviPrivilegija {
         InputStream in = con.getInputStream();
         String body = IOUtils.toString(in, Charset.forName("UTF-8"));
         assertSame("Specificirana uloga ili privilegija ne postoje!", body);
+
     }
 }

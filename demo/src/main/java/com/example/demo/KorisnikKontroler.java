@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,11 +19,22 @@ public class KorisnikKontroler {
     private UlogaRepozitorij ulogaRepozitorij;
 
     @Autowired
-    public KorisnikKontroler(KorisnikRepozitorij korisnikRepozitorij, PrivilegijaRepozitorij privilegijaRepozitorij, UlogaRepozitorij ulogaRepozitorij) {
+    public KorisnikKontroler(KorisnikRepozitorij korisnikRepozitorij, PrivilegijaRepozitorij privilegijaRepozitorij,
+            UlogaRepozitorij ulogaRepozitorij) {
         this.korisnikRepozitorij = korisnikRepozitorij;
         this.privilegijaRepozitorij = privilegijaRepozitorij;
         this.ulogaRepozitorij = ulogaRepozitorij;
     }
+
+
+    @RequestMapping(value = "/pretragaUsername/imaUlogu/{username}/{uloga}", method = RequestMethod.GET)
+    public boolean korisnikImaUloguUsername(@PathVariable String username, @PathVariable String uloga) {
+        if (korisnikRepozitorij.findByusername(username) == null) {
+            return false;
+        }
+        return korisnikRepozitorij.findByusername(username).imaUlogu(uloga);
+    }
+
 
     @RequestMapping(value = "/pretragaId/{idKorisnika}/dajPrivilegije", method = RequestMethod.GET)
     public List<String> privilegijeKorisnika (@PathVariable Long idKorisnika) {

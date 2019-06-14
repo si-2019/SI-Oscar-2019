@@ -769,6 +769,55 @@ public class TestoviPrivilegija {
     }
 
     @Test
+    public void testProfesorImaMogucnostEditovanjaKreiranogProjekta() {
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertEquals(true, (uloga.imaPrivilegiju("editovanje-kreiranog-projekta")));
+    }
+
+    @Test
+    public void testProfesorNemaMogucnostPristupaSvimDijelovimaSistema() {
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertEquals(false, (uloga.imaPrivilegiju("pristup-svim-dijelovima-sistema")));
+    }
+
+    @Test 
+    public void testObrisiPrivilegiju() throws IOException{
+
+        Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("registrovanje-casa");
+        URL url = new URL("http://localhost:31915/privilegije/obrisi/"+p.getNazivPrivilegije());
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setDoOutput(true);
+        con.setRequestMethod("DELETE");
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals("Privilegija je uspjesno obrisana!",body);
+    }
+
+    public void obrisiPrivilegijuPoId() throws IOException{
+
+        Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("registrovanje-casa");
+        URL url = new URL("http://localhost:31915/privilegije/obrisiId/"+p.getId().toString());
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setDoOutput(true);
+        con.setRequestMethod("DELETE");
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals("Privilegija je uspjesno obrisana!",body);
+    }
+    
+
+    @Test
+    public void testKorisnikImaUlogu() throws IOException {
+        URL url = new URL("http://localhost:31915/pretragaUlogeId/1/12345/");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setDoOutput(true);
+        con.setRequestMethod("GET");
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals("false", body);
+    }
+
+    @Test
     public void testPrivilegijeKorisnikaKorisnikPostoji() throws IOException {
         URL url = new URL("http://localhost:31915/pretragaId/1/dajPrivilegije");
         URLConnection con = url.openConnection();

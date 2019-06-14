@@ -780,6 +780,12 @@ public class TestoviPrivilegija {
         assertEquals(false, (uloga.imaPrivilegiju("rezervisanje-sala")));
     }
 
+    @Test
+    public void testAsistentImaMogucnostEditovanjaMaterijala() {
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        assertEquals(true, (uloga.imaPrivilegiju("editovanje-materijala")));
+    }
+
     @Test 
     public void testObrisiPrivilegiju() throws IOException{
 

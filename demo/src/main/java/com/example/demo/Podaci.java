@@ -1699,6 +1699,41 @@ public class Podaci {
             }
         }
         uloga.clear();
+
+        uloga.add(studentska_sluzba);
+
+        Privilegija uvid_u_konacne_ocjene_studenata = new Privilegija();
+        uvid_u_konacne_ocjene_studenata.setNazivPrivilegije("uvid-u-konacne-ocjene-studenata");
+        uvid_u_konacne_ocjene_studenata.setUloge(uloga);
+
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("uvid-u-konacne-ocjene-studenata")) privilegijaRepozitorij.save(uvid_u_konacne_ocjene_studenata);
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("uvid-u-konacne-ocjene-studenata").getUloge();
+            int brojac = 0;
+            for (Uloga u: noveUloge){
+                for (Uloga u1: uloga){
+                    if(u.getNazivUloge().equals(u1.getNazivUloge())) {
+                        brojac++;
+                    }
+                }
+            }
+            if(brojac != uloga.size()){
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                    }
+                    trebaDodati = true;
+                }
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("uvid-u-konacne-ocjene-studenata").getId());
+                uvid_u_konacne_ocjene_studenata.setUloge(noveUloge);
+                privilegijaRepozitorij.save(uvid_u_konacne_ocjene_studenata);
+            }
+        }
+        uloga.clear();
     }
 
     private void dodajPrivilegijeAmina() {

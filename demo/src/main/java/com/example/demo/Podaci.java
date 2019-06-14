@@ -23,11 +23,11 @@ public class Podaci {
     @EventListener
     public void dodaj (ApplicationReadyEvent event){
         dodajUloge();
-        dodajPrivilegijeHana();
-        dodajPrivilegijeSulejman();
+     	dodajPrivilegijeHana();
+     	dodajPrivilegijeSulejman();
         dodajPrivilegijeMahira();
-        dodajPrivilegijeZerina();
-        dodajPrivilegijeAmina();
+     	dodajPrivilegijeZerina();
+     	dodajPrivilegijeAmina();
     }
 
     private void dodajUloge() {
@@ -1266,6 +1266,76 @@ public class Podaci {
                 privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("dodavanje-materijala").getId());
                 dodavanje_materijala.setUloge(noveUloge);
                 privilegijaRepozitorij.save(dodavanje_materijala);
+            }
+        }
+        uloga.clear();
+
+        uloga.add(profesor);
+
+        Privilegija editovanje_kreiranog_projekta = new Privilegija();
+        editovanje_kreiranog_projekta.setNazivPrivilegije("editovanje-kreiranog-projekta");
+        editovanje_kreiranog_projekta.setUloge(uloga);
+
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-kreiranog-projekta")) privilegijaRepozitorij.save(editovanje_kreiranog_projekta);
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("editovanje-kreiranog-projekta").getUloge();
+            int brojac = 0;
+            for (Uloga u: noveUloge){
+                for (Uloga u1: uloga){
+                    if(u.getNazivUloge().equals(u1.getNazivUloge())) {
+                        brojac++;
+                    }
+                }
+            }
+            if(brojac != uloga.size()){
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                    }
+                    trebaDodati = true;
+                }
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("editovanje-kreiranog-projekta").getId());
+                editovanje_kreiranog_projekta.setUloge(noveUloge);
+                privilegijaRepozitorij.save(editovanje_kreiranog_projekta);
+            }
+        }
+        uloga.clear();
+
+        uloga.add(profesor);
+
+        Privilegija rezervisanje_sala = new Privilegija();
+        rezervisanje_sala.setNazivPrivilegije("rezervisanje-sala");
+        rezervisanje_sala.setUloge(uloga);
+
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("rezervisanje-sala")) privilegijaRepozitorij.save(rezervisanje_sala);
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("rezervisanje-sala").getUloge();
+            int brojac = 0;
+            for (Uloga u: noveUloge){
+                for (Uloga u1: uloga){
+                    if(u.getNazivUloge().equals(u1.getNazivUloge())) {
+                        brojac++;
+                    }
+                }
+            }
+            if(brojac != uloga.size()){
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                    }
+                    trebaDodati = true;
+                }
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("rezervisanje-sala").getId());
+                rezervisanje_sala.setUloge(noveUloge);
+                privilegijaRepozitorij.save(rezervisanje_sala);
             }
         }
         uloga.clear();

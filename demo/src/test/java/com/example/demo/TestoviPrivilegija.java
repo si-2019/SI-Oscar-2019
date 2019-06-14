@@ -737,7 +737,13 @@ public class TestoviPrivilegija {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("editovanje-kreiranog-projekta")));
     }
-    
+
+    @Test
+    public void testProfesorNemaMogucnostPristupaSvimDijelovimaSistema() {
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertEquals(false, (uloga.imaPrivilegiju("pristup-svim-dijelovima-sistema")));
+    }
+
     @Test 
     public void testObrisiPrivilegiju() throws IOException{
 

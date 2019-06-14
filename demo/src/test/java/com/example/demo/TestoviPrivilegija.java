@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
-public class PrivilegijaTest {
+public class TestoviPrivilegija {
     @Autowired
     private PrivilegijaRepozitorij privilegijaRepozitorij;
     @Autowired

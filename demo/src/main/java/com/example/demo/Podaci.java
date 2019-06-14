@@ -1521,6 +1521,41 @@ public class Podaci {
         }
         uloga.clear();
 
+        uloga.add(admin);
+
+        Privilegija pristup_svim_dijelovima_sistema = new Privilegija();
+        pristup_svim_dijelovima_sistema.setNazivPrivilegije("pristup-svim-dijelovima-sistema");
+        pristup_svim_dijelovima_sistema.setUloge(uloga);
+
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("pristup-svim-dijelovima-sistema")) privilegijaRepozitorij.save(pristup_svim_dijelovima_sistema);
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("pristup-svim-dijelovima-sistema").getUloge();
+            int brojac = 0;
+            for (Uloga u: noveUloge){
+                for (Uloga u1: uloga){
+                    if(u.getNazivUloge().equals(u1.getNazivUloge())) {
+                        brojac++;
+                    }
+                }
+            }
+            if(brojac != uloga.size()){
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                    }
+                    trebaDodati = true;
+                }
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("pristup-svim-dijelovima-sistema").getId());
+                pristup_svim_dijelovima_sistema.setUloge(noveUloge);
+                privilegijaRepozitorij.save(pristup_svim_dijelovima_sistema);
+            }
+        }
+        uloga.clear();
+
         //Privilegije studenta
 
         uloga.add(student);

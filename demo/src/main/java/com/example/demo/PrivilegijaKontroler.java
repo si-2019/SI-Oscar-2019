@@ -25,33 +25,24 @@ public class PrivilegijaKontroler {
     private List<String> dajVrijednostiZaKljuc(String jsonArrayStr, String key) {
         JSONArray jsonArray = new JSONArray(jsonArrayStr);
         return IntStream.range(0, jsonArray.length())
-                .mapToObj(index -> ((JSONObject)jsonArray.get(index)).optString(key))
-                .collect(Collectors.toList());
-    }
-
-    @RequestMapping(value = "/dajSvePrivilegije", method = RequestMethod.GET)
-    public List<String> dajSvePrivilegije() {
-        List<Privilegija> privilegije = privilegijaRepozitorij.findAll();
-        List<String> nazivi = new ArrayList<String>();
-        for (Privilegija p : privilegije) {
-            nazivi.add(p.getNazivPrivilegije());
-        }
-        return nazivi;
+                .mapToObj(index -> ((JSONObject) jsonArray.get(index)).optString(key)).collect(Collectors.toList());
     }
 
     @RequestMapping(value = "/obrisi/{privilegija}", method = RequestMethod.DELETE)
-    public String obrisiPrivilegiju (@PathVariable String privilegija) {
-        if (privilegijaRepozitorij.findBynazivPrivilegije(privilegija.toLowerCase()).equals(Optional.empty())) {
+    public String obrisiPrivilegiju(@PathVariable String privilegija){
+        privilegija=privilegija.toLowerCase();
+        if(privilegijaRepozitorij.findBynazivPrivilegije(privilegija).equals(Optional.empty())){
             return "Privilegija ne postoji!";
-        }
-        else {
-            privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije(privilegija.toLowerCase()).getId());
+         }
+
+        else{
+            privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije(privilegija).getId());
             return "Privilegija je uspjesno obrisana!";
         }
     }
-
+    
     @RequestMapping(value = "/obrisiId/{idPrivilegija}", method = RequestMethod.DELETE)
-    public String obrisiPrivilegijuPoId(@PathVariable Long idPrivilegija) {
+    public String obrisiPrivilegijuPoId(@PathVariable Long idPrivilegija){
         if (privilegijaRepozitorij.findById(idPrivilegija).equals(Optional.empty())) {
             return "Privilegija ne postoji!";
         }
@@ -59,6 +50,13 @@ public class PrivilegijaKontroler {
             privilegijaRepozitorij.deleteById(idPrivilegija);
             return "Privilegija je uspjesno obrisana!";
         }
+    }
+    
+
+    @RequestMapping(value = "/obrisiSvePrivilegije", method = RequestMethod.DELETE)
+    public String obrisiSvePrivilegije() {
+        privilegijaRepozitorij.deleteAll();
+        return "Sve privilegije su uspjesno obrisane!";
     }
 
     @RequestMapping(value = "/obrisiPrivilegije", method = RequestMethod.DELETE)
@@ -75,12 +73,6 @@ public class PrivilegijaKontroler {
         }
         if(brojac != 0) return povratni;
         else return "Niti jedna od navedenih privilegija ne postoji u bazi!";
-    }
-
-    @RequestMapping(value = "/obrisiSvePrivilegije", method = RequestMethod.DELETE)
-    public String obrisiSvePrivilegije() {
-        privilegijaRepozitorij.deleteAll();
-        return "Sve privilegije su uspjesno obrisane!";
     }
 
     @RequestMapping(value = "/dodajPrivilegiju/{privilegija}", method = RequestMethod.POST)
@@ -171,4 +163,5 @@ public class PrivilegijaKontroler {
         if(brojac != 0) return povratni;
         else return "Niti jedna od privilegija koju zelite editovati ne postoji u sistemu!";
     }
+
 }

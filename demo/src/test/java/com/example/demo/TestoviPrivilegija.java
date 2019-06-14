@@ -762,6 +762,12 @@ public class TestoviPrivilegija {
         assertEquals(true, (uloga.imaPrivilegiju("pristup-svim-dijelovima-sistema")));
     }
 
+    @Test
+    public void testAdminNemaMogucnostRezervisanjaSala() {
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+        assertEquals(false, (uloga.imaPrivilegiju("rezervisanje-sala")));
+    }
+
     @Test 
     public void testObrisiPrivilegiju() throws IOException{
 

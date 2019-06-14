@@ -756,6 +756,12 @@ public class TestoviPrivilegija {
         assertEquals(false, (uloga.imaPrivilegiju("zabrana-pristupa-sistemu")));
     }
 
+    @Test
+    public void testAdminImaMogucnostPristupaSvimDijelovimaSistema() {
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+        assertEquals(true, (uloga.imaPrivilegiju("pristup-svim-dijelovima-sistema")));
+    }
+
     @Test 
     public void testObrisiPrivilegiju() throws IOException{
 

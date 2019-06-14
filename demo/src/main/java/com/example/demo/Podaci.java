@@ -1340,6 +1340,41 @@ public class Podaci {
         }
         uloga.clear();
 
+        uloga.add(profesor);
+
+        Privilegija pristup_izvjestajima_predmeta = new Privilegija();
+        pristup_izvjestajima_predmeta.setNazivPrivilegije("pristup-izvjestajima-predmeta");
+        pristup_izvjestajima_predmeta.setUloge(uloga);
+
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("pristup-izvjestajima-predmeta")) privilegijaRepozitorij.save(pristup_izvjestajima_predmeta);
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("pristup-izvjestajima-predmeta").getUloge();
+            int brojac = 0;
+            for (Uloga u: noveUloge){
+                for (Uloga u1: uloga){
+                    if(u.getNazivUloge().equals(u1.getNazivUloge())) {
+                        brojac++;
+                    }
+                }
+            }
+            if(brojac != uloga.size()){
+                boolean trebaDodati = true;
+                for (Uloga ulogaKod : uloga){
+                    for (Uloga ulogaBaza : noveUloge){
+                        if(ulogaKod.getNazivUloge().equals(ulogaBaza.getNazivUloge())) trebaDodati = false;
+                    }
+                    if(trebaDodati) {
+                        noveUloge.add(ulogaKod);
+                    }
+                    trebaDodati = true;
+                }
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("pristup-izvjestajima-predmeta").getId());
+                pristup_izvjestajima_predmeta.setUloge(noveUloge);
+                privilegijaRepozitorij.save(pristup_izvjestajima_predmeta);
+            }
+        }
+        uloga.clear();
+
 
         //Privilegije asistenta
 

@@ -731,6 +731,13 @@ public class TestoviPrivilegija {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("registrovanje-casa")));
     }
+
+    @Test
+    public void testProfesorImaMogucnostEditovanjaKreiranogProjekta() {
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertEquals(true, (uloga.imaPrivilegiju("editovanje-kreiranog-projekta")));
+    }
+    
     @Test 
     public void testObrisiPrivilegiju() throws IOException{
 

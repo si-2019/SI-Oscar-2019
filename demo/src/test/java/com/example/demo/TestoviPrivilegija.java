@@ -80,7 +80,7 @@ public class TestoviPrivilegija {
 
     @Test
     public void testStudentImaPrivilegijuZaPromjenuIzbornogPredmeta(){
-        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
         assertEquals(true, (uloga.imaPrivilegiju("promjena-izbornog-predmeta")));
     }
 

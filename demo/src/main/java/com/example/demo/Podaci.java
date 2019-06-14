@@ -255,7 +255,7 @@ public class Podaci {
      counter=0;
 
      Privilegija promjena_izbornog_predmeta=new Privilegija();
-     uloge.add(student);
+     uloge.add(studentska_sluzba);
      promjena_izbornog_predmeta.setNazivPrivilegije("promjena-izbornog-predmeta");
      promjena_izbornog_predmeta.setUloge(uloge);
      if(privilegijaRepozitorij.findBynazivPrivilegije("promjena-izbornog-predmeta")==null){

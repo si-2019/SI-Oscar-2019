@@ -786,6 +786,12 @@ public class TestoviPrivilegija {
         assertEquals(true, (uloga.imaPrivilegiju("editovanje-materijala")));
     }
 
+    @Test
+    public void testAsistentNemaMogucnostUvidaUAkcijeKorisnika() {
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        assertEquals(false, (uloga.imaPrivilegiju("uvid-u-akcije-korisnika")));
+    }
+
     @Test 
     public void testObrisiPrivilegiju() throws IOException{
 

@@ -26,6 +26,14 @@ public class KorisnikKontroler {
         this.ulogaRepozitorij = ulogaRepozitorij;
     }
 
+    @RequestMapping(value = "/pretragaUsername/imaPrivilegiju/{username}/{privilegija}", method = RequestMethod.GET)
+    public boolean korisnikImaPrivilegijuUsername(@PathVariable String username, @PathVariable String privilegija) {
+        if (korisnikRepozitorij.findByusername(username.toLowerCase()) == null) {
+            return false;
+        }
+        return korisnikRepozitorij.findByusername(username.toLowerCase()).imaPrivilegiju(privilegija.toLowerCase());
+
+
 
     @RequestMapping(value = "/pretragaId/imaUlogu/{idKorisnika}/{uloga}", method = RequestMethod.GET)
     public boolean korisnikImaUlogu(@PathVariable Long idKorisnika, @PathVariable String uloga) {
@@ -41,6 +49,7 @@ public class KorisnikKontroler {
         return false;
     }
         return korisnikRepozitorij.findById(idKorisnika).get().imaUlogu(ulogaRepozitorij.findById(idUloge).get().getNazivUloge().toString());
+
     }
     
     @RequestMapping(value="pretragaPrivilegijeId/{idKorisnika}/{idPrivilegije}",method=RequestMethod.GET)
@@ -99,3 +108,5 @@ public class KorisnikKontroler {
 }
 
 
+
+}

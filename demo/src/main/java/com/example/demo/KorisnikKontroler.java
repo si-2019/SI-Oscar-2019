@@ -26,7 +26,7 @@ public class KorisnikKontroler {
         if (korisnikRepozitorij.findByusername(username.toLowerCase()) == null) {
             return false;
         }
-        return korisnikRepozitorij.findByusername(username).imaPrivilegiju(privilegija.toLowerCase());
+        return korisnikRepozitorij.findByusername(username.toLowerCase()).imaPrivilegiju(privilegija.toLowerCase());
     }
     
 

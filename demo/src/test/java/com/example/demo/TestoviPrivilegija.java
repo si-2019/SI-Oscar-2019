@@ -1,4 +1,5 @@
 package com.example.demo;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,27 +10,33 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
+
+
 import java.net.HttpURLConnection;
+
 import java.net.URL;
 import java.net.URLConnection;
 import java.sql.Date;
 import java.nio.charset.Charset;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.junit.Assert.*;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
+import static org.junit.Assert.assertNotSame;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
-
 public class TestoviPrivilegija {
+    @Autowired
+    private PrivilegijaRepozitorij privilegijaRepozitorij;
     @Autowired
     private KorisnikRepozitorij korisnikRepozitorij;
 
@@ -39,417 +46,11 @@ public class TestoviPrivilegija {
     @Autowired
     private UlogaRepozitorij ulogaRepozitorij;
 
-    @Autowired
-    private PrivilegijaRepozitorij privilegijaRepozitorij;
-
     @Test
-    public void testPostojiRegistrovanjeCasa() throws Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("registrovanje-casa")).isEqualTo(true);
-    }
-
-    @Test
-    public void testAsistentRegistrovanjeCasa() throws Exception {
-        Uloga asistent = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(asistent.imaPrivilegiju("registrovanje-casa")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentRegistrovanjeCasa() throws Exception {
-        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        assertThat(student.imaPrivilegiju("registrovanje-casa")).isEqualTo(false);
-    }
-
-    @Test
-    public void testPostojiEditovanjeZadace() throws Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-kreirane-zadace")).isEqualTo(true);
-    }
-
-    @Test
-    public void testAsistentEditovanjeZadace() throws Exception {
-        Uloga asistent = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(asistent.imaPrivilegiju("editovanje-kreirane-zadace")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentEditovanjeZadace() throws Exception {
-        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        assertThat(student.imaPrivilegiju("editovanje-kreirane-zadace")).isEqualTo(false);
-    }
-
-    @Test
-    public void testPostojiIzmjenaBodovaZadace() throws Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("izmjena-bodova-za-zadace")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorIzmjenaBodovaZadace() throws Exception {
-        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(profesor.imaPrivilegiju("izmjena-bodova-za-zadace")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentIzmjenaBodovaZadace() throws Exception {
-        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        assertThat(student.imaPrivilegiju("izmjena-bodova-za-zadace")).isEqualTo(false);
-    }
-
-    @Test
-    public void testPostojiBrisanjeKreiranogCasa() throws Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("brisanje-kreiranog-casa")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorBrisanjeKreiranogCasa() throws Exception {
-        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(profesor.imaPrivilegiju("brisanje-kreiranog-casa")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentBrisanjeKreiranogCasa() throws Exception {
-        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        assertThat(student.imaPrivilegiju("brisanje-kreiranog-casa")).isEqualTo(false);
-    }
-
-    @Test
-    public void testPostojiDodjelaBodovaZadace() throws Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("dodjela-bodova-za-zadace")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorDodjelaBodovaZadace() throws Exception {
-        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(profesor.imaPrivilegiju("dodjela-bodova-za-zadace")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentskaDodjelaBodovaZadace() throws Exception {
-        Uloga studentska = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
-        assertThat(studentska.imaPrivilegiju("dodjela-bodova-za-zadace")).isEqualTo(false);
-    }
-
-    @Test
-    public void testPostojiKreiranjeKviza() throws Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("kreiranje-kviza")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorKreiranjeKviza() throws Exception {
-        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(profesor.imaPrivilegiju("kreiranje-kviza")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentskaKreiranjeKviza() throws Exception {
-        Uloga studentska = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
-        assertThat(studentska.imaPrivilegiju("kreiranje-kviza")).isEqualTo(false);
-    }
-
-    @Test
-    public void testEditovanjeObavjestenja() throws Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-obavjestenja")).isEqualTo(true);
-    }
-
-    @Test
-    public void testAsistentEditovanjeObavjestenja() throws Exception {
-        Uloga asistent = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(asistent.imaPrivilegiju("editovanje-obavjestenja")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentEditovanjeObavjestenja() throws Exception {
-        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        assertThat(student.imaPrivilegiju("editovanje-obavjestenja")).isEqualTo(false);
-    }
-
-    @Test
-    public void testPostojiEditovanjeTemeForum() throws Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-teme-na-forumu")).isEqualTo(true);
-    }
-
-    @Test
-    public void testAsistentEditovanjeTemeForum() throws Exception {
-        Uloga asistent = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(asistent.imaPrivilegiju("editovanje-teme-na-forumu")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentEditovanjeTemeForum() throws Exception {
-        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        assertThat(student.imaPrivilegiju("editovanje-teme-na-forumu")).isEqualTo(false);
-    }
-
-    @Test
-    public void testPostojiEditovanjeKorisnika() throws Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-korisnika")).isEqualTo(true);
-    }
-
-    @Test
-    public void testAdminEditovanjeKorisnika() throws Exception {
-        Uloga admin = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
-        assertThat(admin.imaPrivilegiju("editovanje-korisnika")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorEditovanjeKorisnika() throws Exception {
-        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(profesor.imaPrivilegiju("editovanje-korisnika")).isEqualTo(false);
-    }
-
-    @Test
-    public void testPostojiBrisanjeObavjestenja() throws  Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("brisanje-obavjestenja")).isEqualTo(true);
-    }
-
-    @Test
-    public void testAdminBrisanjeObavjestenja() throws Exception {
-        Uloga admin = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
-        assertThat(admin.imaPrivilegiju("brisanje-obavjestenja")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentBrisanjeObavjestenja() throws Exception {
-        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        assertThat(student.imaPrivilegiju("brisanje-obavjestenja")).isEqualTo(false);
-    }
-
-    @Test
-    public void testPostojiPregledPredmetaSaradnik() throws  Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("pregled-predmeta-saradnik")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorPregledPredmeta() throws Exception {
-        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(profesor.imaPrivilegiju("pregled-predmeta-saradnik")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentPregledKaoSaradnik() throws Exception {
-        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        assertThat(student.imaPrivilegiju("pregled-predmeta-saradnik")).isEqualTo(false);
-    }
-
-    @Test
-    public void testPostojiPregledGrupaSaradnik() throws  Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("pristup-grupama-saradnik")).isEqualTo(true);
-    }
-
-    @Test
-    public void testAsistentPregledGrupa() throws Exception {
-        Uloga asistent = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(asistent.imaPrivilegiju("pristup-grupama-saradnik")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentPregledGrupaKaoSaradnik() throws Exception {
-        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        assertThat(student.imaPrivilegiju("pristup-grupama-saradnik")).isEqualTo(false);
-    }
-
-    @Test
-    public void testPostojiUvidUKomentareSaradnik() throws  Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("uvid-u-komentare-saradnik")).isEqualTo(true);
-    }
-
-    @Test
-    public void testAsistentUvidUKomentare() throws Exception {
-        Uloga asistent = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(asistent.imaPrivilegiju("uvid-u-komentare-saradnik")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentUvidUKomentareKaoSaradnik() throws Exception {
-        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        assertThat(student.imaPrivilegiju("uvid-u-komentare-saradnik")).isEqualTo(false);
-    }
-
-    @Test
-    public void testPostojiIzborNacinaSlanja() throws  Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("izbor-nacina-slanja-zadace")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorBiraNacinSlanja() throws Exception {
-        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(profesor.imaPrivilegiju("izbor-nacina-slanja-zadace")).isEqualTo(true);
-    }
-
-    @Test
-    public void testStudentBiraNacinSlanja() throws Exception {
-        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
-        assertThat(student.imaPrivilegiju("izbor-nacina-slanja-zadace")).isEqualTo(false);
-    }
-
-    @Test
-    public void testPostojiUnosKonacneOcjene() throws  Exception {
-        assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("unos-konacne-ocjene")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorUnosiKonacnuOcjenu() throws Exception {
-        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(profesor.imaPrivilegiju("unos-konacne-ocjene")).isEqualTo(true);
-    }
-
-    @Test
-    public void testAsistentUnosiKonacnuOcjenu() throws Exception {
-        Uloga asistent = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(asistent.imaPrivilegiju("unos-konacne-ocjene")).isEqualTo(false);
-    }
-
-    @Test
-    public void testProfesorImaPrivilegijuEditovanjaKreiraneZadace() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("editovanje-kreirane-zadace")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorNemaPrivilegijuBrisanjaKorisnika() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("brisanje-korisnika")).isEqualTo(false);
-    }
-
-    @Test
-    public void testAsistentImaPrivilegijuBrisanjaKreiraneZadace() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(uloga.imaPrivilegiju("brisanje-kreirane-zadace")).isEqualTo(true);
-
-    }
-
-    @Test
-    public void testAsistentNemaPrivilegijuBrisanjaKorisnika() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(uloga.imaPrivilegiju("brisanje-korisnika")).isEqualTo(false);
-
-    }
-
-    @Test
-    public void testAdminImaPrivilegijuBrisanjaKorisnika() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
-        assertThat(uloga.imaPrivilegiju("brisanje-korisnika")).isEqualTo(true);
-    }
-
-    @Test
-    public void testAdminNemaPrivilegijuBrisanjaKreiraneZadace() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
-        assertThat(uloga.imaPrivilegiju("brisanje-kreirane-zadace")).isEqualTo(false);
-    }
-
-    @Test
-    public void testAsistentImaPrivilegijuPregledaKreiraneZadace() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(uloga.imaPrivilegiju("pregled-zadace")).isEqualTo(true);
-    }
-
-    @Test
-    public void testAsistentNemaPrivilegijuKreiranjaKorisnika() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(uloga.imaPrivilegiju("kreiranje-korisnika")).isEqualTo(false);
-    }
-
-    @Test
-    public void testProfesorImaPrivilegijuEditovanjaObavjestenja() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("editovanje-obavjestenja")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorNemaPrivilegijuKreiranjaKorisnika() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("kreiranje-korisnika")).isEqualTo(false);
-
-    }
-
-    @Test
-    public void testProfesorImaPrivilegijuEditovanjaTemeNaForumu() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("editovanje-teme-na-forumu")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorNemaPrivilegijuEditovanjeKorisnika() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("editovanje-korisnika")).isEqualTo(false);
-    }
-
-    @Test
-    public void testProfesorImaPrivilegijuPregledaKreiraneZadace() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("pregled-zadace")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorNemaPrivilegijuDodavanjaPrivilegija() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("dodaj-privilegiju")).isEqualTo(false);
-    }
-
-    @Test
-    public void testAdminImaPrivilegijuObavjestavanjaKorisnikaSistema() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
-        assertThat(uloga.imaPrivilegiju("obavjestavanje-korisnika-sistema")).isEqualTo(true);
-    }
-
-    @Test
-    public void testAdminNemaPrivilegijuEditovanjaTemeNaForumu() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
-        assertThat(uloga.imaPrivilegiju("editovanje-teme-na-forumu")).isEqualTo(false);
-    }
-
-    @Test
-    public void testAsistentImaPrivilegijuPojedinacneEvidencijePrisustva() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(uloga.imaPrivilegiju("pojedinacna-evidencija-prisustva")).isEqualTo(true);
-    }
-
-    @Test
-    public void testAsistentNemaPrivilegijuDodavanjaPrivilegije() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertThat(uloga.imaPrivilegiju("dodaj-privilegiju")).isEqualTo(false);
-    }
-
-    @Test
-    public void testProfesorImaPrivilegijuOstavljanjaKomentaraNaRadStudenata() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("ostavljanje-komentara-na-rad-studenata")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorNemaPrivilegijuDodavanjaUloge() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("dodavanje-uloge")).isEqualTo(false);
-    }
-
-    @Test
-    public void testProfesorImaPrivilegijuPreuzimanjaSvihZadaca() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("preuzimanje-svih-zadaca")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorNemaPrivilegijuPovezivanjaUlogeSaPrivilegijom() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("povezivanje-uloge-sa-privilegijom")).isEqualTo(false);
-    }
-
-    @Test
-    public void testProfesorImaPrivilegijuUvidaURezultateAnketa() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("uvid-u-rezultate-anketa")).isEqualTo(true);
-    }
-
-    @Test
-    public void testProfesorNemaPrivilegijuPregledaSvihKorisnikaSistema() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("pregled-svih-korisnika-sistema")).isEqualTo(false);
-    }
-
-    @Test
-    public void testProfesorImaPrivilegijuUredjivanjaPodatakaZaPredmet() throws Exception {
-        Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(uloga.imaPrivilegiju("uredjivanje-podataka-za-predmet")).isEqualTo(true);
-    }
-
+    public void testPostojiPrivilegijaZaPregledDostupnihTemaZaZavrsni(){
+        boolean nadji_privilegiju=privilegijaRepozitorij.existsBynazivPrivilegije("pregled-dostupnih-tema-za-zavrsni-rad");
+        assertEquals(true, nadji_privilegiju);
+     }
     @Test
     public void testProfesorNemaPrivilegijuDizanjaBana() throws Exception {
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
@@ -624,83 +225,103 @@ public class TestoviPrivilegija {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("uvid-u-komentare")));
     }
+
     @Test
     public void testAsistentImaMogucnostEditovanjaKomentara() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         assertEquals(true, (uloga.imaPrivilegiju("editovanje-komentara")));
-
     }
+
     @Test
     public void testPostojiPrivilegijaEditovanjeKomentara() {
         boolean postoji_privilegija=privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-komentara");
         assertEquals(true, postoji_privilegija);
     }
-    @Test
-    public void testPostojiPrivilegijaPrikazKalendara() {
-        boolean postoji_privilegija=privilegijaRepozitorij.existsBynazivPrivilegije("prikaz-kalendara");
-        assertEquals(true, postoji_privilegija);
-    }
 
     @Test
-    public void testStudentImaMogucnostPrikazaKalendara() {
+    public void testStudentImaPrivilegijuPregledaDostupnihTemaZaZavrsni(){
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        assertEquals(true, (uloga.imaPrivilegiju("pregled-dostupnih-tema-za-zavrsni-rad")));
+    }
+
+     @Test
+    public void testStudentImaMogucnostPrikazaKalendara(){
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         assertEquals(true, (uloga.imaPrivilegiju("prikaz-kalendara")));
     }
+
     @Test
     public void testProfesorImaMogucnostOstavljanjaKomentaraNaZadace() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("ostavljanje-komentara-na-zadace")));
-
     }
+
     @Test
-    public void testPostojiPrivilegijaOstavljanjeKomentaraNaZadace() {
-        boolean nadji_privilegiju=privilegijaRepozitorij.existsBynazivPrivilegije("ostavljanje-komentara-na-zadace");
+    public void testPostojiPrivilegijaZaGenerisanjePoruka(){
+        boolean nadji_privilegiju=privilegijaRepozitorij.existsBynazivPrivilegije("slanje-generisanih-poruka");
         assertEquals(true, nadji_privilegiju);
     }
-    @Test
-    public void testStudentskaSluzbaImaMogucnostBrisanjaObavjestenja() {
-        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
-        assertEquals(true, (uloga.imaPrivilegiju("brisanje-obavjestenja")));
 
-    }
     @Test
-    public void tesProfesorImaMogucnostBrisanjaObavjestenja() {
+    public void testStudentskaSluzbaImaPrivilegijuGenerisanjaPoruka(){
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+        assertEquals(true, (uloga.imaPrivilegiju("slanje-generisanih-poruka")));
+    }
+
+    @Test
+    public void testPostojiPrivilegijaZaUvidUBodoveNaZadace(){
+        boolean nadji_privilegiju=privilegijaRepozitorij.existsBynazivPrivilegije("uvid-u-azurirane-bodove-na-zadace");
+        assertEquals(true, nadji_privilegiju);
+    }
+     @Test
+     public void tesProfesorImaMogucnostBrisanjaObavjestenja() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("brisanje-obavjestenja")));
+    }
 
+    @Test
+    public void testStudentImaPrivilegijuZaUvidUBodoveNaZadace(){
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        assertEquals(true, (uloga.imaPrivilegiju("uvid-u-azurirane-bodove-na-zadace")));
     }
     @Test
     public void testAsistentImaMogucnostBrisanjaObavjestenja() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         assertEquals(true, (uloga.imaPrivilegiju("brisanje-obavjestenja")));
-
+    }
+    @Test
+    public void testPostojiPrivilegijaZaPrijavuNaVjezbe(){
+        boolean nadji_privilegiju=privilegijaRepozitorij.existsBynazivPrivilegije("prijava-na-vjezbe");
+        assertEquals(true, nadji_privilegiju);
     }
 
     @Test
-    public void testProfesorImaMogucnostUnosenjaBodovaIspita() {
-        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertEquals(true, (uloga.imaPrivilegiju("unosenje-bodova-ispita")));
+    public void testStudentImaPrivilegijuZaPrijavuNaVjezbe(){
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        assertEquals(true, (uloga.imaPrivilegiju("prijava-na-vjezbe")));
     }
     @Test
-    public void testAdministratorImaMogucnostEditovanjaPostavljenihObavjestenja() {
-        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
-        assertEquals(true, (uloga.imaPrivilegiju("editovanje-postavljenih-obavjestenja")));
+    public void testPostojiPrivilegijaZaDodavanjeNovihMaterijala(){
+        boolean nadji_privilegiju=privilegijaRepozitorij.existsBynazivPrivilegije("dodavanje-novih-materijala");
+        assertEquals(true, nadji_privilegiju);
     }
-
+  
     @Test
-    public void testProfesorImaMogucnostEditovanjaTerminaIspita() {
-        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertEquals(true, (uloga.imaPrivilegiju("editovanje-termina-ispita")));
-    }
-    @Test
-    public void testAsistentImaMogucnostBrisanjaTeme() {
+    public void testAsistentImaPrivilegijuZaDodavanjeNovihMaterijala(){
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
-        assertEquals(true, (uloga.imaPrivilegiju("brisanje-teme")));
+        assertEquals(true, (uloga.imaPrivilegiju("dodavanje-novih-materijala")));
     }
+  
     @Test
-    public void testProfesorImaMogucnostBrisanjaZadace() {
-        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertEquals(true, (uloga.imaPrivilegiju("brisanje-kreirane-zadace")));
+    public void testPostojiPrivilegijaZaPromjenuIzbornogPredmeta(){
+        boolean nadji_privilegiju=privilegijaRepozitorij.existsBynazivPrivilegije("promjena-izbornog-predmeta");
+        assertEquals(true, nadji_privilegiju);
+    }
+
+    @Test
+    public void testStudentskaImaPrivilegijuZaPromjenuIzbornogPredmeta(){
+        Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+        assertEquals(true, (uloga.imaPrivilegiju("promjena-izbornog-predmeta")));
     }
 
     @Test
@@ -708,26 +329,271 @@ public class TestoviPrivilegija {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("kreiranje-obavjestenja")));
     }
+
     @Test
     public void testAsistentImaMogucnostKreiranjaObavjestenja() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         assertEquals(true, (uloga.imaPrivilegiju("kreiranje-obavjestenja")));
     }
+
     @Test
     public void testProfesorImaMogucnostRegistrovanjaCasa() {
         Uloga uloga=ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertEquals(true, (uloga.imaPrivilegiju("registrovanje-casa")));
     }
-    @Test
-    public void testKorisnikImaUlogu() throws IOException{
+    @Test 
+    public void testObrisiPrivilegiju() throws IOException{
 
-            URL url = new URL("http://localhost:31915/pretragaUlogeId/1/12345/");
+        Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("registrovanje-casa");
+        URL url = new URL("http://localhost:31915/privilegije/obrisi/"+p.getNazivPrivilegije());
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setDoOutput(true);
+        con.setRequestMethod("DELETE");
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals("Privilegija je uspjesno obrisana!",body);
+    }
+    
+    @Test
+    public void obrisiPrivilegijuPoId() throws IOException{
+
+        Privilegija p=privilegijaRepozitorij.findBynazivPrivilegije("registrovanje-casa");
+        URL url = new URL("http://localhost:31915/privilegije/obrisiId/"+p.getId().toString());
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setDoOutput(true);
+        con.setRequestMethod("DELETE");
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals("Privilegija je uspjesno obrisana!",body);
+    }
+    
+
+    @Test
+    public void testKorisnikImaUlogu() throws IOException {
+        URL url = new URL("http://localhost:31915/pretragaUlogeId/1/12345/");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setDoOutput(true);
+        con.setRequestMethod("GET");
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals("false", body);
+    }
+
+    @Test
+    public void testPrivilegijeKorisnikaKorisnikPostoji() throws IOException {
+        URL url = new URL("http://localhost:31915/pretragaId/1/dajPrivilegije");
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals(false, body.isEmpty());
+    }
+
+    @Test
+    public void testPrivilegijeKorisnikaKorisnikNePostoji() throws IOException {
+        URL url = new URL("http://localhost:31915/pretragaId/10000/dajPrivilegije");
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals(true, body.isEmpty());
+    }
+
+    @Test
+    public void testPrivilegijeKorisnikaUsernameKorisnikPostoji() throws IOException {
+        String username = korisnikRepozitorij.findById(Long.valueOf(1)).get().getUsername();
+        URL url = new URL("http://localhost:31915/pretragaUsername/" + username + "/dajPrivilegije");
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals(false, body.isEmpty());
+    }
+
+    @Test
+    public void testPrivilegijeKorisnikaUsernameKorisnikNePostoji() throws IOException {
+        URL url = new URL("http://localhost:31915/pretragaUsername/hdklahsldhalsld/dajPrivilegije");
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals(true, body.isEmpty());
+    }
+
+    @Test
+    public void testObrisiPrivilegijePrivilegijaPostoji() throws IOException, JSONException {
+        Privilegija privilegija = new Privilegija();
+        privilegija.setNazivPrivilegije("proba");
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("proba")) privilegijaRepozitorij.save(privilegija);
+        URL url = new URL("http://localhost:31915/privilegije/obrisiPrivilegije");
+        HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+        httpCon.setDoOutput(true);
+        httpCon.setRequestMethod("DELETE");
+        httpCon.setRequestProperty("Content-Type", "application/json");
+        OutputStreamWriter out = new OutputStreamWriter(httpCon.getOutputStream());
+
+        JSONObject jo = new JSONObject();
+        jo.put("naziv", "proba");
+
+        JSONArray ja = new JSONArray();
+        ja.put(jo);
+
+        out.write(ja.toString());
+        out.close();
+        httpCon.getInputStream();
+        String body = IOUtils.toString(httpCon.getInputStream(), Charset.forName("UTF-8"));
+
+        assertNotSame("Niti jedna od navedenih privilegija ne postoji u bazi!", body);
+    }
+
+    @Test
+    public void testObrisiPrivilegijePrivilegijaNePostoji() throws IOException, JSONException {
+        URL url = new URL("http://localhost:31915/privilegije/obrisiPrivilegije");
+        HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+        httpCon.setDoOutput(true);
+        httpCon.setRequestMethod("DELETE");
+        httpCon.setRequestProperty("Content-Type", "application/json");
+        OutputStreamWriter out = new OutputStreamWriter(httpCon.getOutputStream());
+
+        JSONObject jo = new JSONObject();
+        jo.put("naziv", "kshahslhSL");
+
+        JSONArray ja = new JSONArray();
+        ja.put(jo);
+
+        out.write(ja.toString());
+        out.close();
+        httpCon.getInputStream();
+        String body = IOUtils.toString(httpCon.getInputStream(), Charset.forName("UTF-8"));
+
+        assertEquals("Niti jedna od navedenih privilegija ne postoji u bazi!", body);
+    }
+
+    @Test
+    public void testDodajPrivilegijuPrivilegijaNePostoji() throws IOException {
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("dodaj-proba")) {
+            URL url = new URL("http://localhost:31915/privilegije/dodajPrivilegiju/dodaj-proba");
+            HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+            httpCon.setDoOutput(true);
+            httpCon.setRequestMethod("POST");
+            InputStream in = httpCon.getInputStream();
+            String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+            assertNotSame("Privilegija vec postoji u sistemu!", body);
+        }
+    }
+   URL url = new URL("http://localhost:31915/pretragaId/imaUlogu/1/admin");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setDoOutput(true);
             con.setRequestMethod("GET");
             InputStream in = con.getInputStream();
-            String body = IOUtils.toString(in, Charset.forName("UTF-8"));
-            assertEquals("false", body);
 
+    @Test
+    public void testDodajPrivilegijuPrivilegijaPostoji() throws IOException{
+        if(privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-korisnika")) {
+            URL url = new URL("http://localhost:31915/privilegije/dodajPrivilegiju/editovanje-korisnika");
+            HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+            httpCon.setDoOutput(true);
+            httpCon.setRequestMethod("POST");
+            InputStream in = httpCon.getInputStream();
+
+            String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+            assertEquals("Privilegija vec postoji u sistemu!", body);
+        }
     }
+
+    @Test
+    public void testDodajPrivilegijePrivilegijaPostoji() throws IOException, JSONException {
+        URL url = new URL("http://localhost:31915/privilegije/dodajPrivilegije");
+        HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+        httpCon.setDoOutput(true);
+        httpCon.setRequestMethod("POST");
+        httpCon.setRequestProperty("Content-Type", "application/json");
+        OutputStreamWriter out = new OutputStreamWriter(httpCon.getOutputStream());
+
+        JSONObject jo = new JSONObject();
+        jo.put("naziv", "editovanje-korisnika");
+
+        JSONArray ja = new JSONArray();
+        ja.put(jo);
+
+        out.write(ja.toString());
+        out.close();
+        httpCon.getInputStream();
+        String body = IOUtils.toString(httpCon.getInputStream(), Charset.forName("UTF-8"));
+
+        assertEquals("Sve privilegije vec postoje u bazi!", body);
+    }
+
+    @Test
+    public void testDodajPrivilegijePrivilegijaNePostoji() throws IOException, JSONException {
+        if(!privilegijaRepozitorij.existsBynazivPrivilegije("dodaj-proba1")) {
+            URL url = new URL("http://localhost:31915/privilegije/dodajPrivilegije");
+            HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+            httpCon.setDoOutput(true);
+            httpCon.setRequestMethod("POST");
+            httpCon.setRequestProperty("Content-Type", "application/json");
+            OutputStreamWriter out = new OutputStreamWriter(httpCon.getOutputStream());
+
+            JSONObject jo = new JSONObject();
+            jo.put("naziv", "dodaj-proba1");
+
+            JSONArray ja = new JSONArray();
+            ja.put(jo);
+
+            out.write(ja.toString());
+            out.close();
+            httpCon.getInputStream();
+            String body = IOUtils.toString(httpCon.getInputStream(), Charset.forName("UTF-8"));
+
+            assertNotSame("Sve privilegije vec postoje u bazi!", body);
+        }
+    }
+
+    @Test
+    public void testPrivilegijeUlogeUlogaPostoji() throws IOException {
+        Long idUloge = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR).getId();
+        URL url = new URL("http://localhost:31915/uloga/" + idUloge + "/privilegije");
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals(false, body.isEmpty());
+    }
+
+
+
+    @Test
+    public void testPrivilegijeUlogeUlogaNePostoji() throws IOException {
+        URL url = new URL("http://localhost:31915/uloga/10000/privilegije");
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        JSONArray ja = new JSONArray();
+        assertEquals(ja.toString(), body);
+    }
+
+    @Test
+    public void testprivilegijeUlogeNazivUlogaPostoji() throws IOException {
+        URL url = new URL("http://localhost:31915/uloga/vratiPoNazivu/student/privilegije");
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertEquals(false, body.isEmpty());
+    }
+
+    @Test
+    public void testprivilegijeUlogeNazivUlogaNePostoji() throws IOException {
+        URL url = new URL("http://localhost:31915/uloga/vratiPoNazivu/yhkhdal/privilegije");
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        JSONArray ja = new JSONArray();
+        assertEquals(ja.toString(), body);
+    }
+    @Test   
+    public void testPovezivanjeUlogePrivilegijeUlogaNePostoji() throws IOException {
+        String uloga = "nekaUloga", privilegija = "registrovanje-casa";
+        URL url = new URL("http://localhost:31915/privilegije/poveziUloguPrivilegijuPoNazivu/" + uloga + "/" + privilegija);
+        URLConnection con = url.openConnection();
+        InputStream in = con.getInputStream();
+        String body = IOUtils.toString(in, Charset.forName("UTF-8"));
+        assertSame("Specificirana uloga ili privilegija ne postoje!", body);
+    }
+
+
 }

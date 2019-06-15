@@ -1,4 +1,5 @@
 package com.example.demo;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -8,16 +9,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
+import java.util.Optional; 
 import java.util.List;
-import java.util.Optional;
+
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @RestController
 @RequestMapping(value = "/uloga")
 public class UlogaKontroler {
+
     private UlogaRepozitorij ulogaRepozitorij;
     private PrivilegijaRepozitorij privilegijaRepozitorij;
 
@@ -26,7 +27,7 @@ public class UlogaKontroler {
         this.privilegijaRepozitorij = privilegijaRepozitorij;
         this.ulogaRepozitorij = ulogaRepozitorij;
     }
-
+    
     private List<String> dajVrijednostiZaKljuc(String jsonArrayStr, String key) {
         JSONArray jsonArray = new JSONArray(jsonArrayStr);
         return IntStream.range(0, jsonArray.length())
@@ -48,6 +49,17 @@ public class UlogaKontroler {
         if(ima) return indeks;
         return -1;
     }
+  
+    @RequestMapping(value = "/uloge", method = RequestMethod.GET)
+    public List<String> getAllUloge() {
+        List<Uloga> uloge = ulogaRepozitorij.findAll();
+        List<String> povratna = new ArrayList<String>();
+        for(Uloga u : uloge) {
+            povratna.add(u.getNazivUloge().toString());
+        }
+        return povratna;
+    }
+   
 
     @RequestMapping(value = "/{idUloge}/{privilegija}", method = RequestMethod.GET)
     public boolean ulogaImaPrivilegiju(@PathVariable Long idUloge, @PathVariable String privilegija) {
@@ -56,7 +68,7 @@ public class UlogaKontroler {
             return false;
         }
         return ulogaRepozitorij.findById(idUloge).get().imaPrivilegiju(privilegija);
-}
+    }
     @RequestMapping(value = "/{idUloge}/privilegije", method = RequestMethod.GET)
     public List<String> privilegijeUloge(@PathVariable Long idUloge) {
         List<Privilegija> privilegije = new ArrayList<Privilegija>();

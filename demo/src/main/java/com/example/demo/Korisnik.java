@@ -1,17 +1,17 @@
 package com.example.demo;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Blob;
 import java.sql.Date;
 import java.util.List;
 
+
 @Entity
 @Table(name = "Korisnik")
 public class Korisnik {
 
     @Id
-    @Column(name = "idKorisnik")
+    @Column(name = "id")
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
@@ -338,3 +338,4 @@ public class Korisnik {
         return uloga.toLowerCase().equals(ulogaKorisnika.toLowerCase());
     }
 }
+

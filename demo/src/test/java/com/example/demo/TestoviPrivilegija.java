@@ -477,6 +477,11 @@ public class TestoviPrivilegija {
             assertNotSame("Privilegija vec postoji u sistemu!", body);
         }
     }
+   URL url = new URL("http://localhost:31915/pretragaId/imaUlogu/1/admin");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setDoOutput(true);
+            con.setRequestMethod("GET");
+            InputStream in = con.getInputStream();
 
     @Test
     public void testDodajPrivilegijuPrivilegijaPostoji() throws IOException{
@@ -486,6 +491,7 @@ public class TestoviPrivilegija {
             httpCon.setDoOutput(true);
             httpCon.setRequestMethod("POST");
             InputStream in = httpCon.getInputStream();
+
             String body = IOUtils.toString(in, Charset.forName("UTF-8"));
             assertEquals("Privilegija vec postoji u sistemu!", body);
         }
@@ -549,6 +555,8 @@ public class TestoviPrivilegija {
         assertEquals(false, body.isEmpty());
     }
 
+
+
     @Test
     public void testPrivilegijeUlogeUlogaNePostoji() throws IOException {
         URL url = new URL("http://localhost:31915/uloga/10000/privilegije");
@@ -586,5 +594,6 @@ public class TestoviPrivilegija {
         String body = IOUtils.toString(in, Charset.forName("UTF-8"));
         assertSame("Specificirana uloga ili privilegija ne postoje!", body);
     }
+
 
 }

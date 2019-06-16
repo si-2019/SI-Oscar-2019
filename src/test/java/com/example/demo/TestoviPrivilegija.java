@@ -190,6 +190,12 @@ public class TestoviPrivilegija {
         Uloga admin = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
         assertThat(admin.imaPrivilegiju("editovanje-korisnika")).isEqualTo(true);
     }
+	
+	@Test
+    public void testAdminBanovanjeFraza() throws Exception {
+        Uloga admin = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ADMIN);
+        assertThat(admin.imaPrivilegiju("banovanje-fraza")).isEqualTo(true);
+    }
 
     @Test
     public void testProfesorEditovanjeKorisnika() throws Exception {

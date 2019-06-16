@@ -226,13 +226,21 @@ public class Podaci {
         privilegija2.setNazivPrivilegije("kreiranje-privilegija");
         privilegija2.setUloge(uloga);
         poveziUloguPrivilegiju(privilegija2, admin);
-
+		
+		Privilegija privilegija298 = new Privilegija();
+        privilegija298.setNazivPrivilegije("banovanje-fraza");
+        privilegija298.setUloge(uloga);
+        poveziUloguPrivilegiju(privilegija298, admin);
+		uloga.clear();
+		
+		
         // Privilegije za studentsku sluzbu
         uloga.add(studentska_sluzba);
         Privilegija privilegija3 = new Privilegija();
         privilegija3.setNazivPrivilegije("postavljanje-obavjestenja");
         privilegija3.setUloge(uloga);
         poveziUloguPrivilegiju(privilegija3, studentska_sluzba);
+		uloga.clear();
     }
 
 

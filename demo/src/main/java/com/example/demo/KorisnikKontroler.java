@@ -2,10 +2,11 @@ package com.example.demo;
 
 import java.util.Optional;
 
+
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -25,6 +26,25 @@ public class KorisnikKontroler {
         this.privilegijaRepozitorij = privilegijaRepozitorij;
         this.ulogaRepozitorij = ulogaRepozitorij;
     }
+
+
+    @RequestMapping(value = "/pretragaUsername/imaPrivilegiju/{username}/{privilegija}", method = RequestMethod.GET)
+    public boolean korisnikImaPrivilegijuUsername(@PathVariable String username, @PathVariable String privilegija) {
+        if (korisnikRepozitorij.findByusername(username.toLowerCase()) == null) {
+            return false;
+        }
+        return korisnikRepozitorij.findByusername(username.toLowerCase()).imaPrivilegiju(privilegija.toLowerCase());
+    }
+
+
+    @RequestMapping(value = "/pretragaId/imaUlogu/{idKorisnika}/{uloga}", method = RequestMethod.GET)
+    public boolean korisnikImaUlogu(@PathVariable Long idKorisnika, @PathVariable String uloga) {
+        if (korisnikRepozitorij.findById(idKorisnika).equals(Optional.empty())) {
+            return false;
+        }
+        return korisnikRepozitorij.findById(idKorisnika).get().imaUlogu(uloga);
+    }
+
 
     @RequestMapping(value="pretragaUlogeId/{idKorisnika}/{idUloge}",method=RequestMethod.GET)
     public boolean korisnikImaUlogu(@PathVariable Long idKorisnika,@PathVariable Long idUloge){
@@ -89,3 +109,4 @@ public class KorisnikKontroler {
     }
 
 }
+

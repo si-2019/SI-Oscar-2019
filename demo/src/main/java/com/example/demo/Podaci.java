@@ -218,6 +218,11 @@ public class Podaci {
         privilegija27.setNazivPrivilegije("brisanje-kreiranog-casa");
         privilegija27.setUloge(uloga);
         poveziUloguPrivilegiju(privilegija27, asistent);
+		
+		Privilegija nova300 = new Privilegija();
+        nova300.setNazivPrivilegije("brisanje-kreiranog-projekta");
+        nova300.setUloge(uloga);
+        poveziUloguPrivilegiju(nova300, asistent);
         uloga.clear();
 
         // Privilegije za admina

@@ -226,6 +226,12 @@ public class TestoviPrivilegija {
     @Test
     public void testAsistentPregledGrupa() throws Exception {
         Uloga asistent = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        assertThat(asistent.imaPrivilegiju("brisanje-kreiranog-projekta")).isEqualTo(true);
+    }
+	
+	@Test
+    public void testAsistentPregledGrupa() throws Exception {
+        Uloga asistent = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         assertThat(asistent.imaPrivilegiju("pristup-grupama-saradnik")).isEqualTo(true);
     }
 

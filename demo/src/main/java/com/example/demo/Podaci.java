@@ -2825,6 +2825,31 @@ public class Podaci {
                 privilegijaRepozitorij.save(privilegija24);
             }
         }
+        uloga.clear();
+        uloga.add(uloga2);
+        Privilegija privilegija25 = new Privilegija();
+        privilegija25.setNazivPrivilegije("prijevremeno-dizanje-bana");
+        privilegija25.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("prijevremeno-dizanje-bana") == null)
+            privilegijaRepozitorij.save(privilegija25);
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("prijevremeno-dizanje-bana")
+                    .getUloge();
+            boolean treba_dodati = true;
+            for (Uloga u : noveUloge) {
+                for (Uloga u1 : uloga) {
+                    if (u.getNazivUloge().equals(u1.getNazivUloge()))
+                        treba_dodati = false;
+                }
+            }
+            if (treba_dodati) {
+                noveUloge.add(uloga2);
+                privilegijaRepozitorij
+                        .deleteById(privilegijaRepozitorij.findBynazivPrivilegije("prijevremeno-dizanje-bana").getId());
+                privilegija25.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija25);
+            }
+        }
 
     }
 }

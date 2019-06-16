@@ -2902,5 +2902,31 @@ public class Podaci {
             }
         }
 
+        uloga.clear();
+        uloga.add(uloga2);
+        Privilegija privilegija28 = new Privilegija();
+        privilegija28.setNazivPrivilegije("brisanje-postojećih-privilegija");
+        privilegija28.setUloge(uloga);
+        if (privilegijaRepozitorij.findBynazivPrivilegije("brisanje-postojećih-privilegija") == null)
+            privilegijaRepozitorij.save(privilegija28);
+        else {
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("brisanje-postojećih-privilegija")
+                    .getUloge();
+            boolean treba_dodati = true;
+            for (Uloga u : noveUloge) {
+                for (Uloga u1 : uloga) {
+                    if (u.getNazivUloge().equals(u1.getNazivUloge()))
+                        treba_dodati = false;
+                }
+            }
+            if (treba_dodati) {
+                noveUloge.add(uloga2);
+                privilegijaRepozitorij.deleteById(
+                        privilegijaRepozitorij.findBynazivPrivilegije("brisanje-postojećih-privilegija").getId());
+                privilegija28.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija28);
+            }
+        }
+
     }
 }

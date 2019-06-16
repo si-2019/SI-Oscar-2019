@@ -2879,12 +2879,12 @@ public class Podaci {
         uloga.clear();
         uloga.add(uloga1);
         Privilegija privilegija27 = new Privilegija();
-        privilegija27.setNazivPrivilegije("editovanje-materijala-na-predmetima");
+        privilegija27.setNazivPrivilegije("editovanje-materijala");
         privilegija27.setUloge(uloga);
-        if (privilegijaRepozitorij.findBynazivPrivilegije("editovanje-materijala-na-predmetima") == null)
+        if (privilegijaRepozitorij.findBynazivPrivilegije("editovanje-materijala") == null)
             privilegijaRepozitorij.save(privilegija27);
         else {
-            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("editovanje-materijala-na-predmetima")
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("editovanje-materijala")
                     .getUloge();
             boolean treba_dodati = true;
             for (Uloga u : noveUloge) {
@@ -2896,7 +2896,7 @@ public class Podaci {
             if (treba_dodati) {
                 noveUloge.add(uloga1);
                 privilegijaRepozitorij.deleteById(
-                        privilegijaRepozitorij.findBynazivPrivilegije("editovanje-materijala-na-predmetima").getId());
+                        privilegijaRepozitorij.findBynazivPrivilegije("editovanje-materijala").getId());
                 privilegija27.setUloge(noveUloge);
                 privilegijaRepozitorij.save(privilegija27);
             }

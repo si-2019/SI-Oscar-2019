@@ -1194,7 +1194,7 @@ public class TestoviPrivilegija {
      @Test
     public void testProfesorEditovanjeMaterijala() throws Exception {
         Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
-        assertThat(profesor.imaPrivilegiju("editovanje-materijala-na-predmetima")).isEqualTo(true);
+        assertThat(profesor.imaPrivilegiju("editovanje-materijala")).isEqualTo(true);
     }
 
 

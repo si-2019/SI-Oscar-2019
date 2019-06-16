@@ -180,6 +180,12 @@ public class TestoviPrivilegija {
         assertThat(student.imaPrivilegiju("editovanje-teme-na-forumu")).isEqualTo(false);
     }
 
+	@Test
+    public void testStudentIzmjenaLicnihPodataka() throws Exception {
+        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        assertThat(student.imaPrivilegiju("izmjena-licnih-informacija")).isEqualTo(false);
+    }
+
     @Test
     public void testPostojiEditovanjeKorisnika() throws Exception {
         assertThat(privilegijaRepozitorij.existsBynazivPrivilegije("editovanje-korisnika")).isEqualTo(true);

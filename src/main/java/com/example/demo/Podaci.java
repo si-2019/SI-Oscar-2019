@@ -219,7 +219,15 @@ public class Podaci {
         privilegija27.setUloge(uloga);
         poveziUloguPrivilegiju(privilegija27, asistent);
         uloga.clear();
-
+		
+		//Privilegije za studenta
+		uloga.add(student);
+        Privilegija privilegija1478 = new Privilegija();
+        privilegija1478.setNazivPrivilegije("izmjena-licnih-informacija");
+        privilegija1478.setUloge(uloga);
+        poveziUloguPrivilegiju(privilegija1478, student);
+		uloga.clear();
+		
         // Privilegije za admina
         uloga.add(admin);
         Privilegija privilegija2 = new Privilegija();

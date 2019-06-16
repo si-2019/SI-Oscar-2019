@@ -24,7 +24,7 @@ public class Podaci {
       	dodajPrivilegijeSulejman();
         dodajPrivilegijeMahira();
       	dodajPrivilegijeZerina();
-     	  dodajPrivilegijeAmina();
+      	dodajPrivilegijeAmina();
     }
     private void dodajUloge() {
 

@@ -32,7 +32,7 @@ public class KorisnikKontroler {
             return false;
         }
         return korisnikRepozitorij.findByusername(username.toLowerCase()).imaPrivilegiju(privilegija.toLowerCase());
-
+    }
 
 
     @RequestMapping(value = "/pretragaId/imaUlogu/{idKorisnika}/{uloga}", method = RequestMethod.GET)
@@ -41,6 +41,7 @@ public class KorisnikKontroler {
             return false;
         }
         return korisnikRepozitorij.findById(idKorisnika).get().imaUlogu(uloga);
+    }
 
     @RequestMapping(value="pretragaUlogeId/{idKorisnika}/{idUloge}",method=RequestMethod.GET)
     public boolean korisnikImaUlogu(@PathVariable Long idKorisnika,@PathVariable Long idUloge){
@@ -105,8 +106,4 @@ public class KorisnikKontroler {
         }
         return null;
     }
-}
-
-
-
 }

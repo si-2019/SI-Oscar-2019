@@ -477,11 +477,6 @@ public class TestoviPrivilegija {
             assertNotSame("Privilegija vec postoji u sistemu!", body);
         }
     }
-   URL url = new URL("http://localhost:31915/pretragaId/imaUlogu/1/admin");
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setDoOutput(true);
-            con.setRequestMethod("GET");
-            InputStream in = con.getInputStream();
 
     @Test
     public void testDodajPrivilegijuPrivilegijaPostoji() throws IOException{

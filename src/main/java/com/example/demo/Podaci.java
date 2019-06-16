@@ -234,6 +234,7 @@ public class Podaci {
         privilegija2.setNazivPrivilegije("kreiranje-privilegija");
         privilegija2.setUloge(uloga);
         poveziUloguPrivilegiju(privilegija2, admin);
+		uloga.clear();
 
         // Privilegije za studentsku sluzbu
         uloga.add(studentska_sluzba);
@@ -241,6 +242,7 @@ public class Podaci {
         privilegija3.setNazivPrivilegije("postavljanje-obavjestenja");
         privilegija3.setUloge(uloga);
         poveziUloguPrivilegiju(privilegija3, studentska_sluzba);
+		uloga.clear();
     }
 
 

@@ -2614,5 +2614,27 @@ public class Podaci {
                 privilegijaRepozitorij.save(privilegija21);
             }
         }
+        uloga.clear();
+        uloga.add(uloga1);
+        Privilegija privilegija22 = new Privilegija();
+        privilegija22.setNazivPrivilegije("brisanje-kreiranog-projekta");
+        privilegija22.setUloge(uloga);
+        if(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-kreiranog-projekta")==null) privilegijaRepozitorij.save(privilegija22);
+        else{
+            List<Uloga> noveUloge = privilegijaRepozitorij.findBynazivPrivilegije("brisanje-kreiranog-projekta").getUloge();
+            boolean treba_dodati=true;
+            for(Uloga u: noveUloge){
+                for(Uloga u1:uloga){
+                    if(u.getNazivUloge().equals(u1.getNazivUloge())) treba_dodati=false;
+                }
+            }
+            if(treba_dodati){
+                noveUloge.add(uloga1);
+                privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije("brisanje-kreiranog-projekta").getId());
+                privilegija22.setUloge(noveUloge);
+                privilegijaRepozitorij.save(privilegija22);
+            }
+        }
+
     }
 }

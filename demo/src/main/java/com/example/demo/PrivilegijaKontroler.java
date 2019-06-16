@@ -46,6 +46,7 @@ public class PrivilegijaKontroler {
             privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije(privilegija).getId());
             return "Privilegija je uspjesno obrisana!";
         }
+
     }
     
     @RequestMapping(value = "/obrisiId/{idPrivilegija}", method = RequestMethod.DELETE)
@@ -59,7 +60,6 @@ public class PrivilegijaKontroler {
         }
     }
     
-
     @RequestMapping(value = "/obrisiSvePrivilegije", method = RequestMethod.DELETE)
     public String obrisiSvePrivilegije() {
         privilegijaRepozitorij.deleteAll();
@@ -172,3 +172,4 @@ public class PrivilegijaKontroler {
     }
 
 }
+

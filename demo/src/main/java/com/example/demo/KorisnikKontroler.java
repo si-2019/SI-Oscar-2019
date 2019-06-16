@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.Optional;
 
+
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ public class KorisnikKontroler {
         this.ulogaRepozitorij = ulogaRepozitorij;
     }
 
+
     @RequestMapping(value = "/pretragaUsername/imaPrivilegiju/{username}/{privilegija}", method = RequestMethod.GET)
     public boolean korisnikImaPrivilegijuUsername(@PathVariable String username, @PathVariable String privilegija) {
         if (korisnikRepozitorij.findByusername(username.toLowerCase()) == null) {
@@ -43,6 +45,7 @@ public class KorisnikKontroler {
         return korisnikRepozitorij.findById(idKorisnika).get().imaUlogu(uloga);
     }
 
+
     @RequestMapping(value="pretragaUlogeId/{idKorisnika}/{idUloge}",method=RequestMethod.GET)
     public boolean korisnikImaUlogu(@PathVariable Long idKorisnika,@PathVariable Long idUloge){
 
@@ -50,7 +53,6 @@ public class KorisnikKontroler {
         return false;
     }
         return korisnikRepozitorij.findById(idKorisnika).get().imaUlogu(ulogaRepozitorij.findById(idUloge).get().getNazivUloge().toString());
-
     }
     
     @RequestMapping(value="pretragaPrivilegijeId/{idKorisnika}/{idPrivilegije}",method=RequestMethod.GET)
@@ -68,7 +70,6 @@ public class KorisnikKontroler {
             return false;
         }
         return korisnikRepozitorij.findById(idKorisnika).get().imaPrivilegiju(privilegija.toLowerCase());
-
     }
 
     @RequestMapping(value = "/pretragaUsername/imaUlogu/{username}/{uloga}", method = RequestMethod.GET)
@@ -106,4 +107,6 @@ public class KorisnikKontroler {
         }
         return null;
     }
+
 }
+

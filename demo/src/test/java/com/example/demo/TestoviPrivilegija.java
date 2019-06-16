@@ -356,7 +356,7 @@ public class TestoviPrivilegija {
     }
 	
 	@Test
-    public void testAsistentNemaPrivilegijuKreiranjaKorisnika() throws Exception {
+    public void testAsistentImaPrivilegijuBrisanjaKreiranogProjekta() throws Exception {
         Uloga uloga = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         assertThat(uloga.imaPrivilegiju("brisanje-kreiranog-projekta")).isEqualTo(false);
     }

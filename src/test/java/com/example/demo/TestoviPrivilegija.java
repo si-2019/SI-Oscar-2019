@@ -179,6 +179,12 @@ public class TestoviPrivilegija {
         Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
         assertThat(student.imaPrivilegiju("editovanje-teme-na-forumu")).isEqualTo(false);
     }
+	
+	@Test
+    public void testStudentFinansijskeObaveze() throws Exception {
+        Uloga student = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENT);
+        assertThat(student.imaPrivilegiju("pregled-finansijskih-obaveza")).isEqualTo(false);
+    }
 
     @Test
     public void testPostojiEditovanjeKorisnika() throws Exception {

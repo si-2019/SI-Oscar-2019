@@ -1191,6 +1191,11 @@ public class TestoviPrivilegija {
         String body = IOUtils.toString(in, Charset.forName("UTF-8"));
         assertSame("Specificirana uloga ili privilegija ne postoje!", body);
     }
+     @Test
+    public void testStudentskaSluzbaUvidUUpisaneKurseve() throws Exception {
+        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA);
+        assertThat(profesor.imaPrivilegiju("uvid-u-upisane-kurseve")).isEqualTo(true);
+    }
 
 }
 

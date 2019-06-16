@@ -15,6 +15,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/uloga")
 public class UlogaKontroler {

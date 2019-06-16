@@ -7,6 +7,7 @@ import java.sql.Blob;
 import java.sql.Date;
 import java.util.List;
 
+
 @Entity
 @Table(name = "Korisnik")
 public class Korisnik {
@@ -338,4 +339,6 @@ public class Korisnik {
         String ulogaKorisnika = this.getUloga_id().getNazivUloge().toString();
         return uloga.toLowerCase().equals(ulogaKorisnika.toLowerCase());
     }
+
 }
+

@@ -1,12 +1,10 @@
 package com.example.demo;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Odsjek")
 public class Odsjek {
-
     @Id
     @Column(name = "idOdsjek")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

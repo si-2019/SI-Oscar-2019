@@ -1,5 +1,11 @@
 package com.example.demo;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +16,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+
 @RestController
 @RequestMapping(value = "/privilegije")
 public class PrivilegijaKontroler {
+
     private PrivilegijaRepozitorij privilegijaRepozitorij;
     private UlogaRepozitorij ulogaRepozitorij;
 
@@ -51,7 +59,6 @@ public class PrivilegijaKontroler {
             return "Privilegija je uspjesno obrisana!";
         }
     }
-    
 
     @RequestMapping(value = "/obrisiSvePrivilegije", method = RequestMethod.DELETE)
     public String obrisiSvePrivilegije() {
@@ -165,3 +172,4 @@ public class PrivilegijaKontroler {
     }
 
 }
+

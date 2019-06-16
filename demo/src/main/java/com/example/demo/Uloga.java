@@ -1,5 +1,4 @@
 package com.example.demo;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -57,7 +56,8 @@ public class Uloga {
         this.privilegije = privilegije;
     }
 
-    public boolean imaPrivilegiju(String privilegija) {
+
+    public boolean imaPrivilegiju (String privilegija){
         boolean ima = false;
         List<Privilegija> privilegije = this.getPrivilegije();
         for (Privilegija p: privilegije) {
@@ -67,5 +67,5 @@ public class Uloga {
             }
         }
         return ima;
-    }
+}
 }

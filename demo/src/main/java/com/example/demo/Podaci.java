@@ -52,7 +52,7 @@ public class Podaci {
         if(!ulogaRepozitorij.existsBynazivUloge(ImenaUloga.STUDENTSKA_SLUZBA)) ulogaRepozitorij.save(studentska_sluzba);
     }
 
-    private void poveziUloguPrivilegiju(Privilegija privilegija, Uloga uloga) {
+    void poveziUloguPrivilegiju(Privilegija privilegija, Uloga uloga) {
         if (!privilegijaRepozitorij.existsBynazivPrivilegije(privilegija.getNazivPrivilegije())) {
             privilegijaRepozitorij.save(privilegija);
         } else {
@@ -219,18 +219,27 @@ public class Podaci {
         privilegija27.setUloge(uloga);
         poveziUloguPrivilegiju(privilegija27, asistent);
 		
-		Privilegija nova300 = new Privilegija();
-        nova300.setNazivPrivilegije("brisanje-kreiranog-projekta");
-        nova300.setUloge(uloga);
-        poveziUloguPrivilegiju(nova300, asistent);
+		Privilegija privilegija2700 = new Privilegija();
+        privilegija2700.setNazivPrivilegije("brisanje-kreiranog-projekta");
+        privilegija2700.setUloge(uloga);
+        poveziUloguPrivilegiju(privilegija2700, asistent);
         uloga.clear();
-
+		
+		//Privilegije za studenta
+		uloga.add(student);
+        Privilegija privilegija1478 = new Privilegija();
+        privilegija1478.setNazivPrivilegije("izmjena-licnih-informacija");
+        privilegija1478.setUloge(uloga);
+        poveziUloguPrivilegiju(privilegija1478, student);
+		uloga.clear();
+		
         // Privilegije za admina
         uloga.add(admin);
         Privilegija privilegija2 = new Privilegija();
         privilegija2.setNazivPrivilegije("kreiranje-privilegija");
         privilegija2.setUloge(uloga);
         poveziUloguPrivilegiju(privilegija2, admin);
+		uloga.clear();
 
         // Privilegije za studentsku sluzbu
         uloga.add(studentska_sluzba);
@@ -238,6 +247,7 @@ public class Podaci {
         privilegija3.setNazivPrivilegije("postavljanje-obavjestenja");
         privilegija3.setUloge(uloga);
         poveziUloguPrivilegiju(privilegija3, studentska_sluzba);
+		uloga.clear();
     }
 
 

@@ -2,7 +2,6 @@ package com.example.demo;
 
 import java.util.Optional;
 
-
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,7 +43,6 @@ public class KorisnikKontroler {
         }
         return korisnikRepozitorij.findById(idKorisnika).get().imaUlogu(uloga);
     }
-
 
     @RequestMapping(value="pretragaUlogeId/{idKorisnika}/{idUloge}",method=RequestMethod.GET)
     public boolean korisnikImaUlogu(@PathVariable Long idKorisnika,@PathVariable Long idUloge){
@@ -107,6 +105,5 @@ public class KorisnikKontroler {
         }
         return null;
     }
-
 }
 

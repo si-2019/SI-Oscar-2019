@@ -20,6 +20,7 @@ public class Odsjek {
         this.id = id;
         this.nazivOdsjeka = nazivOdsjeka;
     }
+
     public Long getId() {
         return id;
     }

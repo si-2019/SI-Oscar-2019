@@ -1,4 +1,6 @@
+
 package com.example.demo;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Blob;
@@ -337,5 +339,6 @@ public class Korisnik {
         String ulogaKorisnika = this.getUloga_id().getNazivUloge().toString();
         return uloga.toLowerCase().equals(ulogaKorisnika.toLowerCase());
     }
+
 }
 

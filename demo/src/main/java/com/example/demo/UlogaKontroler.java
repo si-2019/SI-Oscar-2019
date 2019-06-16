@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
 @RestController
 @RequestMapping(value = "/uloga")
 public class UlogaKontroler {
-
+  
     private UlogaRepozitorij ulogaRepozitorij;
     private PrivilegijaRepozitorij privilegijaRepozitorij;
 
@@ -27,7 +27,7 @@ public class UlogaKontroler {
         this.privilegijaRepozitorij = privilegijaRepozitorij;
         this.ulogaRepozitorij = ulogaRepozitorij;
     }
-    
+
     private List<String> dajVrijednostiZaKljuc(String jsonArrayStr, String key) {
         JSONArray jsonArray = new JSONArray(jsonArrayStr);
         return IntStream.range(0, jsonArray.length())
@@ -49,7 +49,7 @@ public class UlogaKontroler {
         if(ima) return indeks;
         return -1;
     }
-  
+
     @RequestMapping(value = "/uloge", method = RequestMethod.GET)
     public List<String> getAllUloge() {
         List<Uloga> uloge = ulogaRepozitorij.findAll();
@@ -60,7 +60,6 @@ public class UlogaKontroler {
         return povratna;
     }
    
-
     @RequestMapping(value = "/{idUloge}/{privilegija}", method = RequestMethod.GET)
     public boolean ulogaImaPrivilegiju(@PathVariable Long idUloge, @PathVariable String privilegija) {
         privilegija = privilegija.toLowerCase();

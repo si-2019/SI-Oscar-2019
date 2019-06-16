@@ -1,5 +1,6 @@
 package com.example.demo;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,7 +47,6 @@ public class PrivilegijaKontroler {
             privilegijaRepozitorij.deleteById(privilegijaRepozitorij.findBynazivPrivilegije(privilegija).getId());
             return "Privilegija je uspjesno obrisana!";
         }
-
     }
     
     @RequestMapping(value = "/obrisiId/{idPrivilegija}", method = RequestMethod.DELETE)
@@ -59,7 +59,7 @@ public class PrivilegijaKontroler {
             return "Privilegija je uspjesno obrisana!";
         }
     }
-    
+
     @RequestMapping(value = "/obrisiSvePrivilegije", method = RequestMethod.DELETE)
     public String obrisiSvePrivilegije() {
         privilegijaRepozitorij.deleteAll();

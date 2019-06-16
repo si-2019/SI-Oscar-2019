@@ -1193,7 +1193,7 @@ public class TestoviPrivilegija {
     }
  @Test
     public void testAsistentEditovanjeKreiranogProjekta() throws Exception {
-        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
+        Uloga asistent= ulogaRepozitorij.findBynazivUloge(ImenaUloga.ASISTENT);
         assertThat(asistent.imaPrivilegiju("editovanje-kreiranog-projekta")).isEqualTo(true);
     }
 }

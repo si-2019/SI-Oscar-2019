@@ -203,6 +203,12 @@ public class Podaci {
         nova.setNazivPrivilegije("izmjena-bodova-za-ispite");
         nova.setUloge(uloga);
         poveziUloguPrivilegiju(nova, profesor);
+		
+		
+		Privilegija nova4 = new Privilegija();
+        nova4.setNazivPrivilegije("dodavanje-clanova-tima");
+        nova4.setUloge(uloga);
+        poveziUloguPrivilegiju(nova4, profesor);
         uloga.clear();
 
         // Privilegije za asistenta

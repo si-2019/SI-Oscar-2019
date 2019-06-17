@@ -295,6 +295,12 @@ public class TestoviPrivilegija {
         Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
         assertThat(profesor.imaPrivilegiju("unos-konacne-ocjene")).isEqualTo(true);
     }
+	
+	@Test
+    public void testProfesorDodavanjeClanovaTima() throws Exception {
+        Uloga profesor = ulogaRepozitorij.findBynazivUloge(ImenaUloga.PROFESOR);
+        assertThat(profesor.imaPrivilegiju("dodavanje-clanova-tima")).isEqualTo(true);
+    }
 
     @Test
     public void testAsistentUnosiKonacnuOcjenu() throws Exception {
